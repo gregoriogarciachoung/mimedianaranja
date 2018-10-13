@@ -1,0 +1,29 @@
+header>hgroup, header>section{
+margin:1em
+}
+header>section>nav{
+}
+header>section{
+display:flex;
+justify-content: space-between;
+}
+
+header>section>nav li{
+display:inline;
+margin-right:3em
+}
+
+header>section>div{
+margin-left:3em;
+}
+main>aside li{
+list-style:none;
+padding:1em;
+}
+main>aside ul{
+padding:0;
+}
+main>section{
+margin-top:1em;
+}
+

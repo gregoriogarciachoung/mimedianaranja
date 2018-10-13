@@ -1,0 +1,20 @@
+<?php
+include('conexion.php');
+$query3 = getConexion()->prepare('call sp_registraUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?)');
+$query3->execute(array(
+$_POST['nom'],
+$_POST['correo'],
+$_POST['clave'],
+$_POST['sexos'],
+$_POST['fecNac'],
+$_POST['distrito'],
+$_POST['hijos'],
+$_POST['estCivil'],
+$_POST['nivelA'],
+$_POST['miAltura'],
+$_POST['ocu'],
+$_POST['rela'],
+null
+));
+header("location:index.html");
+?>

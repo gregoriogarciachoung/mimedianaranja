@@ -1,0 +1,21 @@
+*{margin:0; font:menu; font-size:15px}
+body{
+display:flex;
+flex-flow:wrap;
+}
+header{
+width:100%;
+display:flex;
+justify-content: space-between;
+}
+main{
+display:flex;
+}
+main>aside{
+/*width:229px;*/
+height:100%;
+}
+main>section{
+width:100%;
+height:100%;
+}
