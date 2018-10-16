@@ -1,4 +1,5 @@
 <?php
+ 
 include('conexion.php');
 /*
 $pd = file_get_contents("php://input");
@@ -15,10 +16,10 @@ $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
-	$datos[$cont]['nom'] = $res['nom'];
-	$datos[$cont]['ocu'] = $res['ocu'];
-	$datos[$cont]['des'] = $res['des'];
-	$datos[$cont]['est'] = $res['est'];
+	$datos[$cont]['nom'] = utf8_encode($res['nom']);
+	$datos[$cont]['ocu'] = utf8_encode($res['ocu']);
+	$datos[$cont]['des'] = utf8_encode($res['des']);
+	$datos[$cont]['est'] = utf8_encode($res['est']);
 $cont++;
 }
 

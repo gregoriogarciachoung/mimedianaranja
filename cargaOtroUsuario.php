@@ -1,4 +1,5 @@
 <?php
+
 include('conexion.php');
 
 // obtiene filtros del usuario que acaba de ingresar
@@ -32,9 +33,9 @@ $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
 	$datos[$cont]['id'] = $res['id'];
-	$datos[$cont]['nom'] = $res['Nombre'];
+	$datos[$cont]['nom'] = utf8_encode($res['Nombre']);
 	$datos[$cont]['edad'] = $res['Edad'];
-	$datos[$cont]['ocu'] = $res['Ocupacion'];
+	$datos[$cont]['ocu'] = utf8_encode($res['Ocupacion']);
 	//echo json_encode($res);
 $cont++;
 }

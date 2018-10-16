@@ -1,5 +1,5 @@
 ellanomehacecaso.controller('ella', function($scope, $http) {
-	$scope.listaSexo = function(){
+	$scope.listaSexo2 = function(){
 		$scope.sexos = [
 		                {
 		                	id : 1,
@@ -43,7 +43,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		$scope.datos = response.data.lstMisOtrosIntereses;
 		});
 	},
-	$scope.listaRelacionInteres = function() {
+	$scope.listaRelacionInteres2 = function() {
 		$http({
 		method: 'POST',
 		url: 'listaRelacionInteres.php'

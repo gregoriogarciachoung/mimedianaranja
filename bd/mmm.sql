@@ -81,9 +81,9 @@ foreign key(idPre)references preOtrosIntereses(id)
 );
 -- -----------------------------------------------
 insert into preOtrosIntereses(pre) values
-('Que busco en mi proxima relacion'),
-('Que hago en mis tiempos libres'),
-('Peliculas o series favoritas'),
+('¿Que busco en mi próxima relación?'),
+('¿Que hago en mis tiempos libres?'),
+('Películas o series favoritas'),
 ('Bandas o artistas favoritas'),
 ('Mis 3 pasiones en la vida'),
 ('Mis libros o autores favoritos');
@@ -93,18 +93,18 @@ insert into distritos(nom)values
 
 insert into interes(nom) values
 ('A su alma gemela, matrimomio'),
-('Una relacion seria'),
+('Una relación seria'),
 ('Conocer nuevas personas y ver que pasa'),
-('Una relacion de una noche');
+('Una relación de una noche');
 
 insert into sexos(nom)values
 ('Hombre'),('Mujer'),('Homosexual'),('transexual'),('pansexual');
 
 insert into estadoCivil(nom)values
-('Soltero'),('Casado');
+('Soltero'),('Casado'),('Comprometído');
 
 insert into nivelEducacion(nom)values
-('Secundaria'),('Tecnico'),('Universidad'),('Maestria');
+('Secundaría'),('Técnico'),('Universidad'),('Maestría');
 -- -----------------------------------------------
 
 delimiter |

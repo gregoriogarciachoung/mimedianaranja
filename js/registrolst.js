@@ -1,4 +1,4 @@
-regist.controller('ella', function($scope, $http) {
+ellanomehacecaso.controller('frmRegistro', function($scope, $http) {
 	$scope.listaSexo = function(){
 		$scope.sexos = [
 		                {
@@ -12,7 +12,7 @@ regist.controller('ella', function($scope, $http) {
 		                ]
 	},
 	$scope.listaDistrito = function(){
-		$scope.sexos = [
+		$scope.distritos = [
 		                {
 		                	id : -1,
 		                	nom : '--- Select ---'
@@ -32,7 +32,7 @@ regist.controller('ella', function($scope, $http) {
 		                ]
 	},
 	$scope.listaEstado = function(){
-		$scope.sexos = [	                
+		$scope.estados = [	                
 		                {
 		                	id: 1,
 		                	nom : 'Soltero'
@@ -44,7 +44,7 @@ regist.controller('ella', function($scope, $http) {
 		                ]
 	},
 	$scope.listaEducacion = function(){
-		$scope.sexos = [	                
+		$scope.educacion = [	                
 		                {
 		                	id: 1,
 		                	nom : 'Secundaria'

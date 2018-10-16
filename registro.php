@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/registrolst.js"></script>
 <!-- 
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
@@ -19,7 +18,7 @@
  -->
 <title>Registra Computadora</title>
 </head>
-<body >
+<body ng-app="goyo" ng-controller="frmRegistro" >
 
 	<form action="registrar.php" id="id_form" method="post">
 	 
@@ -31,12 +30,15 @@
 	<input type="text" name="nom" placeholder="Mi nombre"/>
 	
 	<h5>Soy</h5>
-	<input name="sexos" type="radio" checked="checked" value="1"/>Hombre
-	<input name="sexos" type="radio" value="2"/>Mujer
-	
+	<nav ng-init="listaSexo()">
+		<ul ng-repeat="x in sexos">
+			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="sexos" value="{{x.id}}"/> {{x.nom}}
+			<li ng-if="x.id != 1"><input type="radio"  name="sexos" value="{{x.id}}"/> {{x.nom}}
+		</ul>
+	</nav>
 	
 	<h5>Fecha de nacimiento</h5>
-	 <input type="text" name="fecNac" id="idFecNac" placeholder="Fecha de nacimiento"/>
+	 <input type="date" name="fecNac" id="idFecNac" placeholder="Fecha de nacimiento"/>
 	 
 	 </div>
 	
@@ -63,19 +65,25 @@
 	 <h4>Te recomendamos personas según la ubicación que elijas</h4>
 	 <h5>Tengo hijos</h5>
 	 
-	<input name="hijos" type="radio" checked="checked" value="1"/>Si
-	<input name="hijos" type="radio" value="2"/>No
+	<input name="hijos" type="radio" checked="checked" value="1" value="{{x.id}}"/>Si
+	<input name="hijos" type="radio" value="2" value="{{x.id}}"/>No
 	 
 	 <!-- radiobutton de estado civl -->
 	 <h5>Estado civl</h5>
-	<input name="estCivil" type="radio" checked="checked" value="1"/>Soltero
-	<input name="estCivil" type="radio" value="2"/>Casado	 
+	<nav ng-init="listaEstado()">
+		<ul ng-repeat="x in estados">
+			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="estCivil" value="{{x.id}}"/> {{x.nom}}
+			<li ng-if="x.id != 1"><input type="radio"  name="estCivil" value="{{x.id}}"/> {{x.nom}}
+		</ul>
+	</nav>	 
 	 <h5>Máximo nivel alcanzado</h5>
 	 <!-- radiobutton -->
-	<input name="nivelA" type="radio" checked="checked" value="1"/>Secundaría
-	<input name="nivelA" type="radio" value="2"/>Técnico	 
-	<input name="nivelA" type="radio" value="3"/>Universidad	
-	<input name="nivelA" type="radio" value="4"/>Maestría	
+	<nav ng-init="listaEducacion()">
+		<ul ng-repeat="x in educacion">
+			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="nivelA" value="{{x.id}}"/> {{x.nom}}
+			<li ng-if="x.id != 1"><input type="radio"  name="nivelA" value="{{x.id}}"/> {{x.nom}}
+		</ul>
+	</nav>	
 	 
 	 <h5>Mi altura (cm)</h5>
 	 <!-- comobox con una lista de numeros -->
@@ -104,10 +112,12 @@
 	 <h4>Se encontrará con personas que buscan lo mismo</h4>
 	 <h5>Tipo de relación</h5>
 	
-	<input name="rela" type="radio" checked="checked" value="1"/>A su alma gemela, matrimomio
-	<input name="rela" type="radio" value="2"/>Una relacion seria	 
-	<input name="rela" type="radio" value="3"/>Conocer nuevas personas y ver que pasa	
-	<input name="rela" type="radio" value="4"/>Una relacion de una noche	
+	<nav ng-init="listaRelacionInteres()">
+		<ul ng-repeat="x in adatos">
+			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="rela" value="{{x.id}}"/> {{x.nom}}
+			<li ng-if="x.id != 1"><input type="radio"  name="rela" value="{{x.id}}"/> {{x.nom}}
+		</ul>
+	</nav>	
 	</div>
 	
 	<div>
@@ -149,14 +159,23 @@ padding: 1em;
 button{
 margin-top: 2em;
 }
-input[type="text"],input[type="password"], select{
+input[type="date"],input[type="text"],input[type="password"], select{
 width:600px;
 }
 input[type="email"]{
 	padding:0;
 	border:0;
 }
+form>div>nav>ul{
+	padding:0;
+}
+form>div>nav>ul>li{
+	list-style:none;
+}
 </style>
+<script>
+var ellanomehacecaso = angular.module('goyo', []);
+</script>
 <script>
 var size = document.querySelectorAll("form > div").length;
 function ocultar(){
@@ -181,4 +200,5 @@ $("form >  div:eq(0)").show();
 	});
 });
 </script>
+<script type="text/javascript" src="js/registrolst.js"></script>
 </html>

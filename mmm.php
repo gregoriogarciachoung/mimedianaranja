@@ -102,10 +102,10 @@ header("location:index.html");
 		<div ng-controller="ella" ng-init="listaMisDatos()">
 			<div class="marcotres" ng-repeat="x in datos">
 			<p>Autodescripción</p>
-			<p>{{x.des}}</p>
+			<input type="text" value="{{x.des}}" placeholder="Escribe aquí"/>
 			<h3>GRABAR</h3>
 			<p>Ocupación</p>
-			<input type="text" value="{{x.ocu}}"/>
+			<input type="text" value="{{x.ocu}}"placeholder="Escribe aquí"/>
 			<h3>GRABAR</h3>
 			</div>
 		</div>
@@ -113,7 +113,7 @@ header("location:index.html");
 		<div  ng-init="listaMisOtrosIntereses()">
 			<div ng-repeat="x in datos" class="marcodos" id="tampocomehacecaso">
 			<p>{{x.pre}}</p>
-			<input type="text" value="{{x.res}}"/>
+			<input type="text" value="{{x.res}}"placeholder="Escribe aquí"/>
 			<h3>GRABAR</h3>
 			</div>
 		</div>
@@ -128,7 +128,7 @@ header("location:index.html");
 		<h2>Edita aquí los filtros de las personas soletras que conocerás y te podrán conocer en OH!</h2>
 		</div>
 		<h3>Tipo de relación</h3>
-		<div ng-init="listaRelacionInteres()">
+		<div ng-init="listaRelacionInteres2()">
 			<ul ng-repeat="y in adatos">
 			<li ng-if="x.relacion == y.id"><input type="radio"checked="checked" name="chkr"/> {{y.nom}}
 			<li ng-if="x.relacion != y.id"><input type="radio" name="chkr"/> {{y.nom}}
@@ -136,7 +136,7 @@ header("location:index.html");
 			
 		</div>
 		<h3>Busco</h3>
-			<div ng-init="listaSexo()">
+			<div ng-init="listaSexo2()">
 				<ul ng-repeat="s in sexos">
 					<li ng-if="x.sexo == s.id"><input type="radio"checked="checked" name="chks"/> {{s.nom}}
 					<li ng-if="x.sexo != s.id"><input type="radio"  name="chks"/> {{s.nom}}
