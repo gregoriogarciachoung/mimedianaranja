@@ -15,7 +15,7 @@ header("location:index.html");
 <link rel="stylesheet" href="css/mmmstruc.css"/>
 <link rel="stylesheet" href="css/mmmali.css"/>
 <link rel="stylesheet" href="css/mmmboni.css"/>
-<!-- 
+<!--
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -35,17 +35,16 @@ header("location:index.html");
 	<hgroup>
 		<h1>OH!</h1>
 	</hgroup>
-	<section>
-		<nav ng-controller="ella" ng-init="listaMisDatos()">
+	<section ng-controller="ella" ng-init="listaMisDatos()">
+		<nav>
 			<ul ng-repeat="x in datos">
 				<li ng-click="mostrarFiltros()">Filtro
 				<li>Bla
 				<li ng-click="cerrarSesion()">Salir
-				<li>{{x.nom}}
 			</ul>
 		</nav>
 		<div>
-			<h3></h3><img />
+			<li style="list-style:none" ng-repeat="x in datos">{{x.nom}}<img/>
 		</div>
 	</section>
 </header>
@@ -60,7 +59,7 @@ header("location:index.html");
 			</ul>
 		</nav>
 	</aside>
-	
+
 	<!-- Sugeridos -->
 	<section ng-controller="ella" ng-init="listaOtroUsuario()" id="galu">
 	<h2>Sugeridos</h2>
@@ -79,9 +78,9 @@ header("location:index.html");
 		</div>
 	</form>
 		</section>
-		
+
 	</section>
-	
+
 	<!-- Invitaciones -->
 	<section>
 	<h2>Invitaciones</h2>
@@ -121,7 +120,7 @@ header("location:index.html");
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">
-		<form>
+		<form action="editaFiltro.php" method="post">
 		<div ng-repeat="x in datos">
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
@@ -130,23 +129,23 @@ header("location:index.html");
 		<h3>Tipo de relación</h3>
 		<div ng-init="listaRelacionInteres2()">
 			<ul ng-repeat="y in adatos">
-			<li ng-if="x.relacion == y.id"><input type="radio"checked="checked" name="chkr"/> {{y.nom}}
-			<li ng-if="x.relacion != y.id"><input type="radio" name="chkr"/> {{y.nom}}
+			<li ng-if="x.relacion == y.id"><input type="radio"checked="checked" name="chkr" value="{{y.id}}"/> {{y.nom}}
+			<li ng-if="x.relacion != y.id"><input type="radio" name="chkr" value="{{y.id}}"/> {{y.nom}}
 			</ul>
-			
+
 		</div>
 		<h3>Busco</h3>
 			<div ng-init="listaSexo2()">
 				<ul ng-repeat="s in sexos">
-					<li ng-if="x.sexo == s.id"><input type="radio"checked="checked" name="chks"/> {{s.nom}}
-					<li ng-if="x.sexo != s.id"><input type="radio"  name="chks"/> {{s.nom}}
+					<li ng-if="x.sexo == s.id"><input type="radio"checked="checked" name="chks" value="{{s.id}}"/> {{s.nom}}
+					<li ng-if="x.sexo != s.id"><input type="radio"  name="chks" value="{{s.id}}"/> {{s.nom}}
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}"/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}"/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin"/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax"/></div>
 		<div><button type="button"  id="btnCancelar" ng-click="ocultarFiltros()">Cancelar</button>
-		<button type="button"  id="btnGuardar">Guardar</button></div>
+		<button type="submit"  id="btnGuardar">Guardar</button></div>
 		</div>
 		</form>
 </section>
@@ -157,15 +156,15 @@ var ellanomehacecaso = angular.module('goyo', []);
 <script>
 
 $(document).ready(function(){
-	
+
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
 	});
-	
+
 	//ocultar secciones > main >section
 	var ts = document.querySelectorAll("main section");
 	function ocultarSecciones(){
-		
+
 		for(var i = 0; i < ts.length; i++){
 			ts[i].style.display="none";
 		}
@@ -182,11 +181,11 @@ $(document).ready(function(){
 
 });
 ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
-	
+
 	$scope.cerrarSesion = function(){
 		document.querySelector("#frmSalir").submit();
 	}
-	
+
 	document.querySelector("#id_filtroModal").style.display="none";
 	$scope.mostrarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="block";
