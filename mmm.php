@@ -92,7 +92,7 @@ header("location:index.html");
 	<!-- Mi perfil -->
 	<section ng-controller="ella" id="id_perfil">
 	<h2>Mi perfil</h2>
-		<form>
+		
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
 		<h2>Edita aquí los filtros de las personas soletras que conocerás y te podrán conocer en OH!</h2>
@@ -101,10 +101,10 @@ header("location:index.html");
 		<div ng-controller="ella" ng-init="listaMisDatos()">
 			<div class="marcotres" ng-repeat="x in datos">
 			<p>Autodescripción</p>
-			<input type="text" value="{{x.des}}" placeholder="Escribe aquí"/>
-			<h3>GRABAR</h3>
+			<input type="text" value="{{x.des}}" id="txtDes" placeholder="Escribe aquí"/>
+			<h3 ng-click="editarMiDes()">GRABAR</h3>
 			<p>Ocupación</p>
-			<input type="text" value="{{x.ocu}}"placeholder="Escribe aquí"/>
+			<input type="text" value="{{x.ocu}}" name="txtOcu" id="txtOcu" placeholder="Escribe aquí"/>
 			<h3>GRABAR</h3>
 			</div>
 		</div>
@@ -112,11 +112,11 @@ header("location:index.html");
 		<div  ng-init="listaMisOtrosIntereses()">
 			<div ng-repeat="x in datos" class="marcodos" id="tampocomehacecaso">
 			<p>{{x.pre}}</p>
-			<input type="text" value="{{x.res}}"placeholder="Escribe aquí"/>
-			<h3>GRABAR</h3>
+			<input type="text" value="{{x.res}}" class="txtInteres" placeholder="Escribe aquí"/>
+			<h3 ng-click="editarMiInteres(x.idPre, x.res)">GRABAR</h3>
 			</div>
 		</div>
-		</form>
+		
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">
@@ -180,6 +180,7 @@ $(document).ready(function(){
 	});
 
 });
+
 ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 
 	$scope.cerrarSesion = function(){
@@ -203,6 +204,27 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		}).then(function(response) {
 		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
 		});
+	}
+	$scope.editarMiDes = function(){
+		var txtDes = document.querySelector("#txtDes");
+		$http({
+			method: 'POST',
+			url: 'editarMiDes.php', 
+			data: { txtDesR: txtDes.value }
+			}).then(function (response) {
+		}, function (error) {
+		});
+	}
+	$scope.editarMiInteres = function(i){
+		var txtInteres = document.querySelector(".txtInteres");
+		alert(i +" "+ txtInteres.value);
+	/*	$http({
+			method: 'POST',
+			url: 'editarMiInteres.php', 
+			data: { txtInteresR: txtInteres.value, preR: i }
+			}).then(function (response) {
+		}, function (error) {
+		});*/
 	}
 });
 

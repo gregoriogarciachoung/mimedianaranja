@@ -215,7 +215,9 @@ create procedure ps_listaRespuestaIntereses(p_mail varchar(45))
 begin
 	declare idU int;
 	set idU = (select id from usuario where mail = p_mail);
-	select (select p.pre from preOtrosIntereses p where id = idPre) as 'pre',
+	select 
+	idPre,
+	(select p.pre from preOtrosIntereses p where id = idPre) as 'pre',
 	res from resOtrosIntereses where idUsu = idU;
 end
 |
