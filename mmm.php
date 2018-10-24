@@ -113,7 +113,7 @@ header("location:index.html");
 		<div  ng-init="listaMisOtrosIntereses()">
 			<div ng-repeat="x in datos" class="marcodos" id="tampocomehacecaso">
 			<p>{{x.pre}}</p>
-			<input type="text" value="{{x.res}}" class="txtInteres" placeholder="Escribe aquí"/>
+			<input type="text" value="{{x.res}}" id="txtInteres" placeholder="Escribe aquí"/>
 			<h3 ng-click="editarMiInteres(x.idPre)">GRABAR</h3>
 			</div>
 		</div>
@@ -158,11 +158,6 @@ var ellanomehacecaso = angular.module('goyo', []);
 
 $(document).ready(function(){
 
-	$("#cerrarModal").click(function(){
-		$("#usuModal").css("display","none");
-	});
-
-
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
 	});
@@ -196,6 +191,9 @@ function cambiaColorGrabar(abc){
 				contColor = 0;
 			}
 }
+
+
+
 ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 
 	$scope.cerrarSesion = function(){
@@ -244,7 +242,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 	}
 	$scope.editarMiInteres = function(i){
-		var txtInteres = document.querySelectorAll(".txtInteres");
+		var txtInteres = document.querySelectorAll("#txtInteres");
 		$http({
 			method: 'POST',
 			url: 'editarMiInteres.php', 
@@ -252,6 +250,16 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
+		var colores = ["red","blue","green","#ca213f","#493c32","orange"];
+			//var x = Math.floor((Math.random() * 6) + 1);
+			
+			var m = parseInt(i) + parseInt((i-1));
+			var txtInteres2 = document.querySelectorAll("#txtInteres + h3");
+			txtInteres2[i-1].style.color = colores[contColor];
+			contColor = contColor + 1;
+			if(contColor == 6){
+				contColor = 0;
+			}
 	}
 });
 

@@ -75,7 +75,7 @@ pre varchar(45)
 create table resOtrosIntereses(
 idUsu int,
 idPre int,
-res varchar(45),
+res varchar(250),
 foreign key(idUsu)references usuario(id),
 foreign key(idPre)references preOtrosIntereses(id)
 );

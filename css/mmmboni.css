@@ -150,5 +150,8 @@ background-size:8px;
 	background:#f7f7f7;
 }
 input + h3{
-cursor: default;
+cursor: alias;
+}
+#txtInteres:hover, #txtDes:hover, #txtOcu:hover{
+color:red
 }
