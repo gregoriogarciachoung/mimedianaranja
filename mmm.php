@@ -252,7 +252,6 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
-			//cambiaColorGrabar(".txtInteres:nth-child("+i+")");
 	}
 });
 
