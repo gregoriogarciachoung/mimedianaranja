@@ -113,7 +113,7 @@ header("location:index.html");
 			<div ng-repeat="x in datos" class="marcodos" id="tampocomehacecaso">
 			<p>{{x.pre}}</p>
 			<input type="text" value="{{x.res}}" class="txtInteres" placeholder="Escribe aquí"/>
-			<h3 ng-click="editarMiInteres(x.idPre, x.res)">GRABAR</h3>
+			<h3 ng-click="editarMiInteres(x.idPre)">GRABAR</h3>
 			</div>
 		</div>
 		
@@ -216,15 +216,15 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		});
 	}
 	$scope.editarMiInteres = function(i){
-		var txtInteres = document.querySelector(".txtInteres");
-		alert(i +" "+ txtInteres.value);
-	/*	$http({
+		var txtInteres = document.querySelectorAll(".txtInteres");
+		//alert(i +" "+ txtInteres[i-1].value);
+		$http({
 			method: 'POST',
 			url: 'editarMiInteres.php', 
-			data: { txtInteresR: txtInteres.value, preR: i }
+			data: { txtInteresR: txtInteres[i-1].value, preR: i }
 			}).then(function (response) {
 		}, function (error) {
-		});*/
+		});
 	}
 });
 
