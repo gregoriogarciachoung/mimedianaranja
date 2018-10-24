@@ -217,7 +217,6 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	}
 	$scope.editarMiInteres = function(i){
 		var txtInteres = document.querySelectorAll(".txtInteres");
-		//alert(i +" "+ txtInteres[i-1].value);
 		$http({
 			method: 'POST',
 			url: 'editarMiInteres.php', 
