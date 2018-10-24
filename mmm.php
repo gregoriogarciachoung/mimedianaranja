@@ -70,15 +70,23 @@ header("location:index.html");
 	</div>
 	<section class="momo" id="usuModal">
 	
-	<form><p style="color:red; background:#fff; border-radius:0" id="cerrarModal">X</p>
+	<form>
 		<div ng-repeat="y in mdatos">
-			<p>Nombre: {{y.nom}}</p>
-			<p>Descripcion: {{y.des}}</p>
-			<p>Estado Civil: {{y.est}}</p>
-			<p>Vivo en: {{y.vivoen}}</p>
-			<p>Ocupacion: {{y.ocu}}</p>
-			<p>¿Qué busco en mi próxima relacióon?: {{y.quebusco}}</p>
-			<p>Mis pasiones en la vida: {{y.pasiones}}</p>
+		<section>
+			<figure>
+			<!-- {{y.foto}} -->
+			</figure>
+		</section>
+		<section>
+			<p>{{y.nom}}</p>
+			<p>{{y.des}}</p>
+			<p>¿Cómo es {{y.nom}}?</p>
+			<p>Estado Civil: <font>{{y.est}}</font></p>
+			<p>Vivo en: <font>{{y.vivoen}}</font></p>
+			<p>Ocupacion: <font>{{y.ocu}}</font></p>
+			<p>¿Qué busco en mi próxima relación?: <font>{{y.quebusco}}</font></p>
+			<p>Mis pasiones en la vida: <font>{{y.pasiones}}</font></p>
+		</section>
 		</div>
 	</form>
 		</section>
@@ -161,7 +169,7 @@ var ellanomehacecaso = angular.module('goyo', []);
 
 $(document).ready(function(){
 
-	$("#cerrarModal").click(function(){
+	$(".momo").click(function(){
 		$("#usuModal").css("display","none");
 	});
 

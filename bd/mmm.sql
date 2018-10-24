@@ -226,6 +226,7 @@ delimiter |
 create procedure sp_cargaOtroUsuario(p_id int)
 begin
 select 
+u.foto,
 u.nom as 'nom', 
 u.autodes as 'des',
 (select nom from estadoCivil where id = u.estCivil) as 'est',

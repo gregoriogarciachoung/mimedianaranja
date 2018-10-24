@@ -16,6 +16,7 @@ $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
+	$datos[$cont]['foto'] = utf8_encode($res['foto']);
 	$datos[$cont]['nom'] = utf8_encode($res['nom']);
 	$datos[$cont]['ocu'] = utf8_encode($res['ocu']);
 	$datos[$cont]['des'] = utf8_encode($res['des']);
