@@ -69,7 +69,8 @@ header("location:index.html");
 	<p>{{x.ocu}}</p>
 	</div>
 	<section class="momo" id="usuModal">
-	<form>
+	
+	<form><p style="color:red; background:#fff; border-radius:0" id="cerrarModal">X</p>
 		<div ng-repeat="y in mdatos">
 			<p>nom: {{y.nom}}</p>
 			<p>descripcion: {{y.des}}</p>
@@ -105,7 +106,7 @@ header("location:index.html");
 			<h3 ng-click="editarMiDes()">GRABAR</h3>
 			<p>Ocupación</p>
 			<input type="text" value="{{x.ocu}}" name="txtOcu" id="txtOcu" placeholder="Escribe aquí"/>
-			<h3>GRABAR</h3>
+			<h3 ng-click="editarMiOcu()">GRABAR</h3>
 			</div>
 		</div>
 		<h2 class="t2">Mis Intereses</h2>
@@ -157,6 +158,11 @@ var ellanomehacecaso = angular.module('goyo', []);
 
 $(document).ready(function(){
 
+	$("#cerrarModal").click(function(){
+		$("#usuModal").css("display","none");
+	});
+
+
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
 	});
@@ -180,7 +186,16 @@ $(document).ready(function(){
 	});
 
 });
-
+var contColor = 0;
+function cambiaColorGrabar(abc){
+	var colores = ["red","blue","green","#ca213f","#493c32","orange"];
+			//var x = Math.floor((Math.random() * 6) + 1);
+			document.querySelector(" "+abc+" + h3").style.color = colores[contColor];
+			contColor = contColor + 1;
+			if(contColor == 6){
+				contColor = 0;
+			}
+}
 ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 
 	$scope.cerrarSesion = function(){
@@ -214,6 +229,19 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
+			cambiaColorGrabar("#txtDes");
+	}
+	$scope.editarMiOcu = function(){
+		var txtOcu = document.querySelector("#txtOcu");
+		$http({
+			method: 'POST',
+			url: 'editarMiOcu.php', 
+			data: { txtOcuR: txtOcu.value }
+			}).then(function (response) {
+		}, function (error) {
+		});
+			cambiaColorGrabar("#txtOcu");
+		
 	}
 	$scope.editarMiInteres = function(i){
 		var txtInteres = document.querySelectorAll(".txtInteres");
@@ -224,6 +252,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
+			//cambiaColorGrabar(".txtInteres:nth-child("+i+")");
 	}
 });
 

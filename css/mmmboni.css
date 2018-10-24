@@ -149,3 +149,6 @@ background-size:8px;
 .marcodos input[type="text"]{
 	background:#f7f7f7;
 }
+input + h3{
+cursor: default;
+}

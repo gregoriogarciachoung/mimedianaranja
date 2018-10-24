@@ -12,6 +12,6 @@ $query3 = getConexion()->prepare('call ps_editarResOtrosIntereses(?,?,?)');
 $query3->execute(array(
 $pass,
 $pre,
-$res
+utf8_decode($res)
 ));
 ?>
