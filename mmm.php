@@ -72,10 +72,13 @@ header("location:index.html");
 	
 	<form><p style="color:red; background:#fff; border-radius:0" id="cerrarModal">X</p>
 		<div ng-repeat="y in mdatos">
-			<p>nom: {{y.nom}}</p>
-			<p>descripcion: {{y.des}}</p>
-			<p>ocupacion: {{y.ocu}}</p>
+			<p>Nombre: {{y.nom}}</p>
+			<p>Descripcion: {{y.des}}</p>
 			<p>Estado Civil: {{y.est}}</p>
+			<p>Vivo en: {{y.vivoen}}</p>
+			<p>Ocupacion: {{y.ocu}}</p>
+			<p>¿Qué busco en mi próxima relacióon?: {{y.quebusco}}</p>
+			<p>Mis pasiones en la vida: {{y.pasiones}}</p>
 		</div>
 	</form>
 		</section>
@@ -157,6 +160,11 @@ var ellanomehacecaso = angular.module('goyo', []);
 <script>
 
 $(document).ready(function(){
+
+	$("#cerrarModal").click(function(){
+		$("#usuModal").css("display","none");
+	});
+
 
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");

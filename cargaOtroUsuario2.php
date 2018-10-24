@@ -20,6 +20,9 @@ while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	$datos[$cont]['ocu'] = utf8_encode($res['ocu']);
 	$datos[$cont]['des'] = utf8_encode($res['des']);
 	$datos[$cont]['est'] = utf8_encode($res['est']);
+	$datos[$cont]['quebusco'] = utf8_encode($res['quebusco']);
+	$datos[$cont]['vivoen'] = utf8_encode($res['vivoen']);
+	$datos[$cont]['pasiones'] = utf8_encode($res['pasiones']);
 $cont++;
 }
 

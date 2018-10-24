@@ -226,11 +226,15 @@ delimiter |
 create procedure sp_cargaOtroUsuario(p_id int)
 begin
 select 
-nom as 'nom', 
-ocupacion as 'ocu', 
-autodes as 'des',
-(select nom from estadoCivil where id = u.estCivil) as 'est'
-from usuarioDatos u where idUsu = p_id;
+u.nom as 'nom', 
+u.autodes as 'des',
+(select nom from estadoCivil where id = u.estCivil) as 'est',
+(select nom from distritos where id = u.idDistrito) as 'vivoen',
+u.ocupacion as 'ocu',
+(select res from resOtrosIntereses where idPre = 1 and idUsu = p_id) as 'quebusco',
+(select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones'
+from usuarioDatos u 
+where idUsu = p_id;
 end
 |
 delimiter |
