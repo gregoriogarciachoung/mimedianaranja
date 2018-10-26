@@ -19,6 +19,8 @@ call ps_editarResOtrosIntereses('nina@gmail.com', 4, 'Metalica, joe no se que ma
 call ps_editarResOtrosIntereses('nina@gmail.com', 5, 'Estudio y algo mas');
 call ps_editarResOtrosIntereses('nina@gmail.com', 6, 'La divina comedia, dante aligeri');
 
+insert into parejas(yo, mipareja) values
+(1,6),(1,3),(3,1);
 
 select * from resOtrosIntereses;
 

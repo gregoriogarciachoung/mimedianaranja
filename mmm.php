@@ -96,6 +96,17 @@ header("location:index.html");
 	<!-- Invitaciones -->
 	<section>
 	<h2>Invitaciones</h2>
+	<div ng-controller="ella" ng-init="listaParejas()">
+	
+		<div ng-controller="ella"  ng-init="listaQuienMequiere()">
+			<div ng-repeat="x in datos">
+				<ul ng-repeat="y in otrosd">
+					<li ng-if="x.mipareja == y.yo">{{y.nom}} :)
+					<li ng-if="x.mipareja != y.yo">{{x.nom}}
+				</ul>
+			</div>
+		</div>
+	</div>
 	</section>
 	<!-- Mensajes -->
 	<section>

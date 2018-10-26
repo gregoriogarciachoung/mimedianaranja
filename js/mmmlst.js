@@ -51,4 +51,20 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		$scope.adatos = response.data.lstRelacionInteres;
 		});
 	}
+	$scope.listaParejas = function() {
+		$http({
+		method: 'POST',
+		url: 'listaParejas.php'
+		}).then(function(response) {
+		$scope.datos = response.data.lstParejas;
+		});
+	}
+	$scope.listaQuienMequiere = function() {
+		$http({
+		method: 'POST',
+		url: 'listaQuienMequiere.php'
+		}).then(function(response) {
+		$scope.otrosd = response.data.lstQuienMeQuiere;
+		});
+	}
 });

@@ -79,6 +79,13 @@ res varchar(250),
 foreign key(idUsu)references usuario(id),
 foreign key(idPre)references preOtrosIntereses(id)
 );
+create table parejas(
+id int primary key auto_increment,
+yo int,
+mipareja int,
+foreign key(yo)references usuario(id),
+foreign key(mipareja)references usuario(id)
+);
 -- -----------------------------------------------
 insert into preOtrosIntereses(pre) values
 ('¿Que busco en mi próxima relación?'),
@@ -236,6 +243,23 @@ u.ocupacion as 'ocu',
 (select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones'
 from usuarioDatos u 
 where idUsu = p_id;
+end
+|
+delimiter |
+create procedure sp_listaMeGustan(p_mail varchar(45))
+begin
+select *,
+(select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
+from parejas p where yo = (select id from usuario where mail = p_mail);
+end
+|
+delimiter |
+create procedure sp_listaQuienMeQuiere(p_email varchar(45))
+begin
+select *,
+(select nom from usuariodatos where idUsu = p.yo) as 'nom'
+from parejas p
+where p.mipareja = (select id from usuario where mail = p_email);
 end
 |
 delimiter |
