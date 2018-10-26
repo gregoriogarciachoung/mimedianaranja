@@ -52,8 +52,8 @@ header("location:index.html");
 	<aside>
 		<nav>
 			<ul>
-				<li>Sugeridos
-				<li>Invitaciones
+				<li ng-click="cargarSugeridos()">Sugeridos
+				<li ng-click="cargaInvitados()">Invitaciones
 				<li>Mensajes
 				<li>Mi Perfil
 			</ul>
@@ -96,14 +96,18 @@ header("location:index.html");
 	<!-- Invitaciones -->
 	<section>
 	<h2>Invitaciones</h2>
-	<div ng-controller="ella" ng-init="listaParejas()">
-	
+	<div ng-controller="ella" ng-init="listaParejas()"  id="parchelista">
 		<div ng-controller="ella"  ng-init="listaQuienMequiere()">
 			<div ng-repeat="x in datos">
 				<ul ng-repeat="y in otrosd">
 					<li ng-if="x.mipareja == y.yo">{{y.nom}} :)
 					<li ng-if="x.mipareja != y.yo">{{x.nom}}
 				</ul>
+			</div>
+			<div id="listaMegustan">
+			<ul>
+			<li ng-repeat="z in datos">{{z.nom}}
+			</ul>
 			</div>
 		</div>
 	</div>
@@ -175,6 +179,8 @@ header("location:index.html");
 </body>
 <script>
 var ellanomehacecaso = angular.module('goyo', []);
+var nlista = document.querySelector("#mimi").text;
+alert(nlista);
 </script>
 <script>
 
@@ -222,7 +228,6 @@ function cambiaColorGrabar(abc){
 
 
 ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
-
 	$scope.cerrarSesion = function(){
 		document.querySelector("#frmSalir").submit();
 	}
@@ -287,6 +292,18 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			if(contColor == 6){
 				contColor = 0;
 			}
+	}
+	$scope.cargaInvitados = function(){
+	
+		
+		//no se pudo de otra forma, más tarde quiá
+		var mimi = document.querySelectorAll("#parchelista ul>li").length;
+		if(mimi > 2){
+			document.querySelector("#listaMegustan").style.display="none";
+		}
+	}
+	$scope.cargarSugeridos = function(){
+		location.reload();
 	}
 });
 

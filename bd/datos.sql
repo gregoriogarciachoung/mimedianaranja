@@ -50,4 +50,12 @@ select * from misintereses where idUsu = 1;
 
 call ps_buscaOtroUsuario(1,15,21,2);
 
-call ps_consultaMisFiltros('nina@gmail.com')
+call ps_consultaMisFiltros('nina@gmail.com');
+
+insert into parejas(yo, mipareja) values (1,6);
+insert into parejas(yo, mipareja) values (1,3);
+insert into parejas(yo, mipareja) values (6,1);
+
+
+select * from parejas;
+call sp_listaMeGustan('nina@gmail.com')
