@@ -3,7 +3,7 @@ include('conexion.php');
 session_start();
 $pass = $_SESSION['usu'];
 $datos = array();
-$query = getConexion()->prepare('call sp_listaMeGustan(?)');
+$query = getConexion()->prepare('call sp_listaParejas(?)');
 $query->bindParam(1,$pass);
 $cont = 0;
 $query->execute();

@@ -245,21 +245,38 @@ from usuarioDatos u
 where idUsu = p_id;
 end
 |
+-- drop procedure sp_listaParejas;
 delimiter |
-create procedure sp_listaMeGustan(p_mail varchar(45))
+create procedure sp_listaParejas(p_mail varchar(45))
 begin
+declare cod int;
+set cod = (select id from usuario where mail = p_mail);
 select *,
+(select nom from usuariodatos where idUsu = p.yo) as 'nom'
+from parejas p where mipareja = cod;
+end
+|
+drop procedure sp_listaMegustan;
+delimiter |
+create procedure sp_listaMegustan(p_mail varchar(45))
+begin
+declare cod int;
+set cod = (select id from usuario where mail = p_mail);
+
+select
+*,
 (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
-from parejas p where yo = (select id from usuario where mail = p_mail);
+from parejas p where yo = cod and mipareja not in(select yo from parejas where mipareja = cod);
 end
 |
 delimiter |
-create procedure sp_listaQuienMeQuiere(p_email varchar(45))
+create procedure sp_listaMegustan(p_mail varchar(45))
 begin
+declare cod int;
+set cod = (select id from usuario where mail = p_mail);
 select *,
-(select nom from usuariodatos where idUsu = p.yo) as 'nom'
-from parejas p
-where p.mipareja = (select id from usuario where mail = p_email);
+(select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
+from parejas p where yo not in(select mipareja from parejas where yo = cod) and mipareja = cod;
 end
 |
 delimiter |

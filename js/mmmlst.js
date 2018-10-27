@@ -59,12 +59,12 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		$scope.datos = response.data.lstParejas;
 		});
 	}
-	$scope.listaQuienMequiere = function() {
+	$scope.listaMeGustan = function() {
 		$http({
 		method: 'POST',
-		url: 'listaQuienMequiere.php'
+		url: 'listaMeGustan.php'
 		}).then(function(response) {
-		$scope.otrosd = response.data.lstQuienMeQuiere;
+		$scope.datos2 = response.data.lstMeGustan;
 		});
 	}
 });

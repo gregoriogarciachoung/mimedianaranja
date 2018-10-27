@@ -96,19 +96,22 @@ header("location:index.html");
 	<!-- Invitaciones -->
 	<section>
 	<h2>Invitaciones</h2>
-	<div ng-controller="ella" ng-init="listaParejas()"  id="parchelista">
-		<div ng-controller="ella"  ng-init="listaQuienMequiere()">
-			<div ng-repeat="x in datos">
-				<ul ng-repeat="y in otrosd">
-					<li ng-if="x.mipareja == y.yo">{{y.nom}} :)
-					<li ng-if="x.mipareja != y.yo">{{x.nom}}
+	<div ng-controller="ella"   id="parchelista">
+	aceptado
+		<div ng-init="listaParejas()">
+				<ul ng-repeat="y in datos">
+					<li>{{y.nom}}
+					
 				</ul>
-			</div>
-			<div id="listaMegustan">
-			<ul>
-			<li ng-repeat="z in datos">{{z.nom}}
-			</ul>
-			</div>
+			
+		</div>
+		todavía no me aceptan
+		<div ng-init="listaMeGustan()">
+				<ul ng-repeat="y in datos2">
+					<li>{{y.nom}}
+					
+				</ul>
+			
 		</div>
 	</div>
 	</section>

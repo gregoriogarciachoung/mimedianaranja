@@ -3,7 +3,7 @@ include('conexion.php');
 session_start();
 $pass = $_SESSION['usu'];
 $datos = array();
-$query = getConexion()->prepare('call sp_listaQuienMeQuiere(?)');
+$query = getConexion()->prepare('call sp_listaMegustan(?)');
 $query->bindParam(1,$pass);
 $cont = 0;
 $query->execute();
@@ -18,5 +18,5 @@ $cont++;
 }
 
 $fjson = json_encode($datos);
-echo '{"lstQuienMeQuiere":'.$fjson."}";
+echo '{"lstMeGustan":'.$fjson."}";
 ?>
