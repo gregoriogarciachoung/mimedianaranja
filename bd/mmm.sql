@@ -38,7 +38,7 @@ nivelEdu int,
 altura int,
 ocupacion varchar(45),
 autodes varchar(250),
-foto longblob,
+foto varchar(45),
 foreign key(idDistrito)references distritos (id),
 foreign key(estCivil)references estadoCivil (id),
 foreign key(nivelEdu)references nivelEducacion (id),
@@ -129,7 +129,7 @@ end
 |
 -- drop procedure sp_registraUsuario;
 delimiter |
-create procedure sp_registraUsuario(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito int, p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto longblob)
+create procedure sp_registraUsuario(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito int, p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto varchar(45))
 begin
 
 	declare idU int;
@@ -154,7 +154,7 @@ begin
 	set idU = (select id from usuario where mail = p_mail);
 	
 	insert into usuarioDatos values
-	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion, '', LOAD_FILE(p_foto));
+	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion, p_intereses,p_foto);
 	
 	insert into filtros values
 	(idU, sex, emx, emn, p_idDistrito, p_intereses);
@@ -256,19 +256,7 @@ select *,
 from parejas p where mipareja = cod;
 end
 |
-drop procedure sp_listaMegustan;
-delimiter |
-create procedure sp_listaMegustan(p_mail varchar(45))
-begin
-declare cod int;
-set cod = (select id from usuario where mail = p_mail);
-
-select
-*,
-(select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
-from parejas p where yo = cod and mipareja not in(select yo from parejas where mipareja = cod);
-end
-|
+-- drop procedure sp_listaMegustan;
 delimiter |
 create procedure sp_listaMegustan(p_mail varchar(45))
 begin

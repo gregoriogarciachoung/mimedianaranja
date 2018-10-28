@@ -20,7 +20,7 @@
 </head>
 <body ng-app="goyo" ng-controller="frmRegistro" >
 
-	<form action="registrar.php" id="id_form" method="post">
+	<form action="registrar.php" id="id_form" enctype="multipart/form-data" method="post">
 	 
 	 <!-- sera un gusto conocerte -->
 	 <div>
@@ -121,6 +121,15 @@
 	</div>
 	
 	<div>
+	<!--  -->
+	<h3>Selecciona una fota</h3>
+	 <h4>La primera impresión es importante</h4>
+	 <h5>Foto</h5>
+	
+	<input id="imagen" name="imagen" size="30" type="file" />
+	</div>
+	
+	<div>
 	<!-- ¡Falta poco! -->
 	<h3>¡Falta Poco!</h3>
 	 <h4>Con los siguientes datos podrás acceder a tu cuenta de OH!</h4>
@@ -159,7 +168,7 @@ padding: 1em;
 button{
 margin-top: 2em;
 }
-input[type="date"],input[type="text"],input[type="password"], select{
+input[type="date"],input[type="text"],input[type="password"], select,input[type="file"]{
 width:600px;
 }
 input[type="email"]{
