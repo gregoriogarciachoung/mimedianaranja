@@ -174,6 +174,8 @@ end
 delimiter |
 create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int,p_mail varchar(45))
 begin
+declare cod int;
+set cod = (select id from usuario where mail = p_mail);
 select u.idUsu as 'id', u.foto as 'foto' , u.nom as 'Nombre' , year(curdate()) - year(u.fecNac) as 'Edad' , u.ocupacion as 'Ocupacion' from filtros f
 join usuarioDatos u
 on f.idUsu = u.idUsu
@@ -182,7 +184,8 @@ u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
 f.idinteres = p_interes and
-u.idUsu != (select id from usuario where mail = p_mail);
+u.idUsu not in (select mipareja from parejas where yo = cod) and
+u.idUsu != cod;
 end
 |
 
