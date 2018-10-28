@@ -95,7 +95,7 @@ header("location:index.html");
 			<p>Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
 			<div>
 			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
-			<button ng-click="cerrarModalUsu()">Cerrar</button>
+			<button type="button" ng-click="cerrarModalUsu()">Cerrar</button>
 			<button type="submit" ng-if="y.sexo == 1">Me gusta este chico</button>
 			<button type="submit" ng-if="y.sexo == 2">Me gusta esta chica</button></div>
 		</section>
@@ -109,7 +109,7 @@ header("location:index.html");
 	<section>
 	<h2>Invitaciones</h2>
 	<div ng-controller="ella"   id="parchelista">
-	aceptado
+	<h3 ng-click="listaParejas()">Match</h3>
 		<div ng-init="listaParejas()">
 				<ul ng-repeat="y in datos">
 					<li>{{y.nom}}
@@ -117,7 +117,7 @@ header("location:index.html");
 				</ul>
 			
 		</div>
-		todavía no me aceptan
+		<h3>Me gustan</h3>
 		<div ng-init="listaMeGustan()">
 				<ul ng-repeat="y in datos2">
 					<li>{{y.nom}}
