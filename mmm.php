@@ -53,7 +53,7 @@ header("location:index.html");
 		<nav>
 			<ul>
 				<li ng-click="cargarSugeridos()">Sugeridos
-				<li ng-click="cargaInvitados()">Invitaciones
+				<li>Invitaciones
 				<li>Mensajes
 				<li>Mi Perfil
 			</ul>
@@ -64,6 +64,7 @@ header("location:index.html");
 	<section ng-controller="ella" ng-init="listaOtroUsuario()" id="galu">
 	<h2>Sugeridos</h2>
 	<div ng-repeat="x in datos" ng-click="verUsu(x.id)">
+	<img ng-src="{{x.foto}}">
 	<p>{{x.nom}}</p>
 	<p>{{x.edad}} años</p>
 	<p>{{x.ocu}}</p>
@@ -132,7 +133,8 @@ header("location:index.html");
 		<div ng-controller="ella" ng-init="listaMisDatos()">
 			<div class="marcotres" ng-repeat="x in datos">
 			<p>Autodescripción</p>
-			<input type="text" value="{{x.des}}" id="txtDes" placeholder="Escribe aquí"/>
+			<!-- <input type="text" value="{{x.des}}" id="txtDes" placeholder="Escribe aquí"/> -->
+			<textarea id="txtDes" name="txtDes" placeholder="Escribe aquí" maxlength="250">{{x.des}}</textarea>
 			<h3 ng-click="editarMiDes()">GRABAR</h3>
 			<p>Ocupación</p>
 			<input type="text" value="{{x.ocu}}" name="txtOcu" id="txtOcu" placeholder="Escribe aquí"/>
@@ -143,7 +145,8 @@ header("location:index.html");
 		<div  ng-init="listaMisOtrosIntereses()">
 			<div ng-repeat="x in datos" class="marcodos" id="tampocomehacecaso">
 			<p>{{x.pre}}</p>
-			<input type="text" value="{{x.res}}" id="txtInteres" placeholder="Escribe aquí"/>
+			<!--<input type="text" value="{{x.res}}" id="txtInteres" placeholder="Escribe aquí"/>-->
+			<textarea type="text" id="txtInteres" placeholder="Escribe aquí" maxlength="250">{{x.res}}</textarea>
 			<h3 ng-click="editarMiInteres(x.idPre)">GRABAR</h3>
 			</div>
 		</div>
@@ -175,6 +178,10 @@ header("location:index.html");
 			<h3>Que tenga entre</h3>
 			<div><input type="number" value="{{x.edadMin}}" name="eMin"/><a style="padding:0 1em 0 1em">a</a>
 			<input type="number" value="{{x.edadMax}}" name="eMax"/></div>
+			
+			<h3>Que mida(cm) entre</h3>
+			<div><input type="number" value="{{x.alturaMin}}" name="aMin"/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.alturaMax}}" name="aMax"/></div>
 		<div><button type="button"  id="btnCancelar" ng-click="ocultarFiltros()">Cancelar</button>
 		<button type="submit"  id="btnGuardar">Guardar</button></div>
 		</div>
@@ -189,7 +196,7 @@ alert(nlista);
 <script>
 
 $(document).ready(function(){
-
+	
 	$(".momo").click(function(){
 		$("#usuModal").css("display","none");
 	});
@@ -220,7 +227,7 @@ $(document).ready(function(){
 });
 var contColor = 0;
 function cambiaColorGrabar(abc){
-	var colores = ["red","blue","green","#ca213f","#493c32","orange"];
+	var colores = ["blue","red","green","#3c92ff","#9800ff","orange"];
 			//var x = Math.floor((Math.random() * 6) + 1);
 			document.querySelector(" "+abc+" + h3").style.color = colores[contColor];
 			contColor = contColor + 1;
@@ -286,7 +293,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
-		var colores = ["red","blue","green","#ca213f","#493c32","orange"];
+		var colores = ["blue","red","green","##3c92ff","##9800ff","orange"];
 			//var x = Math.floor((Math.random() * 6) + 1);
 			
 			var m = parseInt(i) + parseInt((i-1));
@@ -296,15 +303,6 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			if(contColor == 6){
 				contColor = 0;
 			}
-	}
-	$scope.cargaInvitados = function(){
-	
-		
-		//no se pudo de otra forma, más tarde quiá
-		var mimi = document.querySelectorAll("#parchelista ul>li").length;
-		if(mimi > 2){
-			document.querySelector("#listaMegustan").style.display="none";
-		}
 	}
 	$scope.cargarSugeridos = function(){
 		location.reload();

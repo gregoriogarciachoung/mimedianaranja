@@ -44,19 +44,13 @@ foreign key(estCivil)references estadoCivil (id),
 foreign key(nivelEdu)references nivelEducacion (id),
 foreign key(sexo)references sexos(id)
 );
-create table misIntereses(-- tabla intereses del ususario
--- esta tabla se elimina (elección del grupo) porque interes sera uno de los campos filtros 
--- " buscar personas por sexo, edad, y relación que quieren tener "
-idUsu int,
-idinteres int,
-foreign key(idUsu)references usuario(id),
-foreign key(idinteres)references interes(id)
-);
 create table filtros(
 idUsu int,
 buscoSexo int,
 edadMax int,
 edadMin int,
+alturaMax int,
+alturaMin int,
 lugar int,
 idinteres int,
 foreign key(lugar)references distritos (id),
@@ -137,16 +131,23 @@ begin
 	declare emx int;
 	declare emn int;
 	declare edad int;
+	declare amx int;
+	declare amn int;
 	
 	if(p_sexo = 1)then
 		set sex = 2;
+		set amx = p_altura;
+		set amn = p_altura - 10;
 	else
 		set sex = 1;
+		set amn = p_altura;
+		set amx = p_altura + 10;
 	end if;
 	
 	set edad = (select year(curdate()) - year(p_fecNac));
 	set emx = edad + 3;
 	set emn = edad - 3;
+	
 	
 	insert into usuario values
 	(default, p_mail,p_pass);
@@ -156,7 +157,7 @@ begin
 	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
 	
 	insert into filtros values
-	(idU, sex, emx, emn, p_idDistrito, p_intereses);
+	(idU, sex, emx, emn, amx, amn, p_idDistrito, p_intereses);
 	
 	
 	insert into resOtrosIntereses values
@@ -171,7 +172,7 @@ end
 |
 -- drop  procedure ps_buscaOtroUsuario;
 delimiter |
-create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_interes int)
+create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int)
 begin
 select u.idUsu as 'id', u.foto as 'foto' , u.nom as 'Nombre' , year(curdate()) - year(u.fecNac) as 'Edad' , u.ocupacion as 'Ocupacion' from filtros f
 join usuarioDatos u
@@ -179,6 +180,7 @@ on f.idUsu = u.idUsu
 where 
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
+u.altura between p_alturaMin and p_alturaMax and
 f.idinteres = p_interes;
 end
 |
@@ -200,7 +202,7 @@ end
 delimiter |
 create procedure ps_consultaMisFiltros(p_mail varchar(45))
 begin
-select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.idInteres as 'relacion'
+select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.alturaMax, f.alturaMin, f.idInteres as 'relacion'
 from filtros f
 join usuario u
 on f.idUsu = u.id
@@ -208,7 +210,7 @@ where u.mail = p_mail;
 end
 |
 delimiter |
-create procedure ps_editarResOtrosIntereses(p_mail varchar(45), p_idPre int, p_res varchar(45))
+create procedure ps_editarResOtrosIntereses(p_mail varchar(45), p_idPre int, p_res varchar(250))
 begin
 	declare idU int;
 	set idU = (select id from usuario where mail = p_mail);

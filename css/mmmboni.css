@@ -54,6 +54,7 @@ top:0;
 left:0;
 display: flex;
 min-height: 100vh;
+overflow: auto;
 }
 .momo form{
 margin:auto;
@@ -152,6 +153,12 @@ background-size:8px;
 input + h3{
 cursor: alias;
 }
+input + h3:hover{
+text-decoration:underline;
+}
+textarea + h3:hover{
+text-decoration:underline;cursor: alias;
+}
 #txtInteres:hover, #txtDes:hover, #txtOcu:hover{
 color:red
 }
@@ -188,4 +195,20 @@ justify-content:center;
 #usuModal figure>img{
 width:30%;
 height:30%;
+}
+#id_perfil textarea{
+height:16px;
+border: 0;
+font:menu;
+width:100%;
+}
+#id_perfil textarea:hover{
+height:90px;
+}
+#txtInteres{
+background:#f7f7f7;
+}
+#galu img{
+width:120px;
+
 }
