@@ -16,9 +16,11 @@ $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
+	$datos[$cont]['idUsu'] = $res['idUsu'];
 	$datos[$cont]['foto'] = utf8_encode($res['foto']);
 	$datos[$cont]['nom'] = utf8_encode($res['nom']);
 	$datos[$cont]['edad'] = $res['edad'];
+	$datos[$cont]['sexo'] = $res['sexo'];
 	$datos[$cont]['altura'] = $res['altura'];
 	$datos[$cont]['ocu'] = utf8_encode($res['ocu']);
 	$datos[$cont]['des'] = utf8_encode($res['des']);

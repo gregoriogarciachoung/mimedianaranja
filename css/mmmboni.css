@@ -210,5 +210,15 @@ background:#f7f7f7;
 }
 #galu img{
 width:120px;
-
+}
+#usuModal p:hover, #usuModal font:hover{
+color:#ca213f;
+font-weight:bold;
+}
+#usuModal p+div{
+display:flex;
+justify-content:center;
+}
+#usuModal p+div>button{
+width:100%;
 }

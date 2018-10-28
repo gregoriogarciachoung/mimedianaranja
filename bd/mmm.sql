@@ -172,7 +172,7 @@ end
 |
 -- drop  procedure ps_buscaOtroUsuario;
 delimiter |
-create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int)
+create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int,p_mail varchar(45))
 begin
 select u.idUsu as 'id', u.foto as 'foto' , u.nom as 'Nombre' , year(curdate()) - year(u.fecNac) as 'Edad' , u.ocupacion as 'Ocupacion' from filtros f
 join usuarioDatos u
@@ -181,7 +181,8 @@ where
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
-f.idinteres = p_interes;
+f.idinteres = p_interes and
+u.idUsu != (select id from usuario where mail = p_mail);
 end
 |
 
@@ -234,11 +235,13 @@ delimiter |
 create procedure sp_cargaOtroUsuario(p_id int)
 begin
 select 
+u.idUsu,
 u.foto,
 u.nom as 'nom',
 year(curdate()) - year(u.fecNac) as 'edad',
 u.autodes as 'des',
 u.altura,
+u.sexo,
 (select nom from estadoCivil where id = u.estCivil) as 'est',
 (select nom from distritos where id = u.idDistrito) as 'vivoen',
 u.ocupacion as 'ocu',
@@ -271,7 +274,16 @@ declare cod int;
 set cod = (select id from usuario where mail = p_mail);
 select *,
 (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
-from parejas p where yo not in(select mipareja from parejas where yo = cod) and mipareja = cod;
+from parejas p where yo = cod 
+and mipareja not in(select yo from parejas where mipareja = 1);
+end
+|
+delimiter |
+create procedure sp_meGusta(p_mail varchar(45),p_pareja int)
+begin
+declare cod int;
+set cod = (select id from usuario where mail = p_mail);
+insert into parejas(yo, mipareja) values (cod,p_pareja);
 end
 |
 delimiter |

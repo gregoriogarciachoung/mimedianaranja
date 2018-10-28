@@ -52,9 +52,9 @@ call ps_buscaOtroUsuario(1,15,21,2);
 
 call ps_consultaMisFiltros('nina@gmail.com');
 
-insert into parejas(yo, mipareja) values (1,6);
 insert into parejas(yo, mipareja) values (1,3);
-insert into parejas(yo, mipareja) values (6,1);
+insert into parejas(yo, mipareja) values (1,3);
+insert into parejas(yo, mipareja) values (2,1);
 insert into parejas(yo, mipareja) values (3,1);
 
 insert into parejas(yo, mipareja) values (4,1);
@@ -64,7 +64,7 @@ select mipareja from parejas where yo = 1
 select * from parejas where yo in(6,3,4) and mipareja = 1
 
 delete from parejas where yo = 3 and mipareja = 1
-
+delete from parejas;
 select * from parejas;
 call sp_listaMeGustan('nina@gmail.com')
 
@@ -90,3 +90,6 @@ select
 from parejas p where yo = 1 and mipareja not in(select yo from parejas where mipareja = 1);
 
 call sp_listaMegustan('nina@gmail.com');
+
+select yo from parejas where mipareja = 1;
+select * from parejas where yo = 1 and mipareja not in(2)

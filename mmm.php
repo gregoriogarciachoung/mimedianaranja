@@ -71,7 +71,7 @@ header("location:index.html");
 	</div>
 	<section class="momo" id="usuModal">
 	
-	<form>
+	<form action="meGusta.php" method="post" id="meGusta">
 		<div ng-repeat="y in mdatos">
 		<section>
 			<figure>
@@ -93,6 +93,11 @@ header("location:index.html");
 			<p>Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
 			<p>Bandas o artistas favoritas:<br> <font>{{y.musi}}</font></p>
 			<p>Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
+			<div>
+			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
+			<button ng-click="cerrarModalUsu()">Cerrar</button>
+			<button type="submit" ng-if="y.sexo == 1">Me gusta este chico</button>
+			<button type="submit" ng-if="y.sexo == 2">Me gusta esta chica</button></div>
 		</section>
 		</div>
 	</form>
@@ -201,11 +206,6 @@ alert(nlista);
 <script>
 
 $(document).ready(function(){
-	
-	$(".momo").click(function(){
-		$("#usuModal").css("display","none");
-	});
-
 
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
@@ -251,6 +251,12 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	document.querySelector("#id_filtroModal").style.display="none";
 	$scope.mostrarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="block";
+	}
+	$scope.cerrarModalUsu = function(){
+		document.querySelector("#usuModal").style.display="none";
+	}
+	$scope.meGusta = function(i,j){
+		document.querySelector("#frmMeGusta").submit();
 	}
 	$scope.ocultarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="none";

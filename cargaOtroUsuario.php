@@ -25,13 +25,14 @@ $mf3 = 21;*/
 
 // listaOtroUsuario en json
 $datos = array();
-$query = getConexion()->prepare('call ps_buscaOtroUsuario(?,?,?,?,?,?)');
+$query = getConexion()->prepare('call ps_buscaOtroUsuario(?,?,?,?,?,?,?)');
 $query->bindParam(1,$mf1);
 $query->bindParam(2,$mf2);
 $query->bindParam(3,$mf3);
 $query->bindParam(4,$mf4);
 $query->bindParam(5,$mf5);
 $query->bindParam(6,$mf6);
+$query->bindParam(7,$pass);
 $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
