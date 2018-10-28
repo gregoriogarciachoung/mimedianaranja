@@ -152,9 +152,8 @@ begin
 	(default, p_mail,p_pass);
 
 	set idU = (select id from usuario where mail = p_mail);
-	
 	insert into usuarioDatos values
-	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion, p_intereses,p_foto);
+	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
 	
 	insert into filtros values
 	(idU, sex, emx, emn, p_idDistrito, p_intereses);

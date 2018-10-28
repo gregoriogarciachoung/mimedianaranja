@@ -57,7 +57,7 @@ $_POST['nivelA'],
 $_POST['miAltura'],
 $_POST['ocu'],
 $_POST['rela'],
-'/mimedianaranja/images/'.$nombre_img
+'images/'.$usuario.'/'.$nombre_img
 ));
 header("location:index.html");
 ?>

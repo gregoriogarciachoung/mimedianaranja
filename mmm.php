@@ -78,6 +78,7 @@ header("location:index.html");
 			</figure>
 		</section>
 		<section>
+			<figure><img ng-src="{{y.foto}}"></figure>
 			<p>{{y.nom}}</p>
 			<p>{{y.des}}</p>
 			<p>¿Cómo es {{y.nom}}?</p>
