@@ -80,14 +80,19 @@ header("location:index.html");
 		</section>
 		<section>
 			<figure><img ng-src="{{y.foto}}"></figure>
-			<p>{{y.nom}}</p>
+			<p>{{y.nom}}, {{y.edad}}</p>
 			<p>{{y.des}}</p>
 			<p>¿Cómo es {{y.nom}}?</p>
 			<p>Estado Civil: <font>{{y.est}}</font></p>
+			<p>Mido: <font>{{y.altura}} cm</font></p>
 			<p>Vivo en: <font>{{y.vivoen}}</font></p>
 			<p>Ocupacion: <font>{{y.ocu}}</font></p>
-			<p>¿Qué busco en mi próxima relación?: <font>{{y.quebusco}}</font></p>
-			<p>Mis pasiones en la vida: <font>{{y.pasiones}}</font></p>
+			<p>¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
+			<p>Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
+			<p>¿Que hago en mis tiempos libres?:<br> <font>{{y.tmplibres}}</font></p>
+			<p>Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
+			<p>Bandas o artistas favoritas:<br> <font>{{y.musi}}</font></p>
+			<p>Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
 		</section>
 		</div>
 	</form>

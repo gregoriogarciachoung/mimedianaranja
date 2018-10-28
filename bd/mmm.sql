@@ -235,13 +235,19 @@ create procedure sp_cargaOtroUsuario(p_id int)
 begin
 select 
 u.foto,
-u.nom as 'nom', 
+u.nom as 'nom',
+year(curdate()) - year(u.fecNac) as 'edad',
 u.autodes as 'des',
+u.altura,
 (select nom from estadoCivil where id = u.estCivil) as 'est',
 (select nom from distritos where id = u.idDistrito) as 'vivoen',
 u.ocupacion as 'ocu',
 (select res from resOtrosIntereses where idPre = 1 and idUsu = p_id) as 'quebusco',
-(select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones'
+(select res from resOtrosIntereses where idPre = 2 and idUsu = p_id) as 'tmplibres',
+(select res from resOtrosIntereses where idPre = 3 and idUsu = p_id) as 'pelis',
+(select res from resOtrosIntereses where idPre = 4 and idUsu = p_id) as 'musi',
+(select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones',
+(select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs'
 from usuarioDatos u 
 where idUsu = p_id;
 end
