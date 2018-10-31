@@ -86,13 +86,15 @@ header("location:index.html");
 			<p>Estado Civil: <font>{{y.est}}</font></p>
 			<p>Mido: <font>{{y.altura}} cm</font></p>
 			<p>Vivo en: <font>{{y.vivoen}}</font></p>
-			<p>Ocupacion: <font>{{y.ocu}}</font></p>
-			<p>¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
-			<p>Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
-			<p>¿Que hago en mis tiempos libres?:<br> <font>{{y.tmplibres}}</font></p>
-			<p>Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
-			<p>Bandas o artistas favoritas:<br> <font>{{y.musi}}</font></p>
-			<p>Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
+			<p>&#128188; Ocupacion: <font>{{y.ocu}}</font></p>
+			<p>&#128152; ¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
+			<p>&#9977; Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
+			
+			
+			<p>&#9996; ¿Que hago en mis tiempos libres ?:<br> <font>{{y.tmplibres}}</font></p>
+			<p>&#127910; Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
+			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
+			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
 			<div>
 			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
 			<button type="button" ng-click="cerrarModalUsu()">Cerrar</button>
