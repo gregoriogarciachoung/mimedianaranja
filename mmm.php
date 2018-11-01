@@ -37,7 +37,7 @@ header("location:index.html");
 	</hgroup>
 	<section ng-controller="ella" ng-init="listaMisDatos()">
 		<nav>
-			<ul ng-repeat="x in datos">
+			<ul>
 				<li ng-click="mostrarFiltros()">Filtro
 				<li>Bla
 				<li ng-click="cerrarSesion()">Salir
