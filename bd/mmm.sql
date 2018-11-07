@@ -275,10 +275,13 @@ create procedure sp_listaMegustan(p_mail varchar(45))
 begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
-select *,
-(select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
-from parejas p where yo = cod 
-and mipareja not in(select yo from parejas where mipareja = 1);
+select *
+-- (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
+from parejas p 
+join usuariodatos ud
+on p.mipareja = ud.idUsu
+where p.yo = cod 
+and p.mipareja not in(select yo from parejas where mipareja = 1);
 end
 |
 delimiter |

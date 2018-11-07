@@ -222,3 +222,39 @@ justify-content:center;
 #usuModal p+div>button{
 width:100%;
 }
+#invi li>img{
+width:60px;
+height:60px;
+}
+#invi li{
+list-style:none;
+display:flex;
+flex-flow:wrap;
+}
+#invi ul{
+padding:0;
+}
+#invi li h3{
+font:menu;
+margin-left:9px;
+}
+#invi>div>nav>li{
+display:inline;
+margin-right:3em;
+}
+#invi #match img{
+width:36px;
+height:30px;
+}
+#invi #meGustan img{
+width:18px;
+height:30px;
+}
+#invi #titu{
+font:menu;
+margin-bottom:1em;
+}
+
+#invi #match li, #invi #meGustan li{
+margin-bottom:1em;
+}

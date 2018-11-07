@@ -108,21 +108,25 @@ header("location:index.html");
 	</section>
 
 	<!-- Invitaciones -->
-	<section>
+	<section id="invi">
 	<h2>Invitaciones</h2>
-	<div ng-controller="ella"   id="parchelista">
-	<h3 ng-click="listaParejas()">Match</h3>
+	<div ng-controller="ella">
+		<nav>
+			<li id="meGustan"><img src="images/corazonmitad.png"/>
+			<li id="match" ng-click="listaParejas()"><img src="images/corazonn.png"/>
+		</nav>
+		<h3 id="titu">Me gustan</h3>
 		<div ng-init="listaParejas()">
-				<ul ng-repeat="y in datos">
-					<li>{{y.nom}}
+				<ul ng-repeat="y in datos" id="listaMatch">
+					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
 					
 				</ul>
 			
 		</div>
-		<h3>Me gustan</h3>
 		<div ng-init="listaMeGustan()">
-				<ul ng-repeat="y in datos2">
-					<li>{{y.nom}}
+				<ul ng-repeat="y in datos2" id="listaMeGustan">
+					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
+					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
 					
 				</ul>
 			
@@ -208,7 +212,22 @@ alert(nlista);
 <script>
 
 $(document).ready(function(){
-
+	$("#listaMatch").css("display","none");
+	$("#match").click(function(){
+		$("#listaMatch").css("display","block");
+		$("#listaMeGustan").css("display","none");
+		$("#match>img").attr("src","images/corazon.png");
+		$("#meGustan>img").attr("src","images/corazonmitadn.png");
+		$("#invi #titu").text("Match");
+	});
+	$("#meGustan").click(function(){
+		$("#listaMatch").css("display","none");
+		$("#listaMeGustan").css("display","block");
+		$("#match>img").attr("src","images/corazonn.png");
+		$("#meGustan>img").attr("src","images/corazonmitad.png");
+		$("#invi #titu").text("Me gustan");
+	});
+	
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
 	});
