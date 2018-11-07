@@ -71,16 +71,26 @@ call sp_listaMeGustan('nina@gmail.com')
 
 call sp_listaParejas('nina@gmail.com');
 
-call sp_listaMegustan('nina@gmail.com');
+call sp_listaMegustan('pablito@gmail.com');
+call sp_listaMegustan('carlita@gmail.com');
 
-select * from parejas where mipareja = 1 and yo != 1;
+select * from parejas where mipareja = 8 and yo != 3;
 
 select * from parejas;
 
-call sp_listaParejas('nina@gmail.com');
+call sp_listaMegustan('pablito@gmail.com');
+call sp_listaMegustan('carlita@gmail.com');
+call sp_listaParejas('pablito@gmail.com');
+call sp_listaParejas('carlita@gmail.com');
 
-select yo from parejas where mipareja = 1;
-select * from parejas where yo = 1 and mipareja not in(6,4)
+select yo from parejas where mipareja = 8;
+
+
+select * from parejas;
+insert into parejas(yo, mipareja) values (8,3);
+
+select mipareja from parejas where yo = 3;
+select * from parejas where yo in(select mipareja from parejas where yo = 3) and mipareja = 3
 
 
 
@@ -91,5 +101,5 @@ from parejas p where yo = 1 and mipareja not in(select yo from parejas where mip
 
 call sp_listaMegustan('nina@gmail.com');
 
-select yo from parejas where mipareja = 1;
+select yo from parejas where mipareja = ;
 select * from parejas where yo = 1 and mipareja not in(2)

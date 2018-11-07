@@ -9,6 +9,13 @@ $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
+	$datos[$cont]['edad'] = $res['edad'];
+	$datos[$cont]['sexo'] = $res['sexo'];
+	$datos[$cont]['fecNac'] = $res['fecNac'];
+	$datos[$cont]['altura'] = $res['altura'];
+	$datos[$cont]['ocupacion'] = $res['ocupacion'];
+	$datos[$cont]['autodes'] = $res['autodes'];
+	$datos[$cont]['foto'] = $res['foto'];
 	$datos[$cont]['id'] = $res['id'];
 	$datos[$cont]['yo'] = $res['yo'];
 	$datos[$cont]['mipareja'] = $res['mipareja'];
