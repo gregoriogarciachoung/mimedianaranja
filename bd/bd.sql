@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2018 a las 18:08:02
+-- Tiempo de generación: 07-11-2018 a las 20:07:21
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -132,7 +132,7 @@ from parejas p
 join usuariodatos ud
 on p.mipareja = ud.idUsu
 where p.yo = cod 
-and p.mipareja not in(select yo from parejas where mipareja = 1);
+and p.mipareja not in(select yo from parejas where mipareja = cod);
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listaParejas`(p_mail varchar(45))
@@ -140,8 +140,12 @@ begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
 select *,
-(select nom from usuariodatos where idUsu = p.yo) as 'nom'
-from parejas p where mipareja = cod;
+year(curdate()) - year(ud.fecNac) as 'edad'
+-- (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
+from parejas p 
+join usuariodatos ud
+on p.yo = ud.idUsu
+where p.yo in(select mipareja from parejas where yo = cod) and p.mipareja = cod;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_login`(a varchar(45), b varchar(45))
@@ -291,7 +295,7 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
-(8, 1, 26, 20, 210, 200, 2, 1);
+(8, 1, 26, 20, 210, 160, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -345,14 +349,15 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
 --
 
 INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
-(1, 3, 8);
+(4, 3, 8),
+(5, 8, 3);
 
 -- --------------------------------------------------------
 
@@ -632,7 +637,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --

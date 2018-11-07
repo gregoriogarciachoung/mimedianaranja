@@ -116,15 +116,16 @@ header("location:index.html");
 			<li id="match" ng-click="listaParejas()"><img src="images/corazonn.png"/>
 		</nav>
 		<h3 id="titu">Me gustan</h3>
-		<div ng-init="listaParejas()">
-				<ul ng-repeat="y in datos" id="listaMatch">
-					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
+		<!-- me gustan -->
+		<div ng-init="listaMeGustan()" style="border:3px solid blue">
+				<ul ng-repeat="y in datos2" id="listaMeGustan">
+					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
-			
 		</div>
-		<div ng-init="listaMeGustan()">
-				<ul ng-repeat="y in datos2" id="listaMeGustan">
+		<!-- match -->
+		<div ng-init="listaParejas()" style="border:1px solid red">
+				<ul ng-repeat="y in datos" id="listaMatch">
 					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
