@@ -275,7 +275,8 @@ create procedure sp_listaMegustan(p_mail varchar(45))
 begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
-select *
+select *,
+year(curdate()) - year(ud.fecNac) as 'edad'
 -- (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
 from parejas p 
 join usuariodatos ud

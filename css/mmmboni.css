@@ -253,8 +253,10 @@ height:30px;
 #invi #titu{
 font:menu;
 margin-bottom:1em;
+color:red;
+font-style:italic;
 }
 
-#invi #match li, #invi #meGustan li{
-margin-bottom:1em;
+#invi #listaMatch li, #invi #listaMeGustan li{
+margin-bottom:0.6em;
 }

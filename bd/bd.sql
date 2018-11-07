@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2018 a las 01:40:19
--- Versión del servidor: 5.7.18-log
+-- Tiempo de generación: 07-11-2018 a las 18:08:02
+-- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -126,9 +126,13 @@ begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
 select *,
-(select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
-from parejas p where yo = cod 
-and mipareja not in(select yo from parejas where mipareja = 1);
+year(curdate()) - year(ud.fecNac) as 'edad'
+-- (select nom from usuariodatos where idUsu = p.mipareja) as 'nom'
+from parejas p 
+join usuariodatos ud
+on p.mipareja = ud.idUsu
+where p.yo = cod 
+and p.mipareja not in(select yo from parejas where mipareja = 1);
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listaParejas`(p_mail varchar(45))

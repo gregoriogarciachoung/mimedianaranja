@@ -9,6 +9,7 @@ $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
 	
+	$datos[$cont]['edad'] = $res['edad'];
 	$datos[$cont]['sexo'] = $res['sexo'];
 	$datos[$cont]['fecNac'] = $res['fecNac'];
 	$datos[$cont]['altura'] = $res['altura'];

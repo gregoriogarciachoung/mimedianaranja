@@ -125,8 +125,7 @@ header("location:index.html");
 		</div>
 		<div ng-init="listaMeGustan()">
 				<ul ng-repeat="y in datos2" id="listaMeGustan">
-					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
-					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}}</h3>
+					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
 			
