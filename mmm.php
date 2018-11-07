@@ -70,7 +70,6 @@ header("location:index.html");
 	<p>{{x.ocu}}</p>
 	</div>
 	<section class="momo" id="usuModal">
-	
 	<form action="meGusta.php" method="post" id="meGusta">
 		<div ng-repeat="y in mdatos">
 		<section>
@@ -119,19 +118,55 @@ header("location:index.html");
 		<!-- me gustan -->
 		<div ng-init="listaMeGustan()" id="listaMeGustan">
 				<ul ng-repeat="y in datos2">
-					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
+					<li ng-click="verUsu2(y.mipareja)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
 		</div>
 		<!-- match -->
 		<div ng-init="listaParejas()" id="listaMatch">
 				<ul ng-repeat="y in datos">
-					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
+					<li ng-click="verUsu2(y.yo)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
 			
 		</div>
 	</div>
+	<section class="momo" id="usuModal2">
+	<form>
+		<div ng-repeat="y in mdatos">
+		<section>
+			<figure>
+			<!-- {{y.foto}} -->
+			</figure>
+		</section>
+		<section>
+			<figure><img ng-src="{{y.foto}}"></figure>
+			<p>{{y.nom}}, {{y.edad}}</p>
+			<p>{{y.des}}</p>
+			<p id="verMasDatos" ng-click="verMasDatos()">¿Cómo es {{y.nom}}?</p>
+		
+			<p>Estado Civil: <font>{{y.est}}</font></p>
+			<p>Mido: <font>{{y.altura}} cm</font></p>
+			<p>Vivo en: <font>{{y.vivoen}}</font></p>
+			<p>&#128188; Ocupacion: <font>{{y.ocu}}</font></p>
+			<p>&#128152; ¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
+			<p>&#9977; Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
+			
+			
+			<p>&#9996; ¿Que hago en mis tiempos libres ?:<br> <font>{{y.tmplibres}}</font></p>
+			<p>&#127910; Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
+			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
+			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
+		
+			<textarea placeholder="Escríbeme"></textarea>
+			<div>
+			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
+			<button type="button" ng-click="cerrarModalUsu2()">Cerrar</button>
+			<button type="button">Enviar mensaje</button></div>
+		</section>
+		</div>
+	</form>
+		</section>
 	</section>
 	<!-- Mensajes -->
 	<section>
@@ -212,6 +247,7 @@ alert(nlista);
 <script>
 
 $(document).ready(function(){
+	
 	$("#listaMatch").css("display","none");
 	$("#match").click(function(){
 		$("#listaMatch").css("display","block");
@@ -276,6 +312,9 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	$scope.cerrarModalUsu = function(){
 		document.querySelector("#usuModal").style.display="none";
 	}
+	$scope.cerrarModalUsu2 = function(){
+		document.querySelector("#usuModal2").style.display="none";
+	}
 	$scope.meGusta = function(i,j){
 		document.querySelector("#frmMeGusta").submit();
 	}
@@ -285,6 +324,17 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	document.querySelector("#usuModal").style.display="none";
 	$scope.verUsu = function(i){
 		document.querySelector("#usuModal").style.display="block";
+		//alert(i);
+		$http({
+		method: 'GET',
+		url: 'cargaOtroUsuario2.php?idU='+i,
+		}).then(function(response) {
+		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
+		});
+	}
+	document.querySelector("#usuModal2").style.display="none";
+	$scope.verUsu2 = function(i){
+		document.querySelector("#usuModal2").style.display="block";
 		//alert(i);
 		$http({
 		method: 'GET',
