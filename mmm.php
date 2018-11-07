@@ -117,15 +117,15 @@ header("location:index.html");
 		</nav>
 		<h3 id="titu">Me gustan</h3>
 		<!-- me gustan -->
-		<div ng-init="listaMeGustan()" style="border:3px solid blue">
-				<ul ng-repeat="y in datos2" id="listaMeGustan">
+		<div ng-init="listaMeGustan()" id="listaMeGustan">
+				<ul ng-repeat="y in datos2">
 					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
 		</div>
 		<!-- match -->
-		<div ng-init="listaParejas()" style="border:1px solid red">
-				<ul ng-repeat="y in datos" id="listaMatch">
+		<div ng-init="listaParejas()" id="listaMatch">
+				<ul ng-repeat="y in datos">
 					<li><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
