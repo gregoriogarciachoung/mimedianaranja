@@ -141,7 +141,7 @@ header("location:index.html");
 		</section>
 		<section>
 			<figure><img ng-src="{{y.foto}}"></figure>
-			<p>{{y.nom}}, {{y.edad}}</p>
+			<p>{{y.nom}}, {{y.edad}}<a href="#txtMensaje" style="font:menu"> Escríbeme</i></a></p>
 			<p>{{y.des}}</p>
 			<p id="verMasDatos" ng-click="verMasDatos()">¿Cómo es {{y.nom}}?</p>
 		
@@ -158,11 +158,11 @@ header("location:index.html");
 			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
 			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
 		
-			<textarea placeholder="Escríbeme"></textarea>
+			<textarea placeholder="Escríbeme" id="txtMensaje"></textarea>
 			<div>
 			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
 			<button type="button" ng-click="cerrarModalUsu2()">Cerrar</button>
-			<button type="button">Enviar mensaje</button></div>
+			<button type="button" ng-click="enviarMensaje(y.idUsu)">Enviar mensaje</button></div>
 		</section>
 		</div>
 	</form>
@@ -353,6 +353,17 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		}, function (error) {
 		});
 			cambiaColorGrabar("#txtDes");
+	}
+	$scope.enviarMensaje = function(i){
+		var txtMensaje = document.querySelector("#txtMensaje");
+		$http({
+			method: 'POST',
+			url: 'enviarMensaje.php', 
+			data: { txtReceptorR: i, txtMensajeR: txtMensaje.value}
+			}).then(function (response) {
+		}, function (error) {
+		});
+		txtMensaje.value="";
 	}
 	$scope.editarMiOcu = function(){
 		var txtOcu = document.querySelector("#txtOcu");

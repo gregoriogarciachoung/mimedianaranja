@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2018 a las 20:07:21
+-- Tiempo de generación: 09-11-2018 a las 21:44:03
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -219,17 +219,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `contactos`
---
-
-CREATE TABLE IF NOT EXISTS `contactos` (
-  `idUsu` int(11) DEFAULT NULL,
-  `idAmigos` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `distritos`
 --
 
@@ -291,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
 (1, 2, 26, 20, 160, 150, 2, 1),
 (2, 1, 25, 19, 170, 160, 1, 1),
-(3, 2, 25, 19, 200, 180, 1, 1),
+(3, 2, 25, 19, 200, 159, 1, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
@@ -317,6 +306,20 @@ INSERT INTO `interes` (`id`, `nom`) VALUES
 (3, 'Conocer nuevas personas y ver que pasa'),
 (4, 'Una relación de una noche'),
 (2, 'Una relación seria');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `id` int(11) NOT NULL,
+  `emisor` int(11) DEFAULT NULL,
+  `receptor` int(11) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `msj` varchar(240) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -528,12 +531,6 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 --
 
 --
--- Indices de la tabla `contactos`
---
-ALTER TABLE `contactos`
-  ADD KEY `idUsu` (`idUsu`);
-
---
 -- Indices de la tabla `distritos`
 --
 ALTER TABLE `distritos`
@@ -559,6 +556,12 @@ ALTER TABLE `filtros`
 ALTER TABLE `interes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nom` (`nom`);
+
+--
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `niveleducacion`
@@ -629,6 +632,11 @@ ALTER TABLE `estadocivil`
 ALTER TABLE `interes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `niveleducacion`
 --
 ALTER TABLE `niveleducacion`
@@ -656,12 +664,6 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `contactos`
---
-ALTER TABLE `contactos`
-  ADD CONSTRAINT `contactos_ibfk_1` FOREIGN KEY (`idUsu`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `filtros`

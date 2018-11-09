@@ -57,11 +57,6 @@ foreign key(lugar)references distritos (id),
 foreign key(buscoSexo)references sexos(id),
 foreign key(idinteres)references interes(id)
 );
-create table contactos(
-idUsu int,
-idAmigos int,
-foreign key(idUsu)references usuario(id)
-);
 create table preOtrosIntereses(
 id int primary key auto_increment,
 pre varchar(45)
@@ -79,6 +74,13 @@ yo int,
 mipareja int,
 foreign key(yo)references usuario(id),
 foreign key(mipareja)references usuario(id)
+);
+create table mensajes(
+id int primary key auto_increment,
+emisor int,
+receptor int,
+fecha date,
+msj varchar(240)
 );
 -- -----------------------------------------------
 insert into preOtrosIntereses(pre) values
