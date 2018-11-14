@@ -170,12 +170,20 @@ header("location:index.html");
 	</section>
 	<!-- Mensajes -->
 	<section ng-controller="ella"  id="galu">
-	<h2 ng-init="listaMensajes()" ng-click="listaMensajes()">Mensajes</h2>
-	<div ng-repeat="x in msj" class="galmsj">
-	<figure><img ng-src="{{x.foto}}"></figure>
-	<p>{{x.nom}}</p>
-	<p>{{x.msj}}</p>
-	<p>recibido el {{x.fecha}}</p>
+	<input type="text" ng-model="txtUsuMsj" placeholder="combo"/>
+	<h2  ng-init="listaMensajes()" >Mensajes</h2>
+	
+	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj">
+	<figure ><img ng-src="{{x.foto}}"></figure>
+	<p >{{x.nom}}</p>
+	<p >{{x.msj}}</p>
+	<p >recibido el {{x.fecha}}</p>
+	</div>
+	<div ng-repeat="x in msj" class="galmsj" ng-if="txtUsuMsj == 0">
+	<figure ><img ng-src="{{x.foto}}"></figure>
+	<p >{{x.nom}}</p>
+	<p >{{x.msj}}</p>
+	<p >recibido el {{x.fecha}}</p>
 	</div>
 	</section>
 	<!-- Mi perfil -->

@@ -8,6 +8,7 @@ $query->bindParam(1,$pass);
 $cont = 0;
 $query->execute();
 while($res = $query->fetch(PDO::FETCH_ASSOC)){
+	$datos[$cont]['emisor'] = $res['emisor'];
 	$datos[$cont]['foto'] = $res['foto'];
 	$datos[$cont]['fecha'] = $res['fecha'];
 	$datos[$cont]['nom'] = utf8_encode($res['nom']);
