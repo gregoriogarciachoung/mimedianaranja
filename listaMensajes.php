@@ -3,7 +3,7 @@ include('conexion.php');
 session_start();
 $pass = $_SESSION['usu'];
 $datos = array();
-$query = getConexion()->prepare('select * from mensajes m join usuarioDatos ud on m.emisor = ud.idUsu where m.receptor = (select id from usuario where mail = ?)');
+$query = getConexion()->prepare('select * from mensajes m join usuarioDatos ud on m.emisor = ud.idUsu where m.receptor = (select id from usuario where mail = ?) order by m.fecha, m.id desc');
 $query->bindParam(1,$pass);
 $cont = 0;
 $query->execute();

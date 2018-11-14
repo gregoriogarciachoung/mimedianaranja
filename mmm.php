@@ -169,8 +169,8 @@ header("location:index.html");
 		</section>
 	</section>
 	<!-- Mensajes -->
-	<section ng-controller="ella" ng-init="listaMensajes()" id="galu">
-	<h2>Mensajes</h2>
+	<section ng-controller="ella"  id="galu">
+	<h2 ng-init="listaMensajes()" ng-click="listaMensajes()">Mensajes</h2>
 	<div ng-repeat="x in msj" class="galmsj">
 	<figure><img ng-src="{{x.foto}}"></figure>
 	<p>{{x.nom}}</p>
@@ -192,10 +192,10 @@ header("location:index.html");
 			<p>Autodescripción</p>
 			<!-- <input type="text" value="{{x.des}}" id="txtDes" placeholder="Escribe aquí"/> -->
 			<textarea id="txtDes" name="txtDes" placeholder="Escribe aquí" maxlength="250">{{x.des}}</textarea>
-			<h3 ng-click="editarMiDes()">GRABAR</h3>
+			<h3 ng-click="editarMiDes()"><a href="#" onclick="return false;">GRABAR</a></h3>
 			<p>Ocupación</p>
 			<input type="text" value="{{x.ocu}}" name="txtOcu" id="txtOcu" placeholder="Escribe aquí"/>
-			<h3 ng-click="editarMiOcu()">GRABAR</h3>
+			<h3 ng-click="editarMiOcu()"><a href="#" onclick="return false;">GRABAR</a></h3>
 			</div>
 		</div>
 		<h2 class="t2">Mis Intereses</h2>
@@ -204,7 +204,7 @@ header("location:index.html");
 			<p>{{x.pre}}</p>
 			<!--<input type="text" value="{{x.res}}" id="txtInteres" placeholder="Escribe aquí"/>-->
 			<textarea type="text" id="txtInteres" placeholder="Escribe aquí" maxlength="250">{{x.res}}</textarea>
-			<h3 ng-click="editarMiInteres(x.idPre)">GRABAR</h3>
+			<h3 ng-click="editarMiInteres(x.idPre)"><a href="#" onclick="return false;">GRABAR</a></h3>
 			</div>
 		</div>
 		
