@@ -67,4 +67,12 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		$scope.datos2 = response.data.lstMeGustan;
 		});
 	}
+	$scope.listaMensajes = function() {
+		$http({
+		method: 'POST',
+		url: 'listaMensajes.php'
+		}).then(function(response) {
+		$scope.msj = response.data.lstMensajes;
+		});
+	}
 });

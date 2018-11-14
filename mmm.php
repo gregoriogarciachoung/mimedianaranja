@@ -169,8 +169,14 @@ header("location:index.html");
 		</section>
 	</section>
 	<!-- Mensajes -->
-	<section>
+	<section ng-controller="ella" ng-init="listaMensajes()" id="galu">
 	<h2>Mensajes</h2>
+	<div ng-repeat="x in msj" class="galmsj">
+	<figure><img ng-src="{{x.foto}}"></figure>
+	<p>{{x.nom}}</p>
+	<p>{{x.msj}}</p>
+	<p>recibido el {{x.fecha}}</p>
+	</div>
 	</section>
 	<!-- Mi perfil -->
 	<section ng-controller="ella" id="id_perfil">

@@ -269,3 +269,20 @@ padding:1em;
 display:flex;
 justify-content:center;
 }
+.galmsj{
+width:150px;
+}
+.galmsj p:nth-child(2){
+font-size:12px;
+}
+.galmsj p:nth-child(3){
+font-style: italic;
+font-size:12px;
+}
+.galmsj p:nth-child(4){
+font-size:12px;
+text-align: right;
+}
+.galmsj p:nth-child(2),.galmsj p:nth-child(3),.galmsj p:nth-child(4){
+margin-bottom:1em;
+}
