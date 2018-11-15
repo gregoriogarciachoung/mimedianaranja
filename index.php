@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
  -->
-<title>Registra Computadora</title>
+<title>Mi Media Naranja</title>
 </head>
 <body class="regBody">
 <header>
@@ -41,14 +41,14 @@ buscan una relación duradera</p>
 <p class="cerrar" id="cerrar">x</p>
 <form id="freg" action="registro.php" method="post">
 <h4>No publicaremos nada en tu muro y tu información es privada</h4>
-<input type="email" name="usu" placeholder="Ingresa tu correo" id="txtUsu">
-<button type="button"  id="btnRegistrar">Registrar</button>
+<input type="email" name="usu" placeholder="Ingresa tu correo" id="txtUsu" required>
+<button type="submit"  id="btnRegistrar">Registrar</button>
 <div class="ella"><input type="checkbox">Acepto los términos y condiciones del portal</div>
 </form>
 <form id="flog" method="post">
 <h4>Iniciar sesión para chatear con sus contactos</h4>
-<input type="email" name="usu" placeholder="Correo electrónico">
-<input type="password" name="pass" placeholder="Contraseña">
+<input type="email" name="usu" placeholder="Correo electrónico" required>
+<input type="password" name="pass" placeholder="Contraseña" required>
 <input type="submit" value="INICIAR SESIÓN" name="nts" id="flog"/>
 <?php
 if(isset($_POST['nts'])){

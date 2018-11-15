@@ -50,13 +50,8 @@
 	
 	 <!-- combo distrito -->
 	 <!-- hacer sql dentro de jsp jslt(creo que así se llama)--> 
-	 
-	 <select name="distrito">
-	<option value="-1">--- Select ---</option>
-    <option value="1">Cercado Lima</option>
-    <option value="2">Los olivos</option>
-    <option value="3">Independencia</option>
-</select>
+	 <input type="text" name="distrito"/>
+
 	 </div>
 	 
 	 <!-- personaliza tu perfil -->
@@ -94,14 +89,7 @@
 		name="miAltura" />
 	  -->
 	  
-<select name="miAltura">
-	<option value="-1">--- Select ---</option>
-    <option value="160">160</option>
-    <option value="170">170</option>
-    <option value="180">180</option>
-    <option value="190">190</option>
-    <option value="200">200</option>
-</select>
+<input type="number" name="miAltura"/>
 	 
 	<h5>Mi ocupación</h5>
 	 <input type="text" placeholder="Completar" name="ocu"/>

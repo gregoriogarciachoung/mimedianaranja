@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2018 a las 21:44:03
+-- Tiempo de generación: 15-11-2018 a las 15:37:00
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -193,8 +193,8 @@ begin
 	set emn = edad - 3;
 	
 	
-	insert into usuario values
-	(default, p_mail,p_pass);
+	insert into usuario(mail, pass) values
+	(p_mail,p_pass);
 
 	set idU = (select id from usuario where mail = p_mail);
 	insert into usuarioDatos values
@@ -284,7 +284,8 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
-(8, 1, 26, 20, 210, 160, 2, 1);
+(8, 1, 26, 20, 210, 160, 2, 1),
+(9, 1, 24, 15, 180, 160, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -443,7 +444,13 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (8, 3, ''),
 (8, 4, ''),
 (8, 5, ''),
-(8, 6, '');
+(8, 6, ''),
+(9, 1, ''),
+(9, 2, ''),
+(9, 3, ''),
+(9, 4, ''),
+(9, 5, ''),
+(9, 6, '');
 
 -- --------------------------------------------------------
 
@@ -477,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -490,7 +497,8 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`) VALUES
 (4, 'Andrea@gmail.com', '123'),
 (5, 'pedro@gmail.com', '123'),
 (7, 'maria@gmail.com', '123'),
-(8, 'carlita@gmail.com', '123');
+(8, 'carlita@gmail.com', '123'),
+(9, 'nina@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -524,7 +532,8 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (4, 'Andrea ', 2, '1997-11-16', 3, 1, 1, 1, 160, 'promo', '', 'images/Andrea@gmail.com//chia2.jpg'),
 (5, 'Pedro Perez', 1, '1995-10-10', 1, 1, 1, 1, 160, 'Ingeniero', '', 'images/pedro@gmail.com//jacinto.jpg'),
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
-(8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg');
+(8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
+(9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -660,7 +669,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --

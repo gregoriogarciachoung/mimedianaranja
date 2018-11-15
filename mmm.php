@@ -24,7 +24,7 @@ header("location:index.php");
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
  -->
-<title>Registra Computadora</title>
+<title>Mi Media Naranja</title>
 </head>
 <body  ng-app="goyo" ng-controller="mehizoclick">
 

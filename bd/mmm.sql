@@ -151,8 +151,8 @@ begin
 	set emn = edad - 3;
 	
 	
-	insert into usuario values
-	(default, p_mail,p_pass);
+	insert into usuario(mail, pass) values
+	(p_mail,p_pass);
 
 	set idU = (select id from usuario where mail = p_mail);
 	insert into usuarioDatos values
