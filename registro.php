@@ -27,8 +27,8 @@
 	 <h3>Sera un gusto conocerte</h3>
 	 <h4>Estos datos nos ayudarán a darte sugerencia de solteros interesentes para ti</h4>
 	 <h5>Mi nombre</h5>
-	<input type="text" name="nom" placeholder="Mi nombre" ng-model="nom" required/>
-	<span ng-show="mimi.nom.$touched && mimi.nom.$invalid">Rellene este campo.</span>
+	<input type="text" name="nom" placeholder="Mi nombre" id="txtNom"/>
+	<span id="mtxtNom"></span>
 	
 	<h5>Soy</h5>
 	<nav ng-init="listaSexo()">
@@ -39,8 +39,8 @@
 	</nav>
 	
 	<h5>Fecha de nacimiento</h5>
-	 <input type="date" name="fecNac" id="idFecNac" ng-model="fecNac"placeholder="Fecha de nacimiento" required/>
-	 <span ng-show="mimi.fecNac.$touched && mimi.fecNac.$invalid">Rellene este campo.</span>
+	 <input type="text" name="fecNac" placeholder="aaaa-mm-dd" id="txtFecha"/>
+	 <span id="mtxtFecha"></span>
 	 </div>
 	
 	  <div>
@@ -51,13 +51,13 @@
 	
 	 <!-- combo distrito -->
 	 <!-- hacer sql dentro de jsp jslt(creo que así se llama)--> 
-	 <input list="distritos" class="listadistrito" ng-model="distrito" name="distrito"required/>
+	 <input list="distritos" class="listadistrito" name="distrito" id="txtDistrito"/>
 	  <datalist id="distritos">
 		<option value="Cercado Lima">
 		<option value="Los olivos">
 		<option value="Independencia">
 	  </datalist>
-	<span ng-show="mimi.distrito.$touched && mimi.distrito.$invalid">Rellene este campo.</span>
+	<span id="mtxtDistrito"></span>
 	 </div>
 	 
 	 <!-- personaliza tu perfil -->
@@ -95,12 +95,12 @@
 		name="miAltura" />
 	  -->
 	  
-<input type="number" name="miAltura" ng-model="miAltura" required/>
-<span ng-show="mimi.miAltura.$touched && mimi.miAltura.$invalid">Rellene este campo.</span>
+<input type="number" name="miAltura" id="txtAltura"/>
+<span id="mtxtAltura"></span>
 	 
 	<h5>Mi ocupación</h5>
-	 <input type="text" placeholder="Completar" name="ocu" ng-model="ocu" required/>
-	 <span ng-show="mimi.ocu.$touched && mimi.ocu.$invalid">Rellene este campo.</span>
+	 <input type="text" placeholder="Completar" name="ocu" id="txtOcu"/>
+	 <span id="mtxtOcu"></span>
 	</div>
 	<div>
 	<!--  -->
@@ -132,11 +132,11 @@
 	 <h5>Mi correo</h5>
 	<input type="email" placeholder="Correo" name="correo" value="<?php $cor = $_POST['usu']; echo $cor ?>"/>
 	<h5>Crea contraseña</h5>
-	<input type="password" placeholder="contraseña" name="clave"required ng-model="clave"/>
-	<span ng-show="mimi.clave.$touched && mimi.clave.$invalid">Rellene este campo.</span>
+	<input type="password" placeholder="contraseña" name="clave" id="txtPass" required/>
+	<span id="mtxtPass"></span>
 	<h5>Repite contraseña</h5>
-	<input type="password" placeholder="confirma contraseña" name="confirmaClave"/>
-	
+	<input type="password" placeholder="confirma contraseña" name="confirmaClave" id="txtPass2" required/>
+	<span id="mtxtPass2"></span>
 	
 	</div>
 	
@@ -196,13 +196,40 @@ $("#btnEnviar").hide();
 $("form >  div:eq(0)").show();
 	var cont = 0;
 	$("#btnNext").click(function(){
-		cont = cont + 1;
+		
+		var txtNom = $("#txtNom").val();
+		var txtFecha = $("#txtFecha").val();
+		var txtDistrito = $("#txtDistrito").val();
+		var txtPass = $("#txtPass").val();
+		var txtPass2 = $("#txtPass2").val();
+		var txtAltura = $("#txtAltura").val();
+		var txtOcu = $("#txtOcu").val();
+		
+		if(cont == 0 && txtNom == ""){
+			 $("#mtxtNom").text("Rellene este campo.");
+		}
+		else if(cont == 0 && txtFecha == ""){
+			 $("#mtxtFecha").text("Rellene este campo.");
+		}
+		else if(cont == 1 && txtDistrito == ""){
+			 $("#mtxtDistrito").text("Rellene este campo.");
+		}
+		else if(cont == 2 && txtAltura == ""){
+			 $("#mtxtAltura").text("Rellene este campo.");
+		}
+		else if(cont == 2 && txtOcu == ""){
+			 $("#mtxtOcu").text("Rellene este campo.");
+		}
+		
+		else{
+			cont = cont + 1;
 		ocultar();
 		$("form >  div:eq("+cont+")").show();
 		
 		if(cont == size-1){
 		$("#btnEnviar").show();
 		$("#btnNext").hide();
+		}
 	}
 	});
 });
