@@ -16,18 +16,19 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
  -->
-<title>Registra Computadora</title>
+<title>Mi Media Naranja</title>
 </head>
 <body ng-app="goyo" ng-controller="frmRegistro" >
 
-	<form action="registrar.php" id="id_form" enctype="multipart/form-data" method="post">
+	<form action="registrar.php" id="id_form" name="mimi" enctype="multipart/form-data" method="post">
 	 
 	 <!-- sera un gusto conocerte -->
 	 <div>
 	 <h3>Sera un gusto conocerte</h3>
 	 <h4>Estos datos nos ayudarán a darte sugerencia de solteros interesentes para ti</h4>
 	 <h5>Mi nombre</h5>
-	<input type="text" name="nom" placeholder="Mi nombre"/>
+	<input type="text" name="nom" placeholder="Mi nombre" ng-model="nom" required/>
+	<span ng-show="mimi.nom.$touched && mimi.nom.$invalid">Rellene este campo.</span>
 	
 	<h5>Soy</h5>
 	<nav ng-init="listaSexo()">
@@ -38,8 +39,8 @@
 	</nav>
 	
 	<h5>Fecha de nacimiento</h5>
-	 <input type="date" name="fecNac" id="idFecNac" placeholder="Fecha de nacimiento"/>
-	 
+	 <input type="date" name="fecNac" id="idFecNac" ng-model="fecNac"placeholder="Fecha de nacimiento" required/>
+	 <span ng-show="mimi.fecNac.$touched && mimi.fecNac.$invalid">Rellene este campo.</span>
 	 </div>
 	
 	  <div>
@@ -50,8 +51,13 @@
 	
 	 <!-- combo distrito -->
 	 <!-- hacer sql dentro de jsp jslt(creo que así se llama)--> 
-	 <input type="text" name="distrito"/>
-
+	 <input list="distritos" class="listadistrito" ng-model="distrito" name="distrito"required/>
+	  <datalist id="distritos">
+		<option value="Cercado Lima">
+		<option value="Los olivos">
+		<option value="Independencia">
+	  </datalist>
+	<span ng-show="mimi.distrito.$touched && mimi.distrito.$invalid">Rellene este campo.</span>
 	 </div>
 	 
 	 <!-- personaliza tu perfil -->
@@ -89,10 +95,12 @@
 		name="miAltura" />
 	  -->
 	  
-<input type="number" name="miAltura"/>
+<input type="number" name="miAltura" ng-model="miAltura" required/>
+<span ng-show="mimi.miAltura.$touched && mimi.miAltura.$invalid">Rellene este campo.</span>
 	 
 	<h5>Mi ocupación</h5>
-	 <input type="text" placeholder="Completar" name="ocu"/>
+	 <input type="text" placeholder="Completar" name="ocu" ng-model="ocu" required/>
+	 <span ng-show="mimi.ocu.$touched && mimi.ocu.$invalid">Rellene este campo.</span>
 	</div>
 	<div>
 	<!--  -->
@@ -124,7 +132,8 @@
 	 <h5>Mi correo</h5>
 	<input type="email" placeholder="Correo" name="correo" value="<?php $cor = $_POST['usu']; echo $cor ?>"/>
 	<h5>Crea contraseña</h5>
-	<input type="password" placeholder="contraseña" name="clave"/>
+	<input type="password" placeholder="contraseña" name="clave"required ng-model="clave"/>
+	<span ng-show="mimi.clave.$touched && mimi.clave.$invalid">Rellene este campo.</span>
 	<h5>Repite contraseña</h5>
 	<input type="password" placeholder="confirma contraseña" name="confirmaClave"/>
 	
@@ -156,7 +165,7 @@ padding: 1em;
 button{
 margin-top: 2em;
 }
-input[type="date"],input[type="text"],input[type="password"], select,input[type="file"]{
+input[type="date"],input[type="text"],input[type="password"], select,input[type="file"],input[type="number"], .listadistrito{
 width:600px;
 }
 input[type="email"]{
@@ -169,6 +178,7 @@ form>div>nav>ul{
 form>div>nav>ul>li{
 	list-style:none;
 }
+span{color:red}
 </style>
 <script>
 var ellanomehacecaso = angular.module('goyo', []);

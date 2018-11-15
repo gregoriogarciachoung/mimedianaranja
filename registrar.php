@@ -59,5 +59,6 @@ $_POST['ocu'],
 $_POST['rela'],
 'images/'.$usuario.'/'.$nombre_img
 ));
+
 header("location:index.php");
 ?>

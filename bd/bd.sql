@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2018 a las 15:37:00
+-- Tiempo de generación: 15-11-2018 a las 18:04:11
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -167,7 +167,7 @@ set cod = (select id from usuario where mail = p_mail);
 insert into parejas(yo, mipareja) values (cod,p_pareja);
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registraUsuario`(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito int, p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registraUsuario`(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito varchar(45), p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto varchar(45))
 begin
 
 	declare idU int;
@@ -177,6 +177,10 @@ begin
 	declare edad int;
 	declare amx int;
 	declare amn int;
+	
+	declare iddis int;
+	set iddis = (select id from distritos where nom = p_idDistrito);
+	
 	
 	if(p_sexo = 1)then
 		set sex = 2;
@@ -198,10 +202,10 @@ begin
 
 	set idU = (select id from usuario where mail = p_mail);
 	insert into usuarioDatos values
-	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
+	(idU,p_nom,p_sexo, p_fecNac, iddis, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
 	
 	insert into filtros values
-	(idU, sex, emx, emn, amx, amn, p_idDistrito, p_intereses);
+	(idU, sex, emx, emn, amx, amn, iddis, p_intereses);
 	
 	
 	insert into resOtrosIntereses values
@@ -285,7 +289,8 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
 (8, 1, 26, 20, 210, 160, 2, 1),
-(9, 1, 24, 15, 180, 160, 1, 1);
+(9, 1, 24, 15, 180, 160, 1, 1),
+(10, 1, 24, 15, 178, 150, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -450,7 +455,13 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (9, 3, ''),
 (9, 4, ''),
 (9, 5, ''),
-(9, 6, '');
+(9, 6, ''),
+(10, 1, ''),
+(10, 2, ''),
+(10, 3, ''),
+(10, 4, ''),
+(10, 5, ''),
+(10, 6, '');
 
 -- --------------------------------------------------------
 
@@ -484,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -498,7 +509,8 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`) VALUES
 (5, 'pedro@gmail.com', '123'),
 (7, 'maria@gmail.com', '123'),
 (8, 'carlita@gmail.com', '123'),
-(9, 'nina@gmail.com', '1234');
+(9, 'nina@gmail.com', '1234'),
+(10, 'ana@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -533,7 +545,8 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (5, 'Pedro Perez', 1, '1995-10-10', 1, 1, 1, 1, 160, 'Ingeniero', '', 'images/pedro@gmail.com//jacinto.jpg'),
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
 (8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
-(9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg');
+(9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg'),
+(10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', '', 'images/ana@gmail.com//ana.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -669,7 +682,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Restricciones para tablas volcadas
 --
