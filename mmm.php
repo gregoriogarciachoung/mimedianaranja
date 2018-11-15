@@ -2,7 +2,7 @@
 <?php
 session_start();
 if ($_SESSION['ax']!="1"){
-header("location:index.html");
+header("location:index.php");
 }
 ?>
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<!-- hola -->
+<?php header('Content-Type: text/html; charset=ISO-8859-1'); ?>
 <!DOCTYPE html>
 <html lang="esS" >
 <head>
@@ -24,7 +24,7 @@
 <nav>
 <ul>
 <li id="reg">REGÍSTRATE
-<li id="log"><a style="color:#fff; text-decoration:none" href="login.html">INGRESE AQUÍ</a>
+<li id="log">INGRESE AQUÍ</a>
 </ul>
 </nav>
 </header>
@@ -45,11 +45,30 @@ buscan una relación duradera</p>
 <button type="button"  id="btnRegistrar">Registrar</button>
 <div class="ella"><input type="checkbox">Acepto los términos y condiciones del portal</div>
 </form>
-<form id="flog" action="login.php" method="post">
+<form id="flog" method="post">
 <h4>Iniciar sesión para chatear con sus contactos</h4>
 <input type="email" name="usu" placeholder="Correo electrónico">
 <input type="password" name="pass" placeholder="Contraseña">
-<input type="submit" value="INICIAR SESIÓN">
+<input type="submit" value="INICIAR SESIÓN" name="nts" id="flog"/>
+<?php
+if(isset($_POST['nts'])){
+	echo "<font color='red'>Error de autentificación</font>";
+   include('login.php');
+   
+   ?>
+   <script>
+  $(document).ready(function(){
+	$(".regS1 ").hide();
+        $("#flog").hide();
+		$("#freg").hide();
+		  alert("Error de autentificación, Registrese o Ingrese nuevamente");
+  
+    });
+
+</script>
+   <?php
+}
+?>
 <a class="ella" href="#">Olvidé mi clave</a>
 </form>
 </section>

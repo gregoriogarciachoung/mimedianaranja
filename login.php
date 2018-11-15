@@ -13,6 +13,6 @@ if($res['id'] == '1'){
 	$_SESSION['usu']=$usu;
 	header("Location:mmm.php");
 }else{
-	header("Location:login.html");
+	//header("Location:login.php");
 }
 ?>
