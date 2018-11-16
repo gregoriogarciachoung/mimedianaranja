@@ -261,7 +261,7 @@ function iniciar(){
  if(nombre1.value!=nombre2.value){
  nombre2.setCustomValidity('Contraseña no coincide con la anterior');
  }else{
- nombre1.setCustomValidity('');
+ nombre2.setCustomValidity('');
  }
  }
  window.addEventListener("load", iniciar, false);
