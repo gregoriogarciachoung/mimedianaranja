@@ -39,7 +39,7 @@
 	</nav>
 	
 	<h5>Fecha de nacimiento</h5>
-	 <input type="text" name="fecNac" placeholder="aaaa-mm-dd" id="txtFecha"/>
+	 <input type="date" name="fecNac"  id="txtFecha"/>
 	 <span id="mtxtFecha"></span>
 	 </div>
 	
@@ -195,30 +195,46 @@ ocultar();
 $("#btnEnviar").hide();
 $("form >  div:eq(0)").show();
 	var cont = 0;
+	$("#txtNom").keyup(function(){
+         $("#mtxtNom").text("");
+    });
+	$("#txtFecha").keyup(function(){
+         $("#mtxtFecha").text("");
+    });
+	$("#txtDistrito").keyup(function(){
+         $("#mtxtDistrito").text("");
+    });
+	$("#txtDistrito").keyup(function(){
+         $("#mtxtDistrito").text("");
+    });
+	$("#txtAltura").keyup(function(){
+         $("#mtxtAltura").text("");
+    });
+	$("#txtOcu").keyup(function(){
+         $("#mtxtOcu").text("");
+    });
 	$("#btnNext").click(function(){
 		
 		var txtNom = $("#txtNom").val();
 		var txtFecha = $("#txtFecha").val();
 		var txtDistrito = $("#txtDistrito").val();
-		var txtPass = $("#txtPass").val();
-		var txtPass2 = $("#txtPass2").val();
 		var txtAltura = $("#txtAltura").val();
 		var txtOcu = $("#txtOcu").val();
 		
 		if(cont == 0 && txtNom == ""){
-			 $("#mtxtNom").text("Rellene este campo.");
+			 $("#mtxtNom").text("Error en dato.");
 		}
 		else if(cont == 0 && txtFecha == ""){
-			 $("#mtxtFecha").text("Rellene este campo.");
+			 $("#mtxtFecha").text("Error en dato.");
 		}
 		else if(cont == 1 && txtDistrito == ""){
-			 $("#mtxtDistrito").text("Rellene este campo.");
+			 $("#mtxtDistrito").text("Error en dato.");
 		}
-		else if(cont == 2 && txtAltura == ""){
-			 $("#mtxtAltura").text("Rellene este campo.");
+		else if(cont == 2 && txtAltura == "" || parseInt(txtAltura) < 150){
+			 $("#mtxtAltura").text("Error en dato.");
 		}
 		else if(cont == 2 && txtOcu == ""){
-			 $("#mtxtOcu").text("Rellene este campo.");
+			 $("#mtxtOcu").text("Error en dato.");
 		}
 		
 		else{
@@ -233,6 +249,22 @@ $("form >  div:eq(0)").show();
 	}
 	});
 });
+
+function iniciar(){
+ nombre1=document.getElementById("txtPass");
+ nombre2=document.getElementById("txtPass2");
+ nombre1.addEventListener("input", validacion, false);
+ nombre2.addEventListener("input", validacion, false);
+ validacion();
+ }
+ function validacion(){
+ if(nombre1.value!=nombre2.value){
+ nombre2.setCustomValidity('Contraseña no coincide con la anterior');
+ }else{
+ nombre1.setCustomValidity('');
+ }
+ }
+ window.addEventListener("load", iniciar, false);
 </script>
 <script type="text/javascript" src="js/registrolst.js"></script>
 </html>
