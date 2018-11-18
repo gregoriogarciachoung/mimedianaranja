@@ -287,3 +287,8 @@ text-align: right;
 .galmsj p:nth-child(2),.galmsj p:nth-child(3),.galmsj p:nth-child(4){
 margin-bottom:1em;
 }
+main section select{
+border:1px solid #cccccc;
+border-radius:0.3em;
+width:100%;
+}

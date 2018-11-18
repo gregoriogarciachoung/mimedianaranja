@@ -264,7 +264,7 @@ from usuarioDatos u
 where idUsu = p_id;
 end
 |
--- drop procedure sp_listaParejas;
+drop procedure sp_listaParejas;
 delimiter |
 create procedure sp_listaParejas(p_mail varchar(45))
 begin
@@ -276,7 +276,9 @@ year(curdate()) - year(ud.fecNac) as 'edad'
 from parejas p 
 join usuariodatos ud
 on p.yo = ud.idUsu
-where p.yo in(select mipareja from parejas where yo = cod) and p.mipareja = cod;
+where p.mipareja in(select mipareja from parejas where mipareja = cod);
+-- and p.mipareja in(select mipareja from parejas where -.-1 mipareja = cod);
+-- -.-1 lista parejas donde yo este como pareja de alguien
 end
 |
 -- drop procedure sp_listaMegustan;

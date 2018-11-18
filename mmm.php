@@ -169,17 +169,15 @@ header("location:index.php");
 		</section>
 	</section>
 	<!-- Mensajes -->
-	<section ng-controller="ella"  id="galu">
-	<input type="text" ng-model="txtUsuMsj" placeholder="combo"/>
-	<h2  ng-init="listaMensajes()" >Mensajes</h2>
-	
-	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj">
-	<figure ><img ng-src="{{x.foto}}"></figure>
-	<p >{{x.nom}}</p>
-	<p >{{x.msj}}</p>
-	<p >recibido el {{x.fecha}}</p>
+	<section ng-controller="ella"  id="galu" >
+	<!-- <input type="text" ng-model="txtUsuMsj" placeholder="combo"/> -->
+	<h2>Mensajes</h2>
+	<div ng-init="listaParejas()">
+	<h3>Seleccione usuario</h3>
+	<select ng-model="txtUsuMsj" ng-options="x.nom for x in datos"  ng-change="listaMensajes()" >
+	</select>
 	</div>
-	<div ng-repeat="x in msj" class="galmsj" ng-if="txtUsuMsj == 0">
+	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj.yo">
 	<figure ><img ng-src="{{x.foto}}"></figure>
 	<p >{{x.nom}}</p>
 	<p >{{x.msj}}</p>

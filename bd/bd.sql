@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2018 a las 18:04:11
+-- Tiempo de generación: 19-11-2018 a las 00:07:10
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -145,7 +145,9 @@ year(curdate()) - year(ud.fecNac) as 'edad'
 from parejas p 
 join usuariodatos ud
 on p.yo = ud.idUsu
-where p.yo in(select mipareja from parejas where yo = cod) and p.mipareja = cod;
+where p.mipareja in(select mipareja from parejas where mipareja = cod);
+-- and p.mipareja in(select mipareja from parejas where -.-1 mipareja = cod);
+-- -.-1 lista parejas donde yo este como pareja de alguien
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_login`(a varchar(45), b varchar(45))
@@ -325,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `receptor` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `msj` varchar(240) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -358,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
@@ -366,7 +368,8 @@ CREATE TABLE IF NOT EXISTS `parejas` (
 
 INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
 (4, 3, 8),
-(5, 8, 3);
+(5, 8, 3),
+(6, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -657,7 +660,7 @@ ALTER TABLE `interes`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `niveleducacion`
 --
@@ -667,7 +670,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --
