@@ -42,9 +42,9 @@ else
    if($nombre_img == !NULL) echo "La imagen es demasiado grande "; 
 }
 
-include('conexion.php');
-$query3 = getConexion()->prepare('call sp_registraUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?)');
-$query3->execute(array(
+require_once("../modelo/usuario.php");
+$per=new usuario();
+$datos=$per->registrar(
 $_POST['nom'],
 $_POST['correo'],
 $_POST['clave'],
@@ -58,7 +58,7 @@ $_POST['miAltura'],
 $_POST['ocu'],
 $_POST['rela'],
 'images/'.$usuario.'/'.$nombre_img
-));
+);
 
-header("location:index.php");
+header("location:../index.php");
 ?>

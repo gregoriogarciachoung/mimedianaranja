@@ -12,11 +12,7 @@ ellanomehacecaso.controller('frmRegistro', function($scope, $http) {
 		                ]
 	},
 	$scope.listaDistrito = function(){
-		$scope.distritos = [
-		                {
-		                	id : -1,
-		                	nom : '--- Select ---'
-		                },
+		$scope.lstDistritos = [
 		                {
 		                	id: 1,
 		                	nom : 'Cercado Lima'
@@ -64,11 +60,23 @@ ellanomehacecaso.controller('frmRegistro', function($scope, $http) {
 		                ]
 	},
 	$scope.listaRelacionInteres = function() {
-		$http({
-		method: 'POST',
-		url: 'listaRelacionInteres.php'
-		}).then(function(response) {
-		$scope.adatos = response.data.lstRelacionInteres;
-		});
+		$scope.adatos = [	                
+		                {
+		                	id: 1,
+		                	nom : 'A su alma gemela, matrimomio'
+		                },
+						{
+		                	id: 2,
+		                	nom : 'Una relacion seria'
+		                },
+						{
+		                	id: 3,
+		                	nom : 'Conocer nuevas personas y ver que pasa'
+		                },
+						{
+		                	id: 4,
+		                	nom : 'Una relacion de una noche'
+		                }
+		                ]
 	}
 });

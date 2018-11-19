@@ -20,7 +20,7 @@
 </head>
 <body ng-app="goyo" ng-controller="frmRegistro" >
 
-	<form action="registrar.php" id="id_form" name="mimi" enctype="multipart/form-data" method="post">
+	<form action="on/registrar.php" id="id_form" name="mimi" enctype="multipart/form-data" method="post">
 	 
 	 <!-- sera un gusto conocerte -->
 	 <div>
@@ -43,7 +43,7 @@
 	 <span id="mtxtFecha"></span>
 	 </div>
 	
-	  <div>
+	  <div ng-init="listaDistrito()">
 	 <!-- conoce solteros cerca de ti -->
 	  <h3>Conoce solteros cerca de ti</h3>
 	 <h4>Te recomendamos personas según la ubicación que elijas</h4>
@@ -51,12 +51,13 @@
 	
 	 <!-- combo distrito -->
 	 <!-- hacer sql dentro de jsp jslt(creo que así se llama)--> 
-	 <input list="distritos" class="listadistrito" name="distrito" id="txtDistrito"/>
-	  <datalist id="distritos">
-		<option value="Cercado Lima">
-		<option value="Los olivos">
-		<option value="Independencia">
-	  </datalist>
+	 <!-- <input list="distritos" class="listadistrito" name="distrito" id="txtDistrito"/>
+	  <datalist id="distritos" ng-repeat="x in dist">
+		<option value="{{x.nom}}">
+	  </datalist> -->
+	  <select ng-repeat="x in lstDistritos">
+	<option value="{{x.id}}">{{x.nom}}
+	</select>
 	<span id="mtxtDistrito"></span>
 	 </div>
 	 

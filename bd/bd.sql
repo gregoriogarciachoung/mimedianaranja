@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2018 a las 00:07:10
+-- Tiempo de generación: 19-11-2018 a las 08:34:51
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -286,13 +286,15 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
 (1, 2, 26, 20, 160, 150, 2, 1),
 (2, 1, 25, 19, 170, 160, 1, 1),
-(3, 2, 25, 19, 200, 159, 1, 1),
+(3, 2, 24, 18, 200, 159, 1, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
 (8, 1, 26, 20, 210, 160, 2, 1),
 (9, 1, 24, 15, 180, 160, 1, 1),
-(10, 1, 24, 15, 178, 150, 3, 1);
+(10, 1, 24, 15, 178, 150, 3, 1),
+(11, 1, 21, 15, 177, 167, 3, 4),
+(12, 1, 31, 25, 179, 169, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -327,7 +329,15 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `receptor` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `msj` varchar(240) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `fecha`, `msj`) VALUES
+(4, 8, 3, '2018-11-18', 'hola'),
+(5, 8, 3, '2018-11-18', 'Mi número es 931 510 579. Envíame un mensaje');
 
 -- --------------------------------------------------------
 
@@ -360,7 +370,7 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
@@ -369,7 +379,10 @@ CREATE TABLE IF NOT EXISTS `parejas` (
 INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
 (4, 3, 8),
 (5, 8, 3),
-(6, 3, 7);
+(6, 3, 7),
+(7, 3, 9),
+(8, 3, 10),
+(9, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -423,11 +436,11 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (2, 4, 'ACDC'),
 (2, 5, 'Ser programadora\nser presidente\nser corrupta'),
 (2, 6, 'los 3 chamchitos'),
-(3, 1, 'Me gusta escuchar musica y ver peliculas'),
-(3, 2, 'Me gusta leer y y escuchar musica'),
+(3, 1, 'Me gusta escuchar música y ver películas'),
+(3, 2, 'Me gusta leer y y escuchar música'),
 (3, 3, 'La ciudad y los perros.'),
 (3, 4, 'Difonia'),
-(3, 5, 'me gusta leer, escuchar musica, ver peliculas'),
+(3, 5, 'me gusta leer, escuchar música, ver péliculas'),
 (3, 6, 'Comentarios reales de los incas'),
 (4, 1, ''),
 (4, 2, ''),
@@ -464,7 +477,19 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (10, 3, ''),
 (10, 4, ''),
 (10, 5, ''),
-(10, 6, '');
+(10, 6, ''),
+(11, 1, ''),
+(11, 2, ''),
+(11, 3, ''),
+(11, 4, ''),
+(11, 5, ''),
+(11, 6, ''),
+(12, 1, ''),
+(12, 2, ''),
+(12, 3, ''),
+(12, 4, ''),
+(12, 5, ''),
+(12, 6, '');
 
 -- --------------------------------------------------------
 
@@ -498,7 +523,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -513,7 +538,9 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`) VALUES
 (7, 'maria@gmail.com', '123'),
 (8, 'carlita@gmail.com', '123'),
 (9, 'nina@gmail.com', '1234'),
-(10, 'ana@gmail.com', '1234');
+(10, 'ana@gmail.com', '1234'),
+(11, 'hyemi@gmail.com', '1234'),
+(12, 'candid@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -543,13 +570,15 @@ CREATE TABLE IF NOT EXISTS `usuariodatos` (
 INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hijos`, `estCivil`, `nivelEdu`, `altura`, `ocupacion`, `autodes`, `foto`) VALUES
 (1, 'jacinto', 1, '1995-10-10', 2, 1, 1, 1, 160, 'doy clases en cibertec', 'Soy profesor de cibertec, me gusta la crema de leche deslactosada', 'images/jacinto@gmail.com//jacinto.jpg'),
 (2, 'Elba', 2, '1996-01-01', 1, 1, 1, 1, 160, 'estudiante', '', 'images/elba@gmail.com//pablo.png'),
-(3, 'Pablo', 1, '1996-01-01', 1, 1, 1, 1, 160, 'Ingeniero', 'Soy un estudiante de cibertec de la carrera de computacion e informatica de sexto ciclo en mis tiempos libres me gusta escuchar musica ', 'images/pablito@gmail.com//pablo.png'),
+(3, 'Pablo', 1, '1996-01-01', 1, 1, 1, 1, 160, 'Ingeniero', 'Soy un estudiante de cibertec de la carrera de computacion e informática de sexto ciclo en mis tiempos libres me gusta escuchar música', 'images/pablito@gmail.com//pablo.png'),
 (4, 'Andrea ', 2, '1997-11-16', 3, 1, 1, 1, 160, 'promo', '', 'images/Andrea@gmail.com//chia2.jpg'),
 (5, 'Pedro Perez', 1, '1995-10-10', 1, 1, 1, 1, 160, 'Ingeniero', '', 'images/pedro@gmail.com//jacinto.jpg'),
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
 (8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
 (9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg'),
-(10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', '', 'images/ana@gmail.com//ana.jpg');
+(10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', '', 'images/ana@gmail.com//ana.jpg'),
+(11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
+(12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -660,7 +689,7 @@ ALTER TABLE `interes`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `niveleducacion`
 --
@@ -670,7 +699,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --
@@ -685,7 +714,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --

@@ -1,10 +1,10 @@
-<?php header('Content-Type: text/html; charset=ISO-8859-1'); ?>
 <?php
 session_start();
 if ($_SESSION['ax']!="1"){
 header("location:index.php");
 }
 ?>
+<?php header('Content-Type: text/html; charset=ISO-8859-1'); ?>
 <!DOCTYPE html>
 <html lang="esS" >
 <head>
@@ -28,7 +28,7 @@ header("location:index.php");
 </head>
 <body  ng-app="goyo" ng-controller="mehizoclick">
 
-<form action="sesion.php" method="post" id="frmSalir">
+<form action="on/sesion.php" method="post" id="frmSalir">
 </form>
 
 <header>
@@ -359,7 +359,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		var txtDes = document.querySelector("#txtDes");
 		$http({
 			method: 'POST',
-			url: 'editarMiDes.php', 
+			url: 'on/editarMiDes.php', 
 			data: { txtDesR: txtDes.value }
 			}).then(function (response) {
 		}, function (error) {
@@ -381,7 +381,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		var txtOcu = document.querySelector("#txtOcu");
 		$http({
 			method: 'POST',
-			url: 'editarMiOcu.php', 
+			url: 'on/editarMiOcu.php', 
 			data: { txtOcuR: txtOcu.value }
 			}).then(function (response) {
 		}, function (error) {
@@ -393,7 +393,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		var txtInteres = document.querySelectorAll("#txtInteres");
 		$http({
 			method: 'POST',
-			url: 'editarMiInteres.php', 
+			url: 'on/editarMiInteres.php', 
 			data: { txtInteresR: txtInteres[i-1].value, preR: i }
 			}).then(function (response) {
 		}, function (error) {

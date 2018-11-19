@@ -53,7 +53,7 @@ buscan una relación duradera</p>
 <?php
 if(isset($_POST['nts'])){
 	echo "<font color='red'>Error de autentificación</font>";
-   include('login.php');
+   include('on/login.php');
    
    ?>
    <script>
