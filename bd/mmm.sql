@@ -125,7 +125,7 @@ end
 |
 drop procedure sp_registraUsuario;
 delimiter |
-create procedure sp_registraUsuario(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito varchar(45), p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto varchar(45))
+create procedure sp_registraUsuario(p_nom varchar(45), p_mail varchar(45), p_pass varchar(45), p_sexo int, p_fecNac date, p_idDistrito int, p_hijos int, p_estCivil int, p_nivelEdu int, p_altura int, p_ocupacion varchar(45), p_intereses int, p_foto varchar(45))
 begin
 
 	declare idU int;
@@ -135,10 +135,6 @@ begin
 	declare edad int;
 	declare amx int;
 	declare amn int;
-	
-	declare iddis int;
-	set iddis = (select id from distritos where nom = p_idDistrito);
-	
 	
 	if(p_sexo = 1)then
 		set sex = 2;
@@ -160,10 +156,10 @@ begin
 
 	set idU = (select id from usuario where mail = p_mail);
 	insert into usuarioDatos values
-	(idU,p_nom,p_sexo, p_fecNac, iddis, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
+	(idU,p_nom,p_sexo, p_fecNac, p_idDistrito, p_hijos, p_estCivil, p_nivelEdu, p_altura, p_ocupacion,'',p_foto);
 	
 	insert into filtros values
-	(idU, sex, emx, emn, amx, amn, iddis, p_intereses);
+	(idU, sex, emx, emn, amx, amn, p_idDistrito, p_intereses);
 	
 	
 	insert into resOtrosIntereses values

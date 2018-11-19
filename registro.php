@@ -55,8 +55,8 @@
 	  <datalist id="distritos" ng-repeat="x in dist">
 		<option value="{{x.nom}}">
 	  </datalist> -->
-	  <select ng-repeat="x in lstDistritos">
-	<option value="{{x.id}}">{{x.nom}}
+	  <select>
+	<option  ng-repeat="x in lstDistritos" value="{{x.id}}">{{x.nom}}
 	</select>
 	<span id="mtxtDistrito"></span>
 	 </div>
