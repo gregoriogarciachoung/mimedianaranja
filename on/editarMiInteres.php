@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+require_once("../modelo/usuario.php");
 session_start();
 $pass = $_SESSION['usu'];
 
@@ -8,10 +8,10 @@ $rq = json_decode($pd);
 $res = $rq->txtInteresR;
 $pre = $rq->preR;
 
-$query3 = getConexion()->prepare('call ps_editarResOtrosIntereses(?,?,?)');
-$query3->execute(array(
+$per=new usuario();
+$datos=$per->editar_interes(
 $pass,
 $pre,
 utf8_decode($res)
-));
+);
 ?>

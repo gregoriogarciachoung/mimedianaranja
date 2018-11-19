@@ -70,7 +70,7 @@ header("location:index.php");
 	<p>{{x.ocu}}</p>
 	</div>
 	<section class="momo" id="usuModal">
-	<form action="meGusta.php" method="post" id="meGusta">
+	<form action="on/meGusta.php" method="post" id="meGusta">
 		<div ng-repeat="y in mdatos">
 		<section>
 			<figure>
@@ -217,7 +217,7 @@ header("location:index.php");
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">
-		<form action="editaFiltro.php" method="post">
+		<form action="on/editaFiltro.php" method="post">
 		<div ng-repeat="x in datos">
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
@@ -370,7 +370,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		var txtMensaje = document.querySelector("#txtMensaje");
 		$http({
 			method: 'POST',
-			url: 'enviarMensaje.php', 
+			url: 'on/enviarMensaje.php', 
 			data: { txtReceptorR: i, txtMensajeR: txtMensaje.value}
 			}).then(function (response) {
 		}, function (error) {

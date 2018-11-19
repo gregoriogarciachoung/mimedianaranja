@@ -11,7 +11,6 @@ class datosAplicacion{
     }
 	public function get_relaciones(){
         $consulta=$this->db->prepare("select * from interes");
-		$consulta->bindParam(1,$a);
 		$consulta->execute();
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
             $this->relaciones[]=$filas;

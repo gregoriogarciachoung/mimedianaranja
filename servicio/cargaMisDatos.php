@@ -1,8 +1,8 @@
 <?php
 require_once("../modelo/cargaUsuario.php");
-$per=new cargaUsuario();
 session_start();
 $pass = $_SESSION['usu'];
+$per=new cargaUsuario();
 $datos=$per->get_datos($pass);
 $data = array();
 $cont = 0;
