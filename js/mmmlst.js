@@ -46,7 +46,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaRelacionInteres2 = function() {
 		$http({
 		method: 'POST',
-		url: 'listaRelacionInteres.php'
+		url: 'servicio/listaRelacionInteres.php'
 		}).then(function(response) {
 		$scope.adatos = response.data.lstRelacionInteres;
 		});
@@ -54,7 +54,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaParejas = function() {
 		$http({
 		method: 'POST',
-		url: 'listaParejas.php'
+		url: 'servicio/listaParejas.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstParejas;
 		});
@@ -62,7 +62,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaMeGustan = function() {
 		$http({
 		method: 'POST',
-		url: 'listaMeGustan.php'
+		url: 'servicio/listaMeGustan.php'
 		}).then(function(response) {
 		$scope.datos2 = response.data.lstMeGustan;
 		});
@@ -70,7 +70,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaMensajes = function() {
 		$http({
 		method: 'POST',
-		url: 'listaMensajes.php'
+		url: 'servicio/listaMensajes.php'
 		}).then(function(response) {
 		$scope.msj = response.data.lstMensajes;
 		});

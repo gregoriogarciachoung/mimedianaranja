@@ -339,7 +339,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		//alert(i);
 		$http({
 		method: 'GET',
-		url: 'cargaOtroUsuario2.php?idU='+i,
+		url: 'servicio/cargaOtroUsuario2.php?idU='+i,
 		}).then(function(response) {
 		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
 		});
@@ -350,7 +350,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		//alert(i);
 		$http({
 		method: 'GET',
-		url: 'cargaOtroUsuario2.php?idU='+i,
+		url: 'servicio/cargaOtroUsuario2.php?idU='+i,
 		}).then(function(response) {
 		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
 		});
