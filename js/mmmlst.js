@@ -14,7 +14,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaOtroUsuario = function() {
 		$http({
 		method: 'POST',
-		url: 'cargaOtroUsuario.php'
+		url: 'servicio/cargaOtroUsuario.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstOtroUsuario;
 		});
@@ -22,7 +22,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaMisDatos = function() {
 		$http({
 		method: 'POST',
-		url: 'cargaMisDatos.php'
+		url: 'servicio/cargaMisDatos.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstMisDatos;
 		});
@@ -30,7 +30,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaMisFiltros = function() {
 		$http({
 		method: 'POST',
-		url: 'cargaMisFiltros.php'
+		url: 'servicio/cargaMisFiltros.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstMisFiltros;
 		});
@@ -38,7 +38,7 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 	$scope.listaMisOtrosIntereses = function() {
 		$http({
 		method: 'POST',
-		url: 'cargaMisOtrosIntereses.php'
+		url: 'servicio/cargaMisOtrosIntereses.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstMisOtrosIntereses;
 		});
