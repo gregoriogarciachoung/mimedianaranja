@@ -44,7 +44,7 @@ header("location:index.php");
 			</ul>
 		</nav>
 		<div>
-			<li style="list-style:none" ng-repeat="x in datos"><img ng-src="{{x.foto}}"> {{x.nom}}
+			<li style="list-style:none" ng-repeat="x in datos">{{x.nom}}
 		</div>
 	</section>
 </header>
