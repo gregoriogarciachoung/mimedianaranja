@@ -10,6 +10,7 @@ $cont = 0;
 	$data[$cont]['nom'] = utf8_encode($dato['nom']);
 	$data[$cont]['ocu'] = utf8_encode($dato['ocu']);
 	$data[$cont]['des'] = utf8_encode($dato['des']);
+	$data[$cont]['foto'] = utf8_encode($dato['foto']);
 					$cont++;
               //  echo $dato["nom"]."<br/>";
             }

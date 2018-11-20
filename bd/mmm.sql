@@ -191,7 +191,7 @@ u.idUsu != cod;
 end
 |
 
--- drop procedure ps_consultaMisDatos;
+drop procedure ps_consultaMisDatos;
 delimiter |
 create procedure ps_consultaMisDatos(p_mail varchar(45))
 begin
@@ -200,7 +200,8 @@ set idU = (select id from usuario where mail = p_mail);
 select 
 nom as 'nom', 
 ocupacion as 'ocu', 
-autodes as 'des'
+autodes as 'des',
+foto
 from usuarioDatos where idUsu = idU;
 end
 |

@@ -11,14 +11,16 @@
 </div>
 
 <p>
-  <form action="" method="get" onsubmit="comet.doRequest($('word').value);$('word').value='';return false;">
-    <input type="text" name="word" id="word" value="" />
+  <form action="" method="get" onsubmit="comet.doRequest($('txtusu').value, $('word').value);$('word').value='';return false;">
+    <input type="text" name="txtusu" id="txtusu" value="<?php echo $_GET['usuario'] ?>" readonly="readonly" style="border:0"/>
+	<input type="text" name="word" id="word" value="" />
     <input type="submit" name="submit" value="Send" />
   </form>
 </p>
 
 <script type="text/javascript">
 var Comet = Class.create();
+var esteusu = document.querySelector("#txtusu").value;
 Comet.prototype = {
 
   timestamp: 0,
@@ -61,11 +63,11 @@ Comet.prototype = {
     $('content').innerHTML += '<div>' + response['msg'] + '</div>';
   },
 
-  doRequest: function(request)
+  doRequest: function(usu, request)
   {
     new Ajax.Request(this.url, {
       method: 'get',
-      parameters: { 'msg' : request }
+      parameters: { 'msg' : usu+": "+request }
     });
   }
 }

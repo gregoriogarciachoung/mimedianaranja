@@ -39,12 +39,12 @@ header("location:index.php");
 		<nav>
 			<ul>
 				<li ng-click="mostrarFiltros()">Filtro
-				<li>Bla
+				<li  ng-repeat="x in datos"><a href="chat.php?usuario={{x.nom}}">Chat</a>
 				<li ng-click="cerrarSesion()">Salir
 			</ul>
 		</nav>
 		<div>
-			<li style="list-style:none" ng-repeat="x in datos">{{x.nom}}<img/>
+			<li style="list-style:none" ng-repeat="x in datos"><img ng-src="{{x.foto}}"> {{x.nom}}
 		</div>
 	</section>
 </header>
@@ -301,11 +301,11 @@ $(document).ready(function(){
 });
 var contColor = 0;
 function cambiaColorGrabar(abc){
-	var colores = ["blue","red","green","#3c92ff","#9800ff","orange"];
+	var colores = ["blue","red"];
 			//var x = Math.floor((Math.random() * 6) + 1);
-			document.querySelector(" "+abc+" + h3").style.color = colores[contColor];
+			document.querySelector(" "+abc+" + h3 a").style.color = colores[contColor];
 			contColor = contColor + 1;
-			if(contColor == 6){
+			if(contColor == 2){
 				contColor = 0;
 			}
 }
@@ -398,14 +398,14 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
-		var colores = ["blue","red","green","##3c92ff","##9800ff","orange"];
+		var colores = ["blue","red"];
 			//var x = Math.floor((Math.random() * 6) + 1);
 			
 			var m = parseInt(i) + parseInt((i-1));
-			var txtInteres2 = document.querySelectorAll("#txtInteres + h3");
+			var txtInteres2 = document.querySelectorAll("#txtInteres + h3 a");
 			txtInteres2[i-1].style.color = colores[contColor];
 			contColor = contColor + 1;
-			if(contColor == 6){
+			if(contColor == 2){
 				contColor = 0;
 			}
 	}
