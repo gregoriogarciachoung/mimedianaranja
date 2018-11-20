@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2018 a las 09:26:52
+-- Tiempo de generación: 20-11-2018 a las 18:38:45
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -47,7 +47,8 @@ set idU = (select id from usuario where mail = p_mail);
 select 
 nom as 'nom', 
 ocupacion as 'ocu', 
-autodes as 'des'
+autodes as 'des',
+foto
 from usuarioDatos where idUsu = idU;
 end$$
 
@@ -286,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
 (1, 2, 26, 20, 160, 150, 2, 1),
 (2, 1, 25, 19, 170, 160, 1, 1),
-(3, 2, 24, 18, 200, 159, 1, 1),
+(3, 2, 24, 17, 200, 150, 1, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
@@ -294,7 +295,7 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (9, 1, 24, 15, 180, 160, 1, 1),
 (10, 1, 24, 15, 178, 150, 3, 1),
 (11, 1, 21, 15, 177, 167, 3, 4),
-(12, 1, 31, 25, 179, 169, NULL, 1);
+(12, 1, 31, 25, 179, 169, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -472,12 +473,12 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (9, 4, ''),
 (9, 5, ''),
 (9, 6, ''),
-(10, 1, ''),
-(10, 2, ''),
-(10, 3, ''),
-(10, 4, ''),
-(10, 5, ''),
-(10, 6, ''),
+(10, 1, 'Pasarla bien... XD'),
+(10, 2, 'Estudio, veo tv, leo y otras cosas que solo hago con mi pareja.'),
+(10, 3, 'Lo que da a las 12 de la noche en edge'),
+(10, 4, 'Fiestar, IU'),
+(10, 5, 'Música, deportes, lecutra.'),
+(10, 6, 'La divina comedia, la iliada, la odisea.'),
 (11, 1, ''),
 (11, 2, ''),
 (11, 3, ''),
@@ -576,7 +577,7 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
 (8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
 (9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg'),
-(10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', '', 'images/ana@gmail.com//ana.jpg'),
+(10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', 'Soy una chica linda, me gusta salir con amigos y hacerles creer estoy interesada en ellos.', 'images/ana@gmail.com//ana.jpg'),
 (11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
 (12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg');
 
