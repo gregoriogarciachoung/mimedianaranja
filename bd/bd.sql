@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2018 a las 18:38:45
+-- Tiempo de generación: 21-11-2018 a las 18:01:51
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -120,6 +120,20 @@ u.ocupacion as 'ocu',
 (select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs'
 from usuarioDatos u 
 where idUsu = p_id;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cc`(p_mail varchar(45),p_pass1 varchar(45), p_pass2 varchar(45))
+begin
+declare getpass varchar(45);
+declare resultado int;
+set getpass = (select pass from usuario where mail = p_mail);
+if(getpass = p_pass1)then
+	update usuario set pass = p_pass2 where mail = p_mail;
+	set resultado = 1;
+else
+	set resultado = 0;
+end if;
+select resultado;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listaMegustan`(p_mail varchar(45))
@@ -467,12 +481,12 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (8, 4, ''),
 (8, 5, ''),
 (8, 6, ''),
-(9, 1, ''),
-(9, 2, ''),
-(9, 3, ''),
-(9, 4, ''),
-(9, 5, ''),
-(9, 6, ''),
+(9, 1, 'Busco una persona seria, para conocenos y tener una linda relación'),
+(9, 2, 'Bailar, cine, viajar.'),
+(9, 3, 'Muchos doramas'),
+(9, 4, 'Fiestar, IU.'),
+(9, 5, 'Bailar, cine, viajar.'),
+(9, 6, 'El exorcista'),
 (10, 1, 'Pasarla bien... XD'),
 (10, 2, 'Estudio, veo tv, leo y otras cosas que solo hago con mi pareja.'),
 (10, 3, 'Lo que da a las 12 de la noche en edge'),
@@ -531,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`) VALUES
-(1, 'jacinto@gmail.com', '123'),
+(1, 'jacinto@gmail.com', '1abc'),
 (2, 'elba@gmail.com', '1234'),
 (3, 'pablito@gmail.com', '1234'),
 (4, 'Andrea@gmail.com', '123'),
@@ -576,7 +590,7 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (5, 'Pedro Perez', 1, '1995-10-10', 1, 1, 1, 1, 160, 'Ingeniero', '', 'images/pedro@gmail.com//jacinto.jpg'),
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
 (8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
-(9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', '', 'images/nina@gmail.com//p_00023.jpg'),
+(9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', 'Soy una chica muy amable, responsable, amorosa, muy detallista, sincera sobre todo honesta.', 'images/nina@gmail.com//p_00023.jpg'),
 (10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', 'Soy una chica linda, me gusta salir con amigos y hacerles creer estoy interesada en ellos.', 'images/ana@gmail.com//ana.jpg'),
 (11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
 (12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg');
