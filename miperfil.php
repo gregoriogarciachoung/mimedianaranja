@@ -221,14 +221,15 @@ header("location:index.php");
 		<h2 class="t2 configcuenta">Cambio de contraseña</h2>
 		<div ng-controller="ella" ng-init="listaMisDatos()">
 			<div class="marcotres">
-			<form action="on/cc.php" method="post">
+			<form  action="on/cc.php" method="post">
 			<p>Actual contraseña</p>
-			<input type="password" placeholder="Actual contraseña" name="pass1" required/>
+			<input type="password" placeholder="Actual contraseña" name="pass1" id="txtpass1" required/>
 			<p>Nueva contraseña</p>
 			<input type="password"  placeholder="Nueva contraseña" name="pass2" id="txtPass2" required/>
 			<p>Repite contraseña</p>
 			<input type="password"  placeholder="Repite contraseña" name="pass3" id="txtPass3" required/>
 			<button type="submit"  id="btnCambioC">Enviar</button>
+			<span id="msj1"></span>
 			</form>
 			</div>
 			<div class="marcotres">
@@ -239,6 +240,7 @@ header("location:index.php");
 			<input type="radio" name="chkblo" value="1"/> Desbloquear
 			<br>
 			<button type="submit"  id="btnCambioB">Enviar</button>
+			<span id="msj2"></span>
 			</form>
 			</div>
 		</div>
@@ -282,7 +284,6 @@ header("location:index.php");
 <script>
 var ellanomehacecaso = angular.module('goyo', []);
 var nlista = document.querySelector("#mimi").text;
-alert(nlista);
 </script>
 <script>
 
@@ -325,7 +326,18 @@ $(document).ready(function(){
 		ocultarSecciones();
 		$("main>section").eq(j).show();
 	});
-
+/*
+	$("#btnCambioC").click(function(){
+		var p1 = $("#txtPass1").val();
+		var p2 = $("#txtPass2").val();
+		var p3 = $("#txtPass3").val();
+		if(p1 =="" || p2 == "" || p3 == ""){}
+		else if(p2 != p3){
+			alert("Error en datos");
+		}else{
+			alert("Cambio guardado");
+		}
+	});*/
 });
 var contColor = 0;
 function cambiaColorGrabar(abc){
@@ -444,8 +456,21 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 </script>
 <script type="text/javascript" src="js/mmmlst.js"></script>
 <script>
-/*
+
 function iniciar(){
+	
+	var query = window.location.search.substring(1);
+       // var vars = query.split("&");
+        var vars2 = query.split("=");
+		
+		if(query == ""){
+			 document.getElementById("msj1").innerHTML ="";
+		}else{
+			 document.getElementById("msj1").innerHTML = vars2[1];
+		}
+               
+
+   
  txtpass2=document.getElementById("txtPass2");
  txtpass3=document.getElementById("txtPass3");
  txtpass2.addEventListener("input", validacion, false);
@@ -460,8 +485,9 @@ function iniciar(){
  }
  }
  window.addEventListener("load", iniciar, false);
+ 
 </script>
-*/
+
 </html>
 
 
