@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2018 a las 18:01:51
+-- Tiempo de generación: 21-11-2018 a las 21:50:02
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -31,13 +31,16 @@ set cod = (select id from usuario where mail = p_mail);
 select u.idUsu as 'id', u.foto as 'foto' , u.nom as 'Nombre' , year(curdate()) - year(u.fecNac) as 'Edad' , u.ocupacion as 'Ocupacion' from filtros f
 join usuarioDatos u
 on f.idUsu = u.idUsu
+join usuario usua
+on u.idUsu = usua.id
 where 
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
 f.idinteres = p_interes and
 u.idUsu not in (select mipareja from parejas where yo = cod) and
-u.idUsu != cod;
+u.idUsu != cod and
+usua.estado = 1;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ps_consultaMisDatos`(p_mail varchar(45))
@@ -475,12 +478,12 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (7, 4, ''),
 (7, 5, ''),
 (7, 6, ''),
-(8, 1, ''),
-(8, 2, ''),
-(8, 3, ''),
-(8, 4, ''),
-(8, 5, ''),
-(8, 6, ''),
+(8, 1, 'No tengo idea, que pase lo que tenga que pasar'),
+(8, 2, 'entrenar, bailar o dormir'),
+(8, 3, 'star wars, harry poher, el conjuro'),
+(8, 4, 'fiestar, IU'),
+(8, 5, 'dormir, cantar, nadar'),
+(8, 6, 'Cielo Latini, absurda, Gabriel Rolan, Los padecientes'),
 (9, 1, 'Busco una persona seria, para conocenos y tener una linda relación'),
 (9, 2, 'Bailar, cine, viajar.'),
 (9, 3, 'Muchos doramas'),
@@ -537,25 +540,26 @@ INSERT INTO `sexos` (`id`, `nom`) VALUES
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL,
   `mail` varchar(45) DEFAULT NULL,
-  `pass` varchar(45) DEFAULT NULL
+  `pass` varchar(45) DEFAULT NULL,
+  `estado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `mail`, `pass`) VALUES
-(1, 'jacinto@gmail.com', '1abc'),
-(2, 'elba@gmail.com', '1234'),
-(3, 'pablito@gmail.com', '1234'),
-(4, 'Andrea@gmail.com', '123'),
-(5, 'pedro@gmail.com', '123'),
-(7, 'maria@gmail.com', '123'),
-(8, 'carlita@gmail.com', '123'),
-(9, 'nina@gmail.com', '1234'),
-(10, 'ana@gmail.com', '1234'),
-(11, 'hyemi@gmail.com', '1234'),
-(12, 'candid@gmail.com', '1234');
+INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
+(1, 'jacinto@gmail.com', '1abc', 1),
+(2, 'elba@gmail.com', '1234', 1),
+(3, 'pablito@gmail.com', '1234', 1),
+(4, 'Andrea@gmail.com', '123', 1),
+(5, 'pedro@gmail.com', '123', 1),
+(7, 'maria@gmail.com', '123', 1),
+(8, 'carlita@gmail.com', '1234', 1),
+(9, 'nina@gmail.com', '1234', 1),
+(10, 'ana@gmail.com', '1234', 1),
+(11, 'hyemi@gmail.com', '1234', 1),
+(12, 'candid@gmail.com', '1234', 1);
 
 -- --------------------------------------------------------
 
@@ -589,7 +593,7 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (4, 'Andrea ', 2, '1997-11-16', 3, 1, 1, 1, 160, 'promo', '', 'images/Andrea@gmail.com//chia2.jpg'),
 (5, 'Pedro Perez', 1, '1995-10-10', 1, 1, 1, 1, 160, 'Ingeniero', '', 'images/pedro@gmail.com//jacinto.jpg'),
 (7, 'Maria Gonzales', 2, '1995-10-10', 1, 1, 1, 1, 160, 'MESERA', '', 'images/maria@gmail.com//pablo.png'),
-(8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', '', 'images/carlita@gmail.com//chia2.jpg'),
+(8, 'carlita jimenez', 2, '1995-10-10', 2, 1, 1, 1, 200, 'MESERA', 'me gusta conversar de temas variados en mis tiempos de ocio.', 'images/carlita@gmail.com//chia2.jpg'),
 (9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', 'Soy una chica muy amable, responsable, amorosa, muy detallista, sincera sobre todo honesta.', 'images/nina@gmail.com//p_00023.jpg'),
 (10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', 'Soy una chica linda, me gusta salir con amigos y hacerles creer estoy interesada en ellos.', 'images/ana@gmail.com//ana.jpg'),
 (11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
