@@ -53,8 +53,8 @@ header("location:index.php");
 	<aside>
 		<nav>
 			<ul>
-				<li>Sugeridos<!-- <li ng-click="cargarSugeridos()">Sugeridos -->
-				<li><a href="invitaciones.php">Invitaciones</a>
+				<li><a href="mmm.php">Sugeridos</a><!-- <li ng-click="cargarSugeridos()">Sugeridos -->
+				<li>Invitaciones
 				<li><a href="mensajes.php">Mensajes</a>
 				<li><a href="miperfil.php">Mi Perfil</a>
 			</ul>
@@ -308,7 +308,7 @@ $(document).ready(function(){
 	}
 
 	ocultarSecciones();
-	$("main>section").eq(0).show();
+	$("main>section").eq(1).show();
 
 		$("main>aside>nav li").click(function(){
 		var j = $("main>aside>nav li").index(this);
@@ -427,7 +427,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 				contColor = 0;
 			}
 	}
-	/*$scope.cargarSugeridos = function(){
+/*	$scope.cargarSugeridos = function(){
 		location.reload();
 	}*/
 });

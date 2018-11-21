@@ -21,6 +21,6 @@ try{
 }catch(Exception $e){
 	echo "Error";
 }finally{
-	header("location:../mmm.php");	
+	header("location:../miperfil.php");	
 }
  ?>

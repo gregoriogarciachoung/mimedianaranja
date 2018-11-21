@@ -53,10 +53,10 @@ header("location:index.php");
 	<aside>
 		<nav>
 			<ul>
-				<li>Sugeridos<!-- <li ng-click="cargarSugeridos()">Sugeridos -->
+				<li><a href="mmm.php">Sugeridos<!-- <li ng-click="cargarSugeridos()">Sugeridos -->
 				<li><a href="invitaciones.php">Invitaciones</a>
 				<li><a href="mensajes.php">Mensajes</a>
-				<li><a href="miperfil.php">Mi Perfil</a>
+				<li>Mi Perfil
 			</ul>
 		</nav>
 	</aside>
@@ -308,7 +308,7 @@ $(document).ready(function(){
 	}
 
 	ocultarSecciones();
-	$("main>section").eq(0).show();
+	$("main>section").eq(3).show();
 
 		$("main>aside>nav li").click(function(){
 		var j = $("main>aside>nav li").index(this);
