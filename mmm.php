@@ -11,6 +11,7 @@ header("location:index.php");
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <script type="text/javascript" src="js/jquery.min.js"></script>
+
 <script type="text/javascript" src="js/angular.min.js"></script>
 <link rel="stylesheet" href="css/mmmstruc.css"/>
 <link rel="stylesheet" href="css/mmmali.css"/>
@@ -213,7 +214,24 @@ header("location:index.php");
 			<h3 ng-click="editarMiInteres(x.idPre)"><a href="#" onclick="return false;">GRABAR</a></h3>
 			</div>
 		</div>
-		
+		<div class="t1" id="tampocomehacecaso">
+		<h1>Configuración</h1>
+		<h2>Cambia contraseña o bloquea u desbloquea tu cuenta</h2>
+		</div>
+		<h2 class="t2 configcuenta">Cambio de contraseña</h2>
+		<div ng-controller="ella" ng-init="listaMisDatos()">
+			<div class="marcotres">
+			<form action="on/cc.php" method="post">
+			<p>Actual contraseña</p>
+			<input type="password" placeholder="Actual contraseña" name="pass1" required/>
+			<p>Nueva contraseña</p>
+			<input type="password"  placeholder="Nueva contraseña" name="pass2" id="txtPass2" required/>
+			<p>Repite contraseña</p>
+			<input type="password"  placeholder="Repite contraseña" name="pass3" id="txtPass3" required/>
+			<button type="submit"  id="btnGuardar">Enviar</button>
+			</form>
+			</div>
+		</div>
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">
@@ -413,9 +431,25 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		location.reload();
 	}
 });
-
 </script>
 <script type="text/javascript" src="js/mmmlst.js"></script>
+<script>
+function iniciar(){
+ txtpass2=document.getElementById("txtPass2");
+ txtpass3=document.getElementById("txtPass3");
+ txtpass2.addEventListener("input", validacion, false);
+ txtpass3.addEventListener("input", validacion, false);
+ validacion();
+ }
+ function validacion(){
+ if(txtpass2.value!=txtpass3.value){
+ txtpass3.setCustomValidity('Contraseña no coincide con la anterior');
+ }else{
+ txtpass3.setCustomValidity('');
+ }
+ }
+ window.addEventListener("load", iniciar, false);
+</script>
 </html>
 
 

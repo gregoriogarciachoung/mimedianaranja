@@ -302,6 +302,23 @@ set cod = (select id from usuario where mail = p_mail);
 insert into parejas(yo, mipareja) values (cod,p_pareja);
 end
 |
+drop procedure sp_cc;
+delimiter |
+create procedure sp_cc(p_mail varchar(45),p_pass1 varchar(45), p_pass2 varchar(45))
+begin
+declare getpass varchar(45);
+declare resultado int;
+set getpass = (select pass from usuario where mail = p_mail);
+if(getpass = p_pass1)then
+	update usuario set pass = p_pass2 where mail = p_mail;
+	set resultado = 1;
+else
+	set resultado = 0;
+end if;
+select resultado;
+end
+|
+
 delimiter |
 create procedure ps_consultaMisDatos2(p_mail varchar(45))
 begin

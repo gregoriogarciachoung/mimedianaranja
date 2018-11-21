@@ -2,10 +2,12 @@
 require_once('../util/conexion.php');
 class usuario{
     private $db;
+	private $res; //guarda el resultado al cambiar la contraseña
 
     public function __construct(){
 		$bd = new conexion();
 		$this->db= $bd->getConexion();
+		$this->res=array();
     }
 	public function registrar($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m){
         $consulta=$this->db->prepare("call sp_registraUsuario(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -78,6 +80,20 @@ class usuario{
 		$consulta->bindParam(1,$a);
 		$consulta->bindParam(2,$b);
 		$consulta->execute();
+		$consulta = null;
+		$this->db = null; 
+    }
+	public function editar_pass($a,$b,$c){
+        $consulta=$this->db->prepare("call sp_cc(?,?,?)");
+		$consulta->bindParam(1,$a);
+		$consulta->bindParam(2,$b);
+		$consulta->bindParam(3,$c);
+		$consulta->execute();
+		//obtener respuesta al cambio de contraseña, la validación está en la bd
+		while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
+            $this->res[]=$filas;
+        }
+		return $this->res;
 		$consulta = null;
 		$this->db = null; 
     }
