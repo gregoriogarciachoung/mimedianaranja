@@ -24,7 +24,8 @@ nom varchar(45)
 create table usuario(
 id int primary key auto_increment,
 mail varchar(45) unique,
-pass varchar(45)
+pass varchar(45),
+estado int
 );
 create table usuarioDatos(
 idUsu int,
@@ -151,8 +152,8 @@ begin
 	set emn = edad - 3;
 	
 	
-	insert into usuario(mail, pass) values
-	(p_mail,p_pass);
+	insert into usuario(mail, pass,estado) values
+	(p_mail,p_pass,1);
 
 	set idU = (select id from usuario where mail = p_mail);
 	insert into usuarioDatos values
@@ -172,7 +173,7 @@ begin
 	
 end
 |
--- drop  procedure ps_buscaOtroUsuario;
+drop  procedure ps_buscaOtroUsuario;
 delimiter |
 create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int,p_mail varchar(45))
 begin
@@ -181,13 +182,16 @@ set cod = (select id from usuario where mail = p_mail);
 select u.idUsu as 'id', u.foto as 'foto' , u.nom as 'Nombre' , year(curdate()) - year(u.fecNac) as 'Edad' , u.ocupacion as 'Ocupacion' from filtros f
 join usuarioDatos u
 on f.idUsu = u.idUsu
+join usuario usua
+on u.idUsu = usua.id
 where 
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
 f.idinteres = p_interes and
 u.idUsu not in (select mipareja from parejas where yo = cod) and
-u.idUsu != cod;
+u.idUsu != cod and
+usua.estado = 1;
 end
 |
 

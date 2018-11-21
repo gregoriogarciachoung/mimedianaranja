@@ -228,7 +228,17 @@ header("location:index.php");
 			<input type="password"  placeholder="Nueva contraseña" name="pass2" id="txtPass2" required/>
 			<p>Repite contraseña</p>
 			<input type="password"  placeholder="Repite contraseña" name="pass3" id="txtPass3" required/>
-			<button type="submit"  id="btnGuardar">Enviar</button>
+			<button type="submit"  id="btnCambioC">Enviar</button>
+			</form>
+			</div>
+			<div class="marcotres">
+			<form action="on/bloqueo.php" method="post">
+			<p>No aparecerás en la lista de sugeridos de otros usuarios.</p>
+			<input type="radio" name="chkblo" value="0"/> Bloquear
+			<br>
+			<input type="radio" name="chkblo" value="1"/> Desbloquear
+			<br>
+			<button type="submit"  id="btnCambioB">Enviar</button>
 			</form>
 			</div>
 		</div>
@@ -434,6 +444,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 </script>
 <script type="text/javascript" src="js/mmmlst.js"></script>
 <script>
+/*
 function iniciar(){
  txtpass2=document.getElementById("txtPass2");
  txtpass3=document.getElementById("txtPass3");
@@ -450,6 +461,7 @@ function iniciar(){
  }
  window.addEventListener("load", iniciar, false);
 </script>
+*/
 </html>
 
 

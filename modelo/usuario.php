@@ -99,6 +99,14 @@ class usuario{
 		$consulta = null;
 		$this->db = null; 
     }
+	public function bloqueo($a,$b){
+        $consulta=$this->db->prepare("update usuario set estado = ? where mail = ?");
+		$consulta->bindParam(1,$a);
+		$consulta->bindParam(2,$b);
+		$consulta->execute();
+		$consulta = null;
+		$this->db = null; 
+    }
 	public function login($a,$b){
         $consulta=$this->db->prepare("call sp_login(?,?)");
 		$consulta->bindParam(1,$a);
