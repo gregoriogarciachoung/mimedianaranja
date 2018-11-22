@@ -69,9 +69,10 @@ header("location:index.php");
 	<!-- Invitaciones -->
 	<section id="invi">
 	<h2>Invitaciones</h2>
+	<h6 style="font-size:12px; margin-bottom:1em">Selecciona una de la opciones, si no está en me gusta está en match</h6>
 	<div ng-controller="ella">
 		<nav>
-			<li id="meGustan"><img src="images/corazonmitad.png"/>
+			<li id="meGustan" ng-click="listaMeGustan()"><img src="images/corazonmitad.png"/>
 			<li id="match" ng-click="listaParejas()"><img src="images/corazonn.png"/>
 		</nav>
 		<h3 id="titu">Me gustan</h3>

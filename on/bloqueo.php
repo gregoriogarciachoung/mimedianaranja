@@ -7,7 +7,7 @@ try{
 	$per=new usuario();
 	
 	$resultado = $per->bloqueo($_POST['chkblo'], $pass);	
-	$estado="Estado cambiado"
+	$estado="Cambiado";
 	
 }catch(Exception $e){
 	$estdo = "Error";

@@ -293,7 +293,13 @@ function iniciar(){
 		if(query == ""){
 			 document.getElementById("msj1").innerHTML ="";
 		}else{
-			 document.getElementById("msj1").innerHTML = vars2[1];
+			if(vars2[0] == "msj1"){
+				document.getElementById("msj1").innerHTML = vars2[1];
+			}
+			if(vars2[0] == "estado"){
+				document.getElementById("msj2").innerHTML = vars2[1];
+			}
+			 
 		}
                
 

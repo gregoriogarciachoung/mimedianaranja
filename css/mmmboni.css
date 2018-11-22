@@ -322,3 +322,7 @@ margin:6px 0 6px 0;
 body>main>aside li a{
 color:#000;
 }
+span{
+color:red;
+display:block;
+}
