@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2018 a las 18:30:28
+-- Tiempo de generación: 22-11-2018 a las 21:31:46
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -250,7 +250,7 @@ DELIMITER ;
 CREATE TABLE IF NOT EXISTS `distritos` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `distritos`
@@ -259,7 +259,53 @@ CREATE TABLE IF NOT EXISTS `distritos` (
 INSERT INTO `distritos` (`id`, `nom`) VALUES
 (1, 'Cercado Lima'),
 (2, 'Los olivos'),
-(3, 'Independencia');
+(3, 'Independencia'),
+(4, 'ANCON'),
+(5, 'ATE'),
+(6, 'BARRANCO'),
+(7, 'BREÑA'),
+(8, 'BELLAVISTA'),
+(9, 'CALLAO'),
+(10, 'CARABAYLLO'),
+(11, 'CHACLACAYO'),
+(12, 'CARMEN DE LA LEGUA REYNOSO'),
+(13, 'CHORRILLOS'),
+(14, 'CIENEGUILLA'),
+(15, 'COMAS'),
+(16, 'EL AGUSTINO'),
+(17, 'JESUS MARIA'),
+(18, 'LA PERLA'),
+(19, 'LA PUNTA'),
+(20, 'LA MERCED'),
+(21, 'LA MOLINA'),
+(22, 'LA VICTORIA'),
+(23, 'LINCE'),
+(24, 'LURIGANCHO'),
+(25, 'LURIN'),
+(26, 'MAGDALENA DEL MAR'),
+(27, 'MIRAFLORES'),
+(28, 'PACHACAMAC'),
+(29, 'PUCUSANA'),
+(30, 'PUEBLO LIBRE'),
+(31, 'PUENTE PIEDRA'),
+(32, 'PUNTA HERMOSA'),
+(33, 'PUNTA NEGRA'),
+(34, 'RIMAC'),
+(35, 'SAN BARTOLO'),
+(36, 'SAN BORJA'),
+(37, 'SAN ISIDRO'),
+(38, 'SAN JUAN DE LURIGANCHO'),
+(39, 'SAN JUAN DE MIRAFLORES'),
+(40, 'SAN LUIS'),
+(41, 'SAN MARTIN DE PORRES'),
+(42, 'SAN MIGUEL'),
+(43, 'SANTA ANITA'),
+(44, 'SANTA ROSA'),
+(45, 'SANTIAGO DE SURCO'),
+(46, 'SURQUILLO'),
+(47, 'VILLA EL SALVADOR'),
+(48, 'VILLA MARIA DEL TRIUNFO'),
+(49, 'VENTANILLA');
 
 -- --------------------------------------------------------
 
@@ -303,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 --
 
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
-(1, 2, 26, 20, 160, 150, 2, 1),
+(1, 2, 26, 20, 200, 150, 2, 1),
 (2, 1, 25, 19, 170, 160, 1, 1),
 (3, 2, 24, 17, 200, 150, 1, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
@@ -313,7 +359,8 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (9, 1, 24, 15, 180, 160, 1, 1),
 (10, 1, 24, 15, 178, 150, 3, 1),
 (11, 1, 21, 15, 177, 167, 3, 4),
-(12, 1, 31, 25, 179, 169, 1, 1);
+(12, 1, 31, 25, 179, 169, 1, 1),
+(13, 1, 31, 25, 179, 167, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -397,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
@@ -411,7 +458,11 @@ INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
 (8, 3, 10),
 (9, 3, 4),
 (10, 3, 2),
-(11, 2, 3);
+(11, 2, 3),
+(12, 8, 1),
+(13, 1, 8),
+(14, 7, 1),
+(15, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -518,7 +569,13 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (12, 3, ''),
 (12, 4, ''),
 (12, 5, ''),
-(12, 6, '');
+(12, 6, ''),
+(13, 1, ''),
+(13, 2, ''),
+(13, 3, ''),
+(13, 4, ''),
+(13, 5, ''),
+(13, 6, '');
 
 -- --------------------------------------------------------
 
@@ -553,14 +610,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
-(1, 'jacinto@gmail.com', '1abc', 1),
+(1, 'jacinto@gmail.com', 'abcd', 1),
 (2, 'elba@gmail.com', '1234', 1),
 (3, 'pablito@gmail.com', '1234', 1),
 (4, 'Andrea@gmail.com', '123', 1),
@@ -570,7 +627,8 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
 (9, 'nina@gmail.com', '1234', 1),
 (10, 'ana@gmail.com', '1234', 1),
 (11, 'hyemi@gmail.com', '1234', 1),
-(12, 'candid@gmail.com', '1234', 1);
+(12, 'candid@gmail.com', '1234', 1),
+(13, 'valeria@gmail.com', 'mivale', NULL);
 
 -- --------------------------------------------------------
 
@@ -608,7 +666,8 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (9, 'Nina', 2, '2000-01-01', 1, 2, 1, 1, 170, 'Estudiante', 'Soy una chica muy amable, responsable, amorosa, muy detallista, sincera sobre todo honesta.', 'images/nina@gmail.com//p_00023.jpg'),
 (10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', 'Soy una chica linda, me gusta salir con amigos y hacerles creer estoy interesada en ellos.', 'images/ana@gmail.com//ana.jpg'),
 (11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
-(12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg');
+(12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg'),
+(13, 'Valeria', 2, '1990-01-01', NULL, 2, 1, 3, 169, 'Abogada', '', 'images/valeria@gmail.com//valeria.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -704,7 +763,7 @@ ALTER TABLE `usuariodatos`
 -- AUTO_INCREMENT de la tabla `distritos`
 --
 ALTER TABLE `distritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `estadocivil`
 --
@@ -729,7 +788,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --
@@ -744,7 +803,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --

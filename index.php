@@ -44,7 +44,7 @@ buscan una relación duradera</p>
 <input type="email" name="usu" placeholder="Ingresa tu correo" id="txtUsu" required>
 <button type="submit"  id="btnRegistrar">Registrar</button>
 <span id="msj2"></span>
-<div class="ella"><input type="checkbox">Acepto los términos y condiciones del portal</div>
+<div class="ella"><input type="checkbox" required>Acepto los términos y condiciones del portal</div>
 </form>
 <form  action="on/login.php" id="flog" method="post">
 <h4>Iniciar sesión para chatear con sus contactos</h4>

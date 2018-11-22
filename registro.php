@@ -61,8 +61,8 @@ header("location:index.php");
 	  <datalist id="distritos" ng-repeat="x in dist">
 		<option value="{{x.nom}}">
 	  </datalist> -->
-	  <select>
-	<option  ng-repeat="x in lstDistritos" value="{{x.id}}">{{x.nom}}
+	  <select name="distrito">
+	<option  ng-repeat="x in datos" value="{{x.id}}">{{x.nom}}
 	</select>
 	<span id="mtxtDistrito"></span>
 	 </div>
@@ -87,7 +87,7 @@ header("location:index.php");
 	 <h5>Máximo nivel alcanzado</h5>
 	 <!-- radiobutton -->
 	<nav ng-init="listaEducacion()">
-		<ul ng-repeat="x in educacion">
+		<ul ng-repeat="x in edus">
 			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="nivelA" value="{{x.id}}"/> {{x.nom}}
 			<li ng-if="x.id != 1"><input type="radio"  name="nivelA" value="{{x.id}}"/> {{x.nom}}
 		</ul>
@@ -116,7 +116,7 @@ header("location:index.php");
 	 <h5>Tipo de relación</h5>
 	
 	<nav ng-init="listaRelacionInteres()">
-		<ul ng-repeat="x in adatos">
+		<ul ng-repeat="x in relaciones">
 			<li ng-if="x.id == 1"><input type="radio"checked="checked" name="rela" value="{{x.id}}"/> {{x.nom}}
 			<li ng-if="x.id != 1"><input type="radio"  name="rela" value="{{x.id}}"/> {{x.nom}}
 		</ul>
@@ -137,7 +137,7 @@ header("location:index.php");
 	<h3>¡Falta Poco!</h3>
 	 <h4>Con los siguientes datos podrás acceder a tu cuenta de OH!</h4>
 	 <h5>Mi correo</h5>
-	<input type="email" placeholder="Correo" name="correo" value="<?php $cor = $_POST['usu']; echo $cor ?>"/>
+	<input type="email" placeholder="Correo" name="correo" value= "<?php $cor = $_SESSION['axu']; echo $cor; ?>"/>
 	<h5>Crea contraseña</h5>
 	<input type="password" placeholder="contraseña" name="clave" id="txtPass" required/>
 	<span id="mtxtPass"></span>

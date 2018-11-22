@@ -12,20 +12,12 @@ ellanomehacecaso.controller('frmRegistro', function($scope, $http) {
 		                ]
 	},
 	$scope.listaDistrito = function(){
-		$scope.lstDistritos = [
-		                {
-		                	id: 1,
-		                	nom : 'Cercado Lima'
-		                },
-						{
-		                	id: 2,
-		                	nom : 'Los olivos'
-		                },
-						{
-		                	id: 3,
-		                	nom : 'Independencia'
-		                }
-		                ]
+		$http({
+		method: 'POST',
+		url: 'servicio/listaDistrito.php'
+		}).then(function(response) {
+		$scope.datos = response.data.lstDistritos;
+		});
 	},
 	$scope.listaEstado = function(){
 		$scope.estados = [	                
@@ -40,43 +32,19 @@ ellanomehacecaso.controller('frmRegistro', function($scope, $http) {
 		                ]
 	},
 	$scope.listaEducacion = function(){
-		$scope.educacion = [	                
-		                {
-		                	id: 1,
-		                	nom : 'Secundaria'
-		                },
-						{
-		                	id: 2,
-		                	nom : 'Tecnico'
-		                },
-						{
-		                	id: 3,
-		                	nom : 'Universidad'
-		                },
-						{
-		                	id: 4,
-		                	nom : 'Maestria'
-		                }
-		                ]
+		$http({
+		method: 'POST',
+		url: 'servicio/listaNivelEducacion.php'
+		}).then(function(response) {
+		$scope.edus = response.data.lstNivelEducacion;
+		});
 	},
 	$scope.listaRelacionInteres = function() {
-		$scope.adatos = [	                
-		                {
-		                	id: 1,
-		                	nom : 'A su alma gemela, matrimomio'
-		                },
-						{
-		                	id: 2,
-		                	nom : 'Una relacion seria'
-		                },
-						{
-		                	id: 3,
-		                	nom : 'Conocer nuevas personas y ver que pasa'
-		                },
-						{
-		                	id: 4,
-		                	nom : 'Una relacion de una noche'
-		                }
-		                ]
+		$http({
+		method: 'POST',
+		url: 'servicio/listaRelacionInteres.php'
+		}).then(function(response) {
+		$scope.relaciones = response.data.lstRelacionInteres;
+		});
 	}
 });

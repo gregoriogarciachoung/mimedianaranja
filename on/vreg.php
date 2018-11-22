@@ -4,9 +4,11 @@ $usu = $_POST["usu"];
 try{
 $per=new usuario();
 $resultado = $per->valida_existencia($usu);
-	if($resultado == "1"){
+echo $resultado;
+	if($resultado == "0"){
 		session_start();
 		$_SESSION['axr']=1;
+		$_SESSION['axu']=$usu;
 		header("Location:../registro.php");
 		
 	}else{

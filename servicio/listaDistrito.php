@@ -1,7 +1,7 @@
 <?php
 require_once("../modelo/datosAplicacion.php");
 $per=new datosAplicacion();
-$datos=$per->get_relaciones();
+$datos=$per->get_distritos();
 $data = array();
 $cont = 0;
             foreach ($datos as $dato) {
@@ -11,6 +11,6 @@ $cont = 0;
               //  echo $dato["nom"]."<br/>";
             }
 $fjson = json_encode($data);
-echo '{"lstRelacionInteres":'.$fjson."}";  
+echo '{"lstDistritos":'.$fjson."}";  
 
 ?>
