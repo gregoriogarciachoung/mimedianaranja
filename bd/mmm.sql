@@ -203,6 +203,7 @@ declare idU int;
 set idU = (select id from usuario where mail = p_mail);
 select 
 nom as 'nom', 
+year(curdate()) - year(fecNac) as 'edad',
 ocupacion as 'ocu', 
 autodes as 'des',
 foto

@@ -76,8 +76,15 @@ header("location:index.php");
 	</section>
 	<!-- Mi perfil -->
 	<section ng-controller="ella" id="id_perfil">
+	
 	<h2>Mi perfil</h2>
-		
+	
+		<div ng-controller="ella" ng-init="listaMisDatos()" style="text-align:center">
+		<div ng-repeat="x in datos">
+			<img src="{{x.foto}}"/>
+			<p>{{x.nom}} ({{x.edad}})</p>
+		</div>
+	</div>
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
 		<h2>Edita aquí los filtros de las personas soletras que conocerás y te podrán conocer en OH!</h2>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2018 a las 21:31:46
+-- Tiempo de generación: 22-11-2018 a las 21:57:23
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -49,6 +49,7 @@ declare idU int;
 set idU = (select id from usuario where mail = p_mail);
 select 
 nom as 'nom', 
+year(curdate()) - year(fecNac) as 'edad',
 ocupacion as 'ocu', 
 autodes as 'des',
 foto
