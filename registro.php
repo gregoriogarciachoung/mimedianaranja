@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION['axr']!="1"){
+header("location:index.php");
+}
+?>
 <?php header('Content-Type: text/html; charset=ISO-8859-1'); ?>
 <!DOCTYPE html>
 <html lang="esS" >

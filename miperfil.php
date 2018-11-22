@@ -62,128 +62,17 @@ header("location:index.php");
 	</aside>
 
 	<!-- Sugeridos -->
-	<section ng-controller="ella" ng-init="listaOtroUsuario()" id="galu">
+	<section>
 	<h2>Sugeridos</h2>
-	<div ng-repeat="x in datos" ng-click="verUsu(x.id)">
-	<img ng-src="{{x.foto}}">
-	<p>{{x.nom}}</p>
-	<p>{{x.edad}} años</p>
-	<p>{{x.ocu}}</p>
-	</div>
-	<section class="momo" id="usuModal">
-	<form action="on/meGusta.php" method="post" id="meGusta">
-		<div ng-repeat="y in mdatos">
-		<section>
-			<figure>
-			<!-- {{y.foto}} -->
-			</figure>
-		</section>
-		<section>
-			<figure><img ng-src="{{y.foto}}"></figure>
-			<p>{{y.nom}}, {{y.edad}}</p>
-			<p>{{y.des}}</p>
-			<p>¿Cómo es {{y.nom}}?</p>
-			<p>Estado Civil: <font>{{y.est}}</font></p>
-			<p>Mido: <font>{{y.altura}} cm</font></p>
-			<p>Vivo en: <font>{{y.vivoen}}</font></p>
-			<p>&#128188; Ocupacion: <font>{{y.ocu}}</font></p>
-			<p>&#128152; ¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
-			<p>&#9977; Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
-			
-			
-			<p>&#9996; ¿Que hago en mis tiempos libres ?:<br> <font>{{y.tmplibres}}</font></p>
-			<p>&#127910; Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
-			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
-			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
-			<div>
-			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
-			<button type="button" ng-click="cerrarModalUsu()">Cerrar</button>
-			<button type="submit" ng-if="y.sexo == 1">Me gusta este chico</button>
-			<button type="submit" ng-if="y.sexo == 2">Me gusta esta chica</button></div>
-		</section>
-		</div>
-	</form>
-		</section>
-
+	<section class="momo" id="usuModal"></section>
 	</section>
 
 	<!-- Invitaciones -->
 	<section id="invi">
-	<h2>Invitaciones</h2>
-	<div ng-controller="ella">
-		<nav>
-			<li id="meGustan"><img src="images/corazonmitad.png"/>
-			<li id="match" ng-click="listaParejas()"><img src="images/corazonn.png"/>
-		</nav>
-		<h3 id="titu">Me gustan</h3>
-		<!-- me gustan -->
-		<div ng-init="listaMeGustan()" id="listaMeGustan">
-				<ul ng-repeat="y in datos2">
-					<li ng-click="verUsu2(y.mipareja)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
-					
-				</ul>
-		</div>
-		<!-- match -->
-		<div ng-init="listaParejas()" id="listaMatch">
-				<ul ng-repeat="y in datos">
-					<li ng-click="verUsu2(y.yo)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
-					
-				</ul>
-			
-		</div>
-	</div>
-	<section class="momo" id="usuModal2">
-	<form>
-		<div ng-repeat="y in mdatos">
-		<section>
-			<figure>
-			<!-- {{y.foto}} -->
-			</figure>
-		</section>
-		<section>
-			<figure><img ng-src="{{y.foto}}"></figure>
-			<p>{{y.nom}}, {{y.edad}}<a href="#txtMensaje" style="font:menu"> Escríbeme</i></a></p>
-			<p>{{y.des}}</p>
-			<p id="verMasDatos" ng-click="verMasDatos()">¿Cómo es {{y.nom}}?</p>
-		
-			<p>Estado Civil: <font>{{y.est}}</font></p>
-			<p>Mido: <font>{{y.altura}} cm</font></p>
-			<p>Vivo en: <font>{{y.vivoen}}</font></p>
-			<p>&#128188; Ocupacion: <font>{{y.ocu}}</font></p>
-			<p>&#128152; ¿Qué busco en mi próxima relación?:<br> <font>{{y.quebusco}}</font></p>
-			<p>&#9977; Mis pasiones en la vida:<br> <font>{{y.pasiones}}</font></p>
-			
-			
-			<p>&#9996; ¿Que hago en mis tiempos libres ?:<br> <font>{{y.tmplibres}}</font></p>
-			<p>&#127910; Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
-			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
-			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
-		
-			<textarea placeholder="Escríbeme" id="txtMensaje"></textarea>
-			<div>
-			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
-			<button type="button" ng-click="cerrarModalUsu2()">Cerrar</button>
-			<button type="button" ng-click="enviarMensaje(y.idUsu)">Enviar mensaje</button></div>
-		</section>
-		</div>
-	</form>
-		</section>
+	<section class="momo" id="usuModal2"></section>
 	</section>
 	<!-- Mensajes -->
-	<section ng-controller="ella"  id="galu" >
-	<!-- <input type="text" ng-model="txtUsuMsj" placeholder="combo"/> -->
-	<h2>Mensajes</h2>
-	<div ng-init="listaParejas()">
-	<h3>Seleccione usuario</h3>
-	<select ng-model="txtUsuMsj" ng-options="x.nom for x in datos"  ng-change="listaMensajes()" >
-	</select>
-	</div>
-	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj.yo">
-	<figure ><img ng-src="{{x.foto}}"></figure>
-	<p >{{x.nom}}</p>
-	<p >{{x.msj}}</p>
-	<p >recibido el {{x.fecha}}</p>
-	</div>
+	<section>
 	</section>
 	<!-- Mi perfil -->
 	<section ng-controller="ella" id="id_perfil">
@@ -283,27 +172,10 @@ header("location:index.php");
 </body>
 <script>
 var ellanomehacecaso = angular.module('goyo', []);
-var nlista = document.querySelector("#mimi").text;
 </script>
 <script>
 
 $(document).ready(function(){
-	
-	$("#listaMatch").css("display","none");
-	$("#match").click(function(){
-		$("#listaMatch").css("display","block");
-		$("#listaMeGustan").css("display","none");
-		$("#match>img").attr("src","images/corazon.png");
-		$("#meGustan>img").attr("src","images/corazonmitadn.png");
-		$("#invi #titu").text("Match");
-	});
-	$("#meGustan").click(function(){
-		$("#listaMatch").css("display","none");
-		$("#listaMeGustan").css("display","block");
-		$("#match>img").attr("src","images/corazonn.png");
-		$("#meGustan>img").attr("src","images/corazonmitad.png");
-		$("#invi #titu").text("Me gustan");
-	});
 	
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
@@ -339,16 +211,7 @@ $(document).ready(function(){
 		}
 	});*/
 });
-var contColor = 0;
-function cambiaColorGrabar(abc){
-	var colores = ["blue","red"];
-			//var x = Math.floor((Math.random() * 6) + 1);
-			document.querySelector(" "+abc+" + h3 a").style.color = colores[contColor];
-			contColor = contColor + 1;
-			if(contColor == 2){
-				contColor = 0;
-			}
-}
+
 
 
 
@@ -361,40 +224,14 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	$scope.mostrarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="block";
 	}
-	$scope.cerrarModalUsu = function(){
-		document.querySelector("#usuModal").style.display="none";
-	}
-	$scope.cerrarModalUsu2 = function(){
-		document.querySelector("#usuModal2").style.display="none";
-	}
-	$scope.meGusta = function(i,j){
-		document.querySelector("#frmMeGusta").submit();
-	}
+
+
+
 	$scope.ocultarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="none";
 	}
-	document.querySelector("#usuModal").style.display="none";
-	$scope.verUsu = function(i){
-		document.querySelector("#usuModal").style.display="block";
-		//alert(i);
-		$http({
-		method: 'GET',
-		url: 'servicio/cargaOtroUsuario2.php?idU='+i,
-		}).then(function(response) {
-		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
-		});
-	}
-	document.querySelector("#usuModal2").style.display="none";
-	$scope.verUsu2 = function(i){
-		document.querySelector("#usuModal2").style.display="block";
-		//alert(i);
-		$http({
-		method: 'GET',
-		url: 'servicio/cargaOtroUsuario2.php?idU='+i,
-		}).then(function(response) {
-		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
-		});
-	}
+	
+
 	$scope.editarMiDes = function(){
 		var txtDes = document.querySelector("#txtDes");
 		$http({
@@ -406,17 +243,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		});
 			cambiaColorGrabar("#txtDes");
 	}
-	$scope.enviarMensaje = function(i){
-		var txtMensaje = document.querySelector("#txtMensaje");
-		$http({
-			method: 'POST',
-			url: 'on/enviarMensaje.php', 
-			data: { txtReceptorR: i, txtMensajeR: txtMensaje.value}
-			}).then(function (response) {
-		}, function (error) {
-		});
-		txtMensaje.value="";
-	}
+	
 	$scope.editarMiOcu = function(){
 		var txtOcu = document.querySelector("#txtOcu");
 		$http({

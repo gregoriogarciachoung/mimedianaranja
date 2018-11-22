@@ -64,7 +64,7 @@ class cargaUsuario{
 		$this->db = null; 
     }
 	public function get_misMensajes($a){
-        $consulta=$this->db->prepare("select * from mensajes m join usuarioDatos ud on m.emisor = ud.idUsu where m.receptor = (select id from usuario where mail = ?) order by m.fecha, m.id desc");
+        $consulta=$this->db->prepare("select * from mensajes m join usuarioDatos ud on m.emisor = ud.idUsu where m.receptor = (select id from usuario where mail = ?) order by m.id desc");
 		$consulta->bindParam(1,$a);
 		$consulta->execute();
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){

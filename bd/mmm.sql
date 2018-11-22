@@ -277,7 +277,8 @@ year(curdate()) - year(ud.fecNac) as 'edad'
 from parejas p 
 join usuariodatos ud
 on p.yo = ud.idUsu
-where p.mipareja in(select mipareja from parejas where mipareja = cod);
+where p.mipareja = cod
+and p.yo in(select mipareja from parejas where yo = cod);
 -- and p.mipareja in(select mipareja from parejas where -.-1 mipareja = cod);
 -- -.-1 lista parejas donde yo este como pareja de alguien
 end

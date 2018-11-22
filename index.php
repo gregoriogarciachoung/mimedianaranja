@@ -39,36 +39,18 @@ buscan una relación duradera</p>
 </main>
 <section class="regS1">
 <p class="cerrar" id="cerrar">x</p>
-<form id="freg" action="registro.php" method="post">
+<form id="freg" action="on/vreg.php" method="post">
 <h4>No publicaremos nada en tu muro y tu información es privada</h4>
 <input type="email" name="usu" placeholder="Ingresa tu correo" id="txtUsu" required>
 <button type="submit"  id="btnRegistrar">Registrar</button>
 <div class="ella"><input type="checkbox">Acepto los términos y condiciones del portal</div>
 </form>
-<form id="flog" method="post">
+<form  action="on/login.php" id="flog" method="post">
 <h4>Iniciar sesión para chatear con sus contactos</h4>
 <input type="email" name="usu" placeholder="Correo electrónico" required>
 <input type="password" name="pass" placeholder="Contraseña" required>
-<input type="submit" value="INICIAR SESIÓN" name="nts" id="flog"/>
-<?php
-if(isset($_POST['nts'])){
-	echo "<font color='red'>Error de autentificación</font>";
-   include('on/login.php');
-   
-   ?>
-   <script>
-  $(document).ready(function(){
-	$(".regS1 ").hide();
-        $("#flog").hide();
-		$("#freg").hide();
-		  alert("Error de autentificación, Registrese o Ingrese nuevamente");
-  
-    });
-
-</script>
-   <?php
-}
-?>
+<input type="submit" value="INICIAR SESIÓN" id="flog"/>
+<span id="msj1"></span>
 <a class="ella" href="#">Olvidé mi clave</a>
 </form>
 </section>
@@ -160,6 +142,7 @@ padding-top:2em;
 .regBody .regS1 >.cerrar{
 font-size:30px;
 }
+span{color:red}
 </style>
 <script>
 
@@ -196,6 +179,20 @@ $(document).ready(function(){
 		$("#freg").show();
     });
 });
+</script>
+<script>
+var query = window.location.search.substring(1);
+       // var vars = query.split("&");
+        var vars2 = query.split("=");
+		
+		if(query == ""){
+			 document.getElementById("msj1").innerHTML ="";
+		}else{
+		var mensaje = vars2[1].replace(/_/g," ");
+			 document.getElementById("msj1").innerHTML = mensaje;
+			 document.getElementById("freg").style.display="none";
+			 alert(mensaje);
+		}
 </script>
 </html>
 

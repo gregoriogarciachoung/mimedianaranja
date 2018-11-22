@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2018 a las 23:22:24
+-- Tiempo de generación: 22-11-2018 a las 18:30:28
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -163,7 +163,8 @@ year(curdate()) - year(ud.fecNac) as 'edad'
 from parejas p 
 join usuariodatos ud
 on p.yo = ud.idUsu
-where p.mipareja in(select mipareja from parejas where mipareja = cod);
+where p.mipareja = cod
+and p.yo in(select mipareja from parejas where yo = cod);
 -- and p.mipareja in(select mipareja from parejas where -.-1 mipareja = cod);
 -- -.-1 lista parejas donde yo este como pareja de alguien
 end$$
@@ -347,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `receptor` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `msj` varchar(240) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -355,7 +356,15 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
 
 INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `fecha`, `msj`) VALUES
 (4, 8, 3, '2018-11-18', 'hola'),
-(5, 8, 3, '2018-11-18', 'Mi número es 931 510 579. Envíame un mensaje');
+(5, 8, 3, '2018-11-18', 'Mi número es 931 510 579. Envíame un mensaje'),
+(6, 3, 8, '2018-11-22', 'hoy a las 7 pm en mega'),
+(7, 3, 8, '2018-11-22', 'ya'),
+(8, 3, 8, '2018-11-22', 'nada'),
+(9, 3, 8, '2018-11-22', 'dime que puedo mejorar para salir'),
+(10, 3, 8, '2018-11-22', 'ámame'),
+(11, 3, 2, '2018-11-22', 'hola Elba'),
+(12, 2, 3, '2018-11-22', 'hola Pablito'),
+(13, 8, 3, '2018-11-22', 'que vas a hacer hoy');
 
 -- --------------------------------------------------------
 
@@ -388,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
@@ -400,7 +409,9 @@ INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
 (6, 3, 7),
 (7, 3, 9),
 (8, 3, 10),
-(9, 3, 4);
+(9, 3, 4),
+(10, 3, 2),
+(11, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -708,7 +719,7 @@ ALTER TABLE `interes`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `niveleducacion`
 --
@@ -718,7 +729,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --

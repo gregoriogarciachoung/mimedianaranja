@@ -1,4 +1,6 @@
 <?php
+/*
+try{
 include('conexion.php');
 $usu = $_POST['usu'];
 $pass = $_POST['pass'];
@@ -11,13 +13,18 @@ if($res['id'] == '1'){
 	session_start();
 	$_SESSION['ax']=1;
 	$_SESSION['usu']=$usu;
-	header("Location:mmm.php");
+	//header("Location:mmm.php");
 }else{
-	//header("Location:login.php");
+	header("Location:index.php?msj=Error de autentificaciión");
+	echo "Error de autentificaciión";//header("Location:login.php");
 }
-
-/*
-include("../modelo/usuario.php");
+}catch(Exception $e){
+	header("Location:index.php?msj=Error");
+	echo "Error";
+}
+*/
+try{
+require_once("../modelo/usuario.php");
 $usu = $_POST['usu'];
 $pass = $_POST['pass'];
 $per=new usuario();
@@ -31,7 +38,10 @@ $resultado = $per->login($usu, $pass);
 				$_SESSION['usu']=$usu;
 				header("Location:../mmm.php");
 			}else{
-				
+				header("Location:../index.php?msj=".utf8_encode("Error_usuario_o_clave"));
 			}
-		}	*/
+		}
+}catch(Exception $e){
+	header("Location:../index.php?msj=Error");
+}
 ?>
