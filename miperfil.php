@@ -321,11 +321,11 @@ $(document).ready(function(){
 	ocultarSecciones();
 	$("main>section").eq(3).show();
 
-		$("main>aside>nav li").click(function(){
+		/*$("main>aside>nav li").click(function(){
 		var j = $("main>aside>nav li").index(this);
 		ocultarSecciones();
 		$("main>section").eq(j).show();
-	});
+	});*/
 /*
 	$("#btnCambioC").click(function(){
 		var p1 = $("#txtPass1").val();

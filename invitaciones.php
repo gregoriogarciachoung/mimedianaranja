@@ -310,11 +310,11 @@ $(document).ready(function(){
 	ocultarSecciones();
 	$("main>section").eq(1).show();
 
-		$("main>aside>nav li").click(function(){
+	/*	$("main>aside>nav li").click(function(){
 		var j = $("main>aside>nav li").index(this);
 		ocultarSecciones();
 		$("main>section").eq(j).show();
-	});
+	});*/
 
 });
 var contColor = 0;
