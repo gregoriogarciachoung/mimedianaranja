@@ -120,5 +120,15 @@ class usuario{
 		$consulta = null;
 		$this->db = null; 
     }
+	public function valida_existencia($a){
+        $consulta=$this->db->prepare("select count(*) from usuario where mail = ?");
+		$consulta->bindParam(1,$a);
+		$consulta->execute();
+		//obtener respuesta al cambio de contraseña, la validación está en la bd
+		$filas=$consulta->fetch(PDO::FETCH_ASSOC);
+		return $filas[0];
+		$consulta = null;
+		$this->db = null; 
+    }
 }
 ?>

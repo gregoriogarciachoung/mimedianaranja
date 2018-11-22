@@ -43,6 +43,7 @@ buscan una relación duradera</p>
 <h4>No publicaremos nada en tu muro y tu información es privada</h4>
 <input type="email" name="usu" placeholder="Ingresa tu correo" id="txtUsu" required>
 <button type="submit"  id="btnRegistrar">Registrar</button>
+<span id="msj2"></span>
 <div class="ella"><input type="checkbox">Acepto los términos y condiciones del portal</div>
 </form>
 <form  action="on/login.php" id="flog" method="post">
@@ -184,14 +185,22 @@ $(document).ready(function(){
 var query = window.location.search.substring(1);
        // var vars = query.split("&");
         var vars2 = query.split("=");
+		var mensaje = vars2[1].replace(/_/g," ");
 		
 		if(query == ""){
 			 document.getElementById("msj1").innerHTML ="";
 		}else{
-		var mensaje = vars2[1].replace(/_/g," ");
-			 document.getElementById("msj1").innerHTML = mensaje;
-			 document.getElementById("freg").style.display="none";
-			 alert(mensaje);
+			if(vars2[0] == "existe"){
+				document.getElementById("flog").style.display="none";
+				document.getElementById("msj2").innerHTML = mensaje;
+				alert(mensaje);
+			}
+			if(vars2[0] == "msj"){
+				document.getElementById("freg").style.display="none";
+				document.getElementById("msj1").innerHTML = mensaje;
+				alert(mensaje);
+			}
+			 
 		}
 </script>
 </html>
