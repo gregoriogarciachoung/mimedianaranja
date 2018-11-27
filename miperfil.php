@@ -101,7 +101,7 @@ header("location:index.php");
 			<h3 ng-click="editarMiOcu()"><a href="#" onclick="return false;">GRABAR</a></h3>
 			
 			<p>Distrito</p>
-			<div ng-init="listaDistrito()">		
+			<div ng-init="listaDistrito()" id="txtdisdiv">		
 				<input  list="testList" type="text" placeholder="Escribe distrito (solo lima)" name="distrito" id="txtdis" value="{{x.nomdis}}"/>
     <datalist id="testList">
         <option ng-repeat="d in distri" value="{{d.nom}}">
@@ -304,9 +304,10 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
-			cambiaColorGrabar("#txtdis");
+			cambiaColorGrabar("#txtdisdiv");
 		
 	}
+	var contColor = 0;
 	$scope.editarMiInteres = function(i){
 		var txtInteres = document.querySelectorAll("#txtInteres");
 		$http({
@@ -316,7 +317,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			}).then(function (response) {
 		}, function (error) {
 		});
-		var colores = ["blue","red"];
+		var colores = ["#1aa3ff","#e600e6"];
 			//var x = Math.floor((Math.random() * 6) + 1);
 			
 			var m = parseInt(i) + parseInt((i-1));
@@ -325,6 +326,18 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 			contColor = contColor + 1;
 			if(contColor == 2){
 				contColor = 0;
+			}
+	}
+	var contColor2 = 0;
+	function cambiaColorGrabar(s){
+		var colores = ["#1aa3ff","#e600e6"];
+			//var x = Math.floor((Math.random() * 6) + 1);
+	
+			var txtInteres2 = document.querySelector(s+" + h3 a");
+			txtInteres2.style.color = colores[contColor2];
+			contColor2 = contColor2 + 1;
+			if(contColor2 == 2){
+				contColor2 = 0;
 			}
 	}
 	/*$scope.cargarSugeridos = function(){

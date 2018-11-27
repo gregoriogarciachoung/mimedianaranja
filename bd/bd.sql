@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 19:57:39
+-- Tiempo de generación: 27-11-2018 a las 20:20:47
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -604,11 +604,11 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (16, 5, ''),
 (16, 6, ''),
 (17, 1, 'nada'),
-(17, 2, ''),
-(17, 3, ''),
-(17, 4, 'fiestar'),
-(17, 5, ''),
-(17, 6, '');
+(17, 2, 'Escribo poemas, toco piano, leo libros de terror'),
+(17, 3, 'El exorsista, el conjuro, anabell'),
+(17, 4, 'fiestar, IU, Stratovarius'),
+(17, 5, 'Nadar, Salir con amigos, jugar'),
+(17, 6, 'El exorsista');
 
 -- --------------------------------------------------------
 

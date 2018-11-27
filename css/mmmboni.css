@@ -155,13 +155,13 @@ input + h3{
 cursor: alias;
 }
 input + h3:hover{
-text-decoration:underline;
+font-weight:blold;
 }
 textarea + h3:hover{
-text-decoration:underline;cursor: alias;
+font-weight:blold;cursor: alias;
 }
 #id_perfil div + h3:hover{
-text-decoration:underline;cursor: alias;
+font-weight:blold;cursor: alias;
 }
 #txtInteres:hover, #txtDes:hover, #txtOcu:hover{
 color:red
