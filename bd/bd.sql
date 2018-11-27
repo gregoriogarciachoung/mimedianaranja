@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 18:12:22
+-- Tiempo de generación: 27-11-2018 a las 19:30:06
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -53,7 +53,9 @@ nom as 'nom',
 year(curdate()) - year(fecNac) as 'edad',
 ocupacion as 'ocu', 
 autodes as 'des',
-foto
+foto,
+(select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
+hijos
 from usuarioDatos where idUsu = idU;
 end$$
 
@@ -366,7 +368,7 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (14, 1, 11, 5, 180, 170, 4, 1),
 (15, 1, 31, 20, 180, 150, 1, 1),
 (16, 1, 26, 20, 178, 150, 1, 1),
-(17, 1, 25, 18, 170, 150, 1, 1);
+(17, 1, 25, 18, 170, 150, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -600,10 +602,10 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (16, 4, ''),
 (16, 5, ''),
 (16, 6, ''),
-(17, 1, ''),
+(17, 1, 'nada'),
 (17, 2, ''),
 (17, 3, ''),
-(17, 4, ''),
+(17, 4, 'fiestar'),
 (17, 5, ''),
 (17, 6, '');
 

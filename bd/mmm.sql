@@ -211,7 +211,9 @@ nom as 'nom',
 year(curdate()) - year(fecNac) as 'edad',
 ocupacion as 'ocu', 
 autodes as 'des',
-foto
+foto,
+(select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
+hijos
 from usuarioDatos where idUsu = idU;
 end
 |

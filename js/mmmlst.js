@@ -1,4 +1,16 @@
 ellanomehacecaso.controller('ella', function($scope, $http) {
+	$scope.listaHijosSN = function(){
+		$scope.hijosn = [
+		                {
+		                	id : 1,
+		                	nom : 'Si'
+		                },
+		                {
+		                	id: 2,
+		                	nom : 'No'
+		                }
+		                ]
+	},
 	$scope.listaSexo2 = function(){
 		$scope.sexos = [
 		                {

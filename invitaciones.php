@@ -189,14 +189,14 @@ header("location:index.php");
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}" name="eMin"/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}" name="eMax"/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin"/ required><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax" required/></div>
 			
 			<h3>Que mida(cm) entre</h3>
-			<div><input type="number" value="{{x.alturaMin}}" name="aMin"/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.alturaMax}}" name="aMax"/></div>
+			<div><input type="number" value="{{x.alturaMin}}" name="aMin" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.alturaMax}}" name="aMax" required/></div>
 			<div ng-init="listaDistrito()">		
-			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}"/>
+			<label>Busca en: </label>	<input  list="testList" type="" name="distrito" id="txtdis" value="{{x.nomdis}}" required/>
     <datalist id="testList">
         <option ng-repeat="d in distri" value="{{d.nom}}">
     </datalist>

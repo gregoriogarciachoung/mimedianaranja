@@ -99,6 +99,17 @@ header("location:index.php");
 			<p>Ocupación</p>
 			<input type="text" value="{{x.ocu}}" name="txtOcu" id="txtOcu" placeholder="Escribe aquí"/>
 			<h3 ng-click="editarMiOcu()"><a href="#" onclick="return false;">GRABAR</a></h3>
+			
+			<p>Distrito</p>
+			<div ng-init="listaDistrito()">		
+				<input  list="testList" type="text" placeholder="Escribe distrito (solo lima)" name="distrito" id="txtdis" value="{{x.nomdis}}"/>
+    <datalist id="testList">
+        <option ng-repeat="d in distri" value="{{d.nom}}">
+    </datalist>
+				
+				</div>
+			<h3 ng-click="editarMiDistrito()"><a href="#" onclick="return false;">GRABAR</a></h3>
+		
 			</div>
 		</div>
 		<h2 class="t2">Mis Intereses</h2>
@@ -165,14 +176,14 @@ header("location:index.php");
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}" name="eMin"/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}" name="eMax"/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax" required/></div>
 			
 			<h3>Que mida(cm) entre</h3>
-			<div><input type="number" value="{{x.alturaMin}}" name="aMin"/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.alturaMax}}" name="aMax"/></div>
+			<div><input type="number" value="{{x.alturaMin}}" name="aMin" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.alturaMax}}" name="aMax" required/></div>
 			<div ng-init="listaDistrito()">		
-			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}"/>
+			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}" required/>
     <datalist id="testList">
         <option ng-repeat="d in distri" value="{{d.nom}}">
     </datalist>
@@ -268,6 +279,18 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		}, function (error) {
 		});
 			cambiaColorGrabar("#txtOcu");
+		
+	}
+	$scope.editarMiDistrito = function(){
+		var txtOcu = document.querySelector("#txtdis");
+		$http({
+			method: 'POST',
+			url: 'on/editarDistrito.php', 
+			data: { txtOcuR: txtOcu.value }
+			}).then(function (response) {
+		}, function (error) {
+		});
+			cambiaColorGrabar("#txtdis");
 		
 	}
 	$scope.editarMiInteres = function(i){

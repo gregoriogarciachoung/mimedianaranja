@@ -12,6 +12,8 @@ $cont = 0;
 	$data[$cont]['ocu'] = utf8_encode($dato['ocu']);
 	$data[$cont]['des'] = utf8_encode($dato['des']);
 	$data[$cont]['foto'] = utf8_encode($dato['foto']);
+	$data[$cont]['nomdis'] = utf8_encode($dato['nomdis']);
+	$data[$cont]['hijos'] = $dato['hijos'];
 					$cont++;
               //  echo $dato["nom"]."<br/>";
             }

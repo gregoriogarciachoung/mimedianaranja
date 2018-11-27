@@ -86,6 +86,14 @@ class usuario{
 		$consulta = null;
 		$this->db = null; 
     }
+	public function editar_distrito($a,$b){
+        $consulta=$this->db->prepare("update usuarioDatos set idDistrito = (select id from distritos where nom = ?) where idUsu = (select id from usuario where mail = ?)");
+		$consulta->bindParam(1,$a);
+		$consulta->bindParam(2,$b);
+		$consulta->execute();
+		$consulta = null;
+		$this->db = null; 
+    }
 	public function editar_pass($a,$b,$c){
         $consulta=$this->db->prepare("call sp_cc(?,?,?)");
 		$consulta->bindParam(1,$a);
