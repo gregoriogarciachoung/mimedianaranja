@@ -59,6 +59,18 @@ $_POST['ocu'],
 $_POST['rela'],
 'images/'.$usuario.'/'.$nombre_img
 );
-
-header("location:../index.php");
+echo $_POST['nom'];"<br>";
+echo $_POST['correo'];"<br>";
+echo $_POST['clave'];"<br>";
+echo $_POST['sexos'];"<br>";
+echo $_POST['fecNac'];"<br>";
+echo $_POST['distrito'];"<br>";
+echo $_POST['hijos'];"<br>";
+echo $_POST['estCivil'];"<br>";
+echo $_POST['nivelA'];"<br>";
+echo $_POST['miAltura'];"<br>";
+echo $_POST['ocu'];"<br>";
+echo $_POST['rela'];"<br>";
+echo 'images/'.$usuario.'/'.$nombre_img;
+//header("location:../index.php");
 ?>
