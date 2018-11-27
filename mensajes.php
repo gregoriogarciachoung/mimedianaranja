@@ -68,7 +68,7 @@ header("location:index.php");
 
 	<!-- Invitaciones -->
 	<section id="invi">
-	<section class="momo" id="usuModal2"></section>
+	<section class="momo" ></section>
 	</section>
 	<!-- Mensajes -->
 	<section ng-controller="ella"  id="galu" >
@@ -83,19 +83,40 @@ header("location:index.php");
 	</select>
 	
 	</div>
-	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj">
+	<div ng-repeat="x in msj" class="galmsj" ng-if="x.emisor == txtUsuMsj" ng-click="verUsuEnviarMsj(x.emisor)">
 	<figure ><img ng-src="{{x.foto}}"></figure>
 	<p >{{x.nom}}</p>
 	<p >{{x.msj}}</p>
 	<p >recibido el {{x.fecha}}</p>
 	</div>
-	<div ng-repeat="x in msj" class="galmsj" ng-if="0 == txtUsuMsj">
+	<div ng-repeat="x in msj" class="galmsj" ng-if="0 == txtUsuMsj" ng-click="verUsuEnviarMsj(x.emisor)">
 	<figure ><img ng-src="{{x.foto}}"></figure>
 	<p >{{x.nom}}</p>
 	<p >{{x.msj}}</p>
 	<p >recibido el {{x.fecha}}</p>
 	</div>
+
 	</section>
+	<section class="momo" id="usuModal2">
+	<form>
+		<div ng-repeat="y in mdatos">
+		<section>
+			<figure>
+			<!-- {{y.foto}} -->
+			</figure>
+		</section>
+		<section>
+			
+		
+			<textarea placeholder="Escríbeme" id="txtMensaje"></textarea>
+			<div>
+			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
+			<button type="button" ng-click="cerrarModalUsu2()">Cerrar</button>
+			<button type="button" ng-click="enviarMensaje(y.idUsu)">Enviar mensaje</button></div>
+		</section>
+		</div>
+	</form>
+		</section>
 	<!-- Mi perfil -->
 	<section>
 	</section>
@@ -196,6 +217,30 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 	
 	$scope.ocultarFiltros = function(){
 		document.querySelector("#id_filtroModal").style.display="none";
+	}
+	$scope.verUsuEnviarMsj = function(i){
+		document.querySelector("#usuModal2").style.display="block";
+		//alert(i);
+		$http({
+		method: 'GET',
+		url: 'servicio/cargaOtroUsuario2.php?idU='+i,
+		}).then(function(response) {
+		$scope.mdatos = response.data.lstCargaDatosOtroUsuario;
+		});
+	}
+	$scope.cerrarModalUsu2 = function(){
+		document.querySelector("#usuModal2").style.display="none";
+	}
+	$scope.enviarMensaje = function(i){
+		var txtMensaje = document.querySelector("#txtMensaje");
+		$http({
+			method: 'POST',
+			url: 'on/enviarMensaje.php', 
+			data: { txtReceptorR: i, txtMensajeR: txtMensaje.value}
+			}).then(function (response) {
+		}, function (error) {
+		});
+		txtMensaje.value="";
 	}
 	document.querySelector("#usuModal2").style.display="none";
 	/*$scope.cargarSugeridos = function(){
