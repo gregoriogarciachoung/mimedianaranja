@@ -109,7 +109,9 @@ header("location:index.php");
 				
 				</div>
 			<h3 ng-click="editarMiDistrito()"><a href="#" onclick="return false;">GRABAR</a></h3>
-		
+		<p>Altura (cm)</p>
+			<input type="number" name="txtAlt" id="txtAlt" placeholder="Escribe aquí" value="{{x.altura}}"/>
+			<h3 ng-click="editarMiAltura()"><a href="#" onclick="return false;">GRABAR</a></h3>
 			</div>
 		</div>
 		<h2 class="t2">Mis Intereses</h2>
@@ -279,6 +281,18 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		}, function (error) {
 		});
 			cambiaColorGrabar("#txtOcu");
+		
+	}
+	$scope.editarMiAltura = function(){
+		var txtOcu = document.querySelector("#txtAlt");
+		$http({
+			method: 'POST',
+			url: 'on/editarMiAltura.php', 
+			data: { txtOcuR: txtOcu.value }
+			}).then(function (response) {
+		}, function (error) {
+		});
+			cambiaColorGrabar("#txtAlt");
 		
 	}
 	$scope.editarMiDistrito = function(){

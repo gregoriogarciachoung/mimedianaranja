@@ -137,7 +137,7 @@ padding:0;
 margin:0;
 list-style:none
 }
-#id_perfil input[type="text"], #id_perfil input[type="password"]{
+#id_perfil input[type="text"], #id_perfil input[type="password"], #id_perfil input[type="number"]{
 	width:100%;
 	border:0;
 	font-size:12px;
@@ -148,7 +148,7 @@ background-image: url(images/ediP.svg);
 background-repeat: no-repeat;
 background-size:8px;
 }
-.marcodos input[type="text"]{
+.marcodos input[type="text"].marcodos input[type="number"]{
 	background:#f7f7f7;
 }
 input + h3{
@@ -158,6 +158,9 @@ input + h3:hover{
 text-decoration:underline;
 }
 textarea + h3:hover{
+text-decoration:underline;cursor: alias;
+}
+#id_perfil div + h3:hover{
 text-decoration:underline;cursor: alias;
 }
 #txtInteres:hover, #txtDes:hover, #txtOcu:hover{

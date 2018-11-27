@@ -213,7 +213,8 @@ ocupacion as 'ocu',
 autodes as 'des',
 foto,
 (select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
-hijos
+hijos,
+altura
 from usuarioDatos where idUsu = idU;
 end
 |

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 19:30:06
+-- Tiempo de generación: 27-11-2018 a las 19:57:39
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -55,7 +55,8 @@ ocupacion as 'ocu',
 autodes as 'des',
 foto,
 (select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
-hijos
+hijos,
+altura
 from usuarioDatos where idUsu = idU;
 end$$
 
@@ -707,7 +708,7 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (14, 'Akane', 2, '2010-01-01', 4, 2, 1, 3, 170, 'Modelo', '', 'images/akane@gmail.com//images.jpg'),
 (15, 'Mina', 2, '1990-01-01', 1, 2, 1, 3, 170, 'Contabilidad', '', 'images/mina@gmail.com//linzyjpg.jpg'),
 (16, 'Patricia', 2, '1995-01-01', 7, 2, 1, 3, 168, 'Administradora', '', 'images/patricia@gmail.com//images.jpg'),
-(17, 'Saori', 2, '2000-01-01', 4, 2, 1, 4, 160, 'Modelo', '', 'images/saori@gmail.com//imagses.jpg');
+(17, 'Saori', 2, '2000-01-01', 4, 2, 1, 4, 170, 'Modelo', 'Soy una chica linda que le gusta salir con amigos, les hago creer que me interesan pero a al final les rompo el corazón.', 'images/saori@gmail.com//imagses.jpg');
 
 --
 -- Índices para tablas volcadas
