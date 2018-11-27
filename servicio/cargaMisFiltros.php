@@ -14,7 +14,7 @@ $cont = 0;
 					$data[$cont]['alturaMin'] = $dato['alturaMin'];
 					$data[$cont]['relacion'] = $dato['relacion'];
 					$data[$cont]['lugar'] = $dato['lugar'];
-					$data[$cont]['nomdis'] = $dato['nomdis'];
+					$data[$cont]['nomdis'] = utf8_encode($dato['nomdis']);
 					$cont++;
               //  echo $dato["nom"]."<br/>";
             }

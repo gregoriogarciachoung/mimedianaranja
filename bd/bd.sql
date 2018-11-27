@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 08:45:17
+-- Tiempo de generación: 27-11-2018 a las 18:12:22
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -212,9 +212,13 @@ begin
 	end if;
 	
 	set edad = (select year(curdate()) - year(p_fecNac));
-	set emx = edad + 3;
-	set emn = edad - 3;
-	
+	if(edad = 18 or edad = 19 or edad = 20 or edad = 21)then
+			set emx = edad + 3;
+			set emn = edad;
+	else
+		set emx = edad + 3;
+		set emn = edad - 3;
+	end if;
 	
 	insert into usuario(mail, pass,estado) values
 	(p_mail,p_pass,1);
@@ -360,7 +364,9 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (12, 1, 31, 25, 179, 169, 1, 1),
 (13, 1, 31, 25, 179, 167, 4, 4),
 (14, 1, 11, 5, 180, 170, 4, 1),
-(15, 1, 31, 20, 180, 150, 1, 1);
+(15, 1, 31, 20, 180, 150, 1, 1),
+(16, 1, 26, 20, 178, 150, 1, 1),
+(17, 1, 25, 18, 170, 150, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -587,7 +593,19 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (15, 3, ''),
 (15, 4, ''),
 (15, 5, ''),
-(15, 6, '');
+(15, 6, ''),
+(16, 1, ''),
+(16, 2, ''),
+(16, 3, ''),
+(16, 4, ''),
+(16, 5, ''),
+(16, 6, ''),
+(17, 1, ''),
+(17, 2, ''),
+(17, 3, ''),
+(17, 4, ''),
+(17, 5, ''),
+(17, 6, '');
 
 -- --------------------------------------------------------
 
@@ -622,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -642,7 +660,9 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
 (12, 'candid@gmail.com', '1234', 1),
 (13, 'valeria@gmail.com', 'mivale', NULL),
 (14, 'akane@gmail.com', '1234', 1),
-(15, 'mina@gmail.com', 'abcd', 1);
+(15, 'mina@gmail.com', 'abcd', 1),
+(16, 'patricia@gmail.com', 'ka33', 1),
+(17, 'saori@gmail.com', 'saori1234', 1);
 
 -- --------------------------------------------------------
 
@@ -683,7 +703,9 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg'),
 (13, 'Valeria', 2, '1990-01-01', 4, 2, 1, 3, 169, 'Abogada', '', 'images/valeria@gmail.com//valeria.jpg'),
 (14, 'Akane', 2, '2010-01-01', 4, 2, 1, 3, 170, 'Modelo', '', 'images/akane@gmail.com//images.jpg'),
-(15, 'Mina', 2, '1990-01-01', 1, 2, 1, 3, 170, 'Contabilidad', '', 'images/mina@gmail.com//linzyjpg.jpg');
+(15, 'Mina', 2, '1990-01-01', 1, 2, 1, 3, 170, 'Contabilidad', '', 'images/mina@gmail.com//linzyjpg.jpg'),
+(16, 'Patricia', 2, '1995-01-01', 7, 2, 1, 3, 168, 'Administradora', '', 'images/patricia@gmail.com//images.jpg'),
+(17, 'Saori', 2, '2000-01-01', 4, 2, 1, 4, 160, 'Modelo', '', 'images/saori@gmail.com//imagses.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -819,7 +841,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- Restricciones para tablas volcadas
 --

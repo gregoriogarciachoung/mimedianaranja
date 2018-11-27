@@ -148,9 +148,13 @@ begin
 	end if;
 	
 	set edad = (select year(curdate()) - year(p_fecNac));
-	set emx = edad + 3;
-	set emn = edad - 3;
-	
+	if(edad = 18 or edad = 19 or edad = 20 or edad = 21)then
+			set emx = edad + 3;
+			set emn = edad;
+	else
+		set emx = edad + 3;
+		set emn = edad - 3;
+	end if;
 	
 	insert into usuario(mail, pass,estado) values
 	(p_mail,p_pass,1);

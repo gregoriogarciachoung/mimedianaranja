@@ -31,7 +31,7 @@ class usuario{
 		$this->db = null; 
     }
 	public function set_filtros($a,$b,$c,$d,$e,$f,$g,$h){
-        $consulta=$this->db->prepare("update filtros set buscoSexo = ?, edadMax = ?, edadMin = ?, alturaMax = ?, alturaMin = ?, idInteres = ?, lugar = ? where idUsu = (select id from usuario where mail = ?)");
+        $consulta=$this->db->prepare("update filtros set buscoSexo = ?, edadMax = ?, edadMin = ?, alturaMax = ?, alturaMin = ?, idInteres = ?, lugar = (select id from distritos where nom = ?) where idUsu = (select id from usuario where mail = ?)");
 		$consulta->bindParam(1,$a);
 		$consulta->bindParam(2,$b);
 		$consulta->bindParam(3,$c);
