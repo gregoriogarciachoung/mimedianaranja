@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 06:49:02
+-- Tiempo de generación: 27-11-2018 a las 08:45:17
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -24,7 +24,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ps_buscaOtroUsuario`(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int,p_mail varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ps_buscaOtroUsuario`(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_lugar int, p_interes int,p_mail varchar(45))
 begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
@@ -37,6 +37,7 @@ where
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
+u.idDistrito = p_lugar and
 f.idinteres = p_interes and
 u.idUsu not in (select mipareja from parejas where yo = cod) and
 u.idUsu != cod and
@@ -79,7 +80,7 @@ end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ps_consultaMisFiltros`(p_mail varchar(45))
 begin
-select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.alturaMax, f.alturaMin, f.idInteres as 'relacion'
+select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.alturaMax, f.alturaMin, f.idInteres as 'relacion', f.lugar as 'lugar', (select nom from distritos where id = f.lugar) as 'nomdis'
 from filtros f
 join usuario u
 on f.idUsu = u.id
@@ -357,7 +358,9 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (10, 1, 24, 15, 178, 150, 3, 1),
 (11, 1, 21, 15, 177, 167, 3, 4),
 (12, 1, 31, 25, 179, 169, 1, 1),
-(13, 1, 31, 25, 179, 167, NULL, 4);
+(13, 1, 31, 25, 179, 167, 4, 4),
+(14, 1, 11, 5, 180, 170, 4, 1),
+(15, 1, 31, 20, 180, 150, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -572,7 +575,19 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (13, 3, ''),
 (13, 4, ''),
 (13, 5, ''),
-(13, 6, '');
+(13, 6, ''),
+(14, 1, ''),
+(14, 2, ''),
+(14, 3, ''),
+(14, 4, ''),
+(14, 5, ''),
+(14, 6, ''),
+(15, 1, ''),
+(15, 2, ''),
+(15, 3, ''),
+(15, 4, ''),
+(15, 5, ''),
+(15, 6, '');
 
 -- --------------------------------------------------------
 
@@ -607,7 +622,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -625,7 +640,9 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
 (10, 'ana@gmail.com', '1234', 1),
 (11, 'hyemi@gmail.com', '1234', 1),
 (12, 'candid@gmail.com', '1234', 1),
-(13, 'valeria@gmail.com', 'mivale', NULL);
+(13, 'valeria@gmail.com', 'mivale', NULL),
+(14, 'akane@gmail.com', '1234', 1),
+(15, 'mina@gmail.com', 'abcd', 1);
 
 -- --------------------------------------------------------
 
@@ -664,7 +681,9 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (10, 'Ana', 2, '2000-11-11', 3, 2, 1, 1, 168, 'Arquitecto', 'Soy una chica linda, me gusta salir con amigos y hacerles creer estoy interesada en ellos.', 'images/ana@gmail.com//ana.jpg'),
 (11, 'Hyemi', 2, '2000-11-11', 3, 2, 1, 3, 167, 'Estudiante', '', 'images/hyemi@gmail.com//hyemi.jpg'),
 (12, 'Candid', 2, '1990-12-11', 3, 2, 1, 4, 169, 'Piano', '', 'images/candid@gmail.com//candid.jpg'),
-(13, 'Valeria', 2, '1990-01-01', NULL, 2, 1, 3, 169, 'Abogada', '', 'images/valeria@gmail.com//valeria.jpg');
+(13, 'Valeria', 2, '1990-01-01', 4, 2, 1, 3, 169, 'Abogada', '', 'images/valeria@gmail.com//valeria.jpg'),
+(14, 'Akane', 2, '2010-01-01', 4, 2, 1, 3, 170, 'Modelo', '', 'images/akane@gmail.com//images.jpg'),
+(15, 'Mina', 2, '1990-01-01', 1, 2, 1, 3, 170, 'Contabilidad', '', 'images/mina@gmail.com//linzyjpg.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -800,7 +819,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- Restricciones para tablas volcadas
 --

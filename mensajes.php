@@ -129,6 +129,11 @@ header("location:index.php");
 			<h3>Que mida(cm) entre</h3>
 			<div><input type="number" value="{{x.alturaMin}}" name="aMin"/><a style="padding:0 1em 0 1em">a</a>
 			<input type="number" value="{{x.alturaMax}}" name="aMax"/></div>
+			<h3>( {{x.nomdis}} ) Lugar en el que quiero conocer a mi Media naranja. <div ng-init="listaDistrito()">
+				  Cambiar de lugar? <select name="distrito">
+				<option  ng-repeat="d in distri" value="{{d.id}}">{{d.nom}}
+				</select>
+				</div></h3>
 		<div><button type="button"  id="btnCancelar" ng-click="ocultarFiltros()">Cancelar</button>
 		<button type="submit"  id="btnGuardar">Guardar</button></div>
 		</div>

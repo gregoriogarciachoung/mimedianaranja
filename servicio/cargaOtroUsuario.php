@@ -6,7 +6,26 @@ $pass = $_SESSION['usu'];
 $per=new cargaUsuario();
 $per2=new cargaOtroUsuario();
 $filtro=$per->get_filtros($pass);
-$datos=$per2->get_usuarios($filtro[0]['Sexo'],$filtro[0]['EdadMin'],$filtro[0]['EdadMax'],$filtro[0]['alturaMin'],$filtro[0]['alturaMax'],$filtro[0]['relacion'],$pass);
+
+$a = $filtro[0]['Sexo'];
+$b = $filtro[0]['EdadMin'];
+$c = $filtro[0]['EdadMax'];
+$d = $filtro[0]['alturaMin'];
+$e = $filtro[0]['alturaMax'];
+$f = $filtro[0]['lugar'];
+$g = $filtro[0]['relacion'];
+$h = $pass;
+/*
+echo $a."<br>";
+echo $b."<br>";
+echo $c."<br>";
+echo $d."<br>";
+echo $e."<br>";
+echo $f."<br>";
+echo $g."<br>";
+echo $h."<br>";
+*/
+$datos=$per2->get_usuarios($a,$b,$c,$d,$e,$f,$g,$h);
 $data = array();
 $cont = 0;
             foreach ($datos as $dato) {

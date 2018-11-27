@@ -17,6 +17,12 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		url: 'servicio/cargaOtroUsuario.php'
 		}).then(function(response) {
 		$scope.datos = response.data.lstOtroUsuario;
+				 if($scope.datos == ""){
+			document.querySelector("#msjnohay").style.display="block";
+}
+else{
+	document.querySelector("#msjnohay").style.display="none";
+}
 		});
 	},
 	$scope.listaMisDatos = function() {
@@ -73,6 +79,14 @@ ellanomehacecaso.controller('ella', function($scope, $http) {
 		url: 'servicio/listaMensajes.php'
 		}).then(function(response) {
 		$scope.msj = response.data.lstMensajes;
+		});
+	}
+	$scope.listaDistrito = function(){
+		$http({
+		method: 'POST',
+		url: 'servicio/listaDistrito.php'
+		}).then(function(response) {
+		$scope.distri = response.data.lstDistritos;
 		});
 	}
 });

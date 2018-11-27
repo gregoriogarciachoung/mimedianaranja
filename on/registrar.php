@@ -72,5 +72,5 @@ echo $_POST['miAltura'];"<br>";
 echo $_POST['ocu'];"<br>";
 echo $_POST['rela'];"<br>";
 echo 'images/'.$usuario.'/'.$nombre_img;
-//header("location:../index.php");
+header("location:../index.php");
 ?>

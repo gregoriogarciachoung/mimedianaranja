@@ -30,8 +30,8 @@ class usuario{
 		$consulta = null;
 		$this->db = null; 
     }
-	public function set_filtros($a,$b,$c,$d,$e,$f,$g){
-        $consulta=$this->db->prepare("update filtros set buscoSexo = ?, edadMax = ?, edadMin = ?, alturaMax = ?, alturaMin = ?, idInteres = ? where idUsu = (select id from usuario where mail = ?)");
+	public function set_filtros($a,$b,$c,$d,$e,$f,$g,$h){
+        $consulta=$this->db->prepare("update filtros set buscoSexo = ?, edadMax = ?, edadMin = ?, alturaMax = ?, alturaMin = ?, idInteres = ?, lugar = ? where idUsu = (select id from usuario where mail = ?)");
 		$consulta->bindParam(1,$a);
 		$consulta->bindParam(2,$b);
 		$consulta->bindParam(3,$c);
@@ -39,6 +39,7 @@ class usuario{
 		$consulta->bindParam(5,$e);
 		$consulta->bindParam(6,$f);
 		$consulta->bindParam(7,$g);
+		$consulta->bindParam(8,$h);
 		$consulta->execute();
 		$consulta = null;
 		$this->db = null; 

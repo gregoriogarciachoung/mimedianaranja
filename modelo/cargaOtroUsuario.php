@@ -11,8 +11,8 @@ class cargaOtroUsuario{
         $this->usuarios=array();
 		$this->usuarios2=array();
     }
-    public function get_usuarios($a,$b,$c,$d,$e,$f,$g){
-        $consulta=$this->db->prepare("call ps_buscaOtroUsuario(?,?,?,?,?,?,?)");
+    public function get_usuarios($a,$b,$c,$d,$e,$f,$g,$h){
+        $consulta=$this->db->prepare("call ps_buscaOtroUsuario(?,?,?,?,?,?,?,?)");
 		$consulta->bindParam(1,$a);
 		$consulta->bindParam(2,$b);
 		$consulta->bindParam(3,$c);
@@ -20,6 +20,7 @@ class cargaOtroUsuario{
 		$consulta->bindParam(5,$e);
 		$consulta->bindParam(6,$f);
 		$consulta->bindParam(7,$g);
+		$consulta->bindParam(8,$h);
 		$consulta->execute();
         while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
             $this->usuarios[]=$filas;

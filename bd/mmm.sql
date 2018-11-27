@@ -175,7 +175,7 @@ end
 |
 drop  procedure ps_buscaOtroUsuario;
 delimiter |
-create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_interes int,p_mail varchar(45))
+create procedure ps_buscaOtroUsuario(p_sexo int, p_edadMin int, p_edadMax int, p_alturaMin int, p_alturaMax int, p_lugar int, p_interes int,p_mail varchar(45))
 begin
 declare cod int;
 set cod = (select id from usuario where mail = p_mail);
@@ -188,6 +188,7 @@ where
 u.sexo = p_sexo and
 year(curdate()) - year(u.fecNac) BETWEEN p_edadMin and p_edadMax and
 u.altura between p_alturaMin and p_alturaMax and
+u.idDistrito = p_lugar and
 f.idinteres = p_interes and
 u.idUsu not in (select mipareja from parejas where yo = cod) and
 u.idUsu != cod and
@@ -210,11 +211,11 @@ foto
 from usuarioDatos where idUsu = idU;
 end
 |
--- drop procedure ps_consultaMisFiltros
+drop procedure ps_consultaMisFiltros;
 delimiter |
 create procedure ps_consultaMisFiltros(p_mail varchar(45))
 begin
-select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.alturaMax, f.alturaMin, f.idInteres as 'relacion'
+select f.buscoSexo as 'Sexo', f.edadMax as 'EdadMax', f.edadMin as 'EdadMin', f.alturaMax, f.alturaMin, f.idInteres as 'relacion', f.lugar as 'lugar', (select nom from distritos where id = f.lugar) as 'nomdis'
 from filtros f
 join usuario u
 on f.idUsu = u.id

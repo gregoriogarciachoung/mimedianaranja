@@ -10,6 +10,7 @@ $_POST['eMin'],
 $_POST['aMax'],
 $_POST['aMin'],
 $_POST['chkr'],
+$_POST['distrito'],
 $pass
 );
 header("location:../mmm.php");
