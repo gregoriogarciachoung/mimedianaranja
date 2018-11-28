@@ -102,7 +102,7 @@ header("location:index.php");
 			
 			<p>Distrito</p>
 			<div ng-init="listaDistrito()" id="txtdisdiv">		
-				<input  list="testList" type="text" placeholder="Escribe distrito (solo lima)" name="distrito" id="txtdis" value="{{x.nomdis}}"/>
+				<input  list="testList" type="text" placeholder="Escribe distrito (solo lima)" name="distrito" id="txtdis2" value="{{x.nomdis}}"/>
     <datalist id="testList">
         <option ng-repeat="d in distri" value="{{d.nom}}">
     </datalist>
@@ -178,13 +178,12 @@ header("location:index.php");
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}" name="eMin" id="eMin" min="18"  required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}" name="eMax" id="eMax"  required/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin" id="eMin" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax" id="eMax" required/></div>
 			
 			<h3>Que mida(cm) entre</h3>
 			<div><input type="number" value="{{x.alturaMin}}" name="aMin" id="aMin" required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.alturaMax}}" name="aMax" id="aMax" min="150" required/></div>
-
+			<input type="number" value="{{x.alturaMax}}" name="aMax" id="aMax" required/></div>
 			<div ng-init="listaDistrito()">		
 			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}" required/>
     <datalist id="testList">
@@ -192,12 +191,10 @@ header("location:index.php");
     </datalist>
 				
 				</div>
-	
-		<span id="msj3" style="margin-left:1em"></span>
+				<span id="msj3" style="margin-left:1em"></span>
 		<div><button type="button"  id="btnCancelar" ng-click="ocultarFiltros()">Cancelar</button>
 		<button type="button"  id="btnGuardar" ng-click="guardaFiltros()">Guardar</button></div>
 		</div>
-		
 		</form>
 </section>
 </body>
@@ -300,7 +297,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 	}
 	$scope.editarMiDistrito = function(){
-		var txtOcu = document.querySelector("#txtdis");
+		var txtOcu = document.querySelector("#txtdis2");
 		$http({
 			method: 'POST',
 			url: 'on/editarDistrito.php', 
@@ -344,7 +341,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 				contColor2 = 0;
 			}
 	}
-		$scope.guardaFiltros = function(){
+	$scope.guardaFiltros = function(){
 
 		var msj3 = $("#msj3");
 		
@@ -402,11 +399,6 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 		$("#myF").submit();
 	}
-
-	/*$scope.cargarSugeridos = function(){
-		location.reload();
-	}*/
-});
 	/*$scope.cargarSugeridos = function(){
 		location.reload();
 	}*/
