@@ -131,15 +131,15 @@ header("location:index.php");
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}" name="eMin" id="eMin" min="18"  required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}" name="eMax" id="eMax"  required/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin" id="eMin" min="18" placeholder="Edad mínima" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax" id="eMax"  placeholder="Edad máxima"  required/></div>
 			
 			<h3>Que mida(cm) entre</h3>
-			<div><input type="number" value="{{x.alturaMin}}" name="aMin" id="aMin" required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.alturaMax}}" name="aMax" id="aMax" min="150" required/></div>
+			<div><input type="number" value="{{x.alturaMin}}" name="aMin" id="aMin"  placeholder="Altura mímina" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.alturaMax}}" name="aMax" id="aMax" min="150"  placeholder="Altura máxima" required/></div>
 
 			<div ng-init="listaDistrito()">		
-			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}" required/>
+			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}" placeholder="Distrito de lima" required/>
     <datalist id="testList">
         <option ng-repeat="d in distri" value="{{d.nom}}">
     </datalist>
@@ -215,12 +215,12 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 		if($("#eMin").val().length < 1){
 		borrarMsj();
-		msj3.text("edad mínima vacio");
+		msj3.text("Error en campo edad mínima");
 		return;
 		}
 		if($("#eMax").val().length < 1){
 		borrarMsj();
-		msj3.text("edad máxima vacio");
+		msj3.text("Error en campo edad máxima");
 		return;
 		}
 		if(parseInt($("#eMin").val()) > parseInt($("#eMax").val()) ){
@@ -231,12 +231,12 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 		if($("#aMin").val().length < 1){
 		borrarMsj();
-		msj3.text("altura mínima vacio");
+		msj3.text("Error en campo altura mínima");
 		return;
 		}
 		if($("#aMax").val().length < 1){
 		borrarMsj();
-		msj3.text("altura máxima vacio");
+		msj3.text("Error en campo altura máxima");
 		return;
 		}
 		if(parseInt($("#aMin").val()) > parseInt($("#aMax").val()) ){
