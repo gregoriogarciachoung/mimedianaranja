@@ -156,7 +156,7 @@ header("location:index.php");
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">
-		<form action="on/editaFiltro.php" method="post">
+		<form action="on/editaFiltro.php" method="post" id="myF">
 		<div ng-repeat="x in datos">
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
@@ -178,12 +178,13 @@ header("location:index.php");
 				</ul>
 			</div>
 			<h3>Que tenga entre</h3>
-			<div><input type="number" value="{{x.edadMin}}" name="eMin" required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.edadMax}}" name="eMax" required/></div>
+			<div><input type="number" value="{{x.edadMin}}" name="eMin" id="eMin" min="18"  required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.edadMax}}" name="eMax" id="eMax"  required/></div>
 			
 			<h3>Que mida(cm) entre</h3>
-			<div><input type="number" value="{{x.alturaMin}}" name="aMin" required/><a style="padding:0 1em 0 1em">a</a>
-			<input type="number" value="{{x.alturaMax}}" name="aMax" required/></div>
+			<div><input type="number" value="{{x.alturaMin}}" name="aMin" id="aMin" required/><a style="padding:0 1em 0 1em">a</a>
+			<input type="number" value="{{x.alturaMax}}" name="aMax" id="aMax" min="150" required/></div>
+
 			<div ng-init="listaDistrito()">		
 			Busca en:	<input  list="testList" type="text" name="distrito" id="txtdis" value="{{x.nomdis}}" required/>
     <datalist id="testList">
@@ -191,9 +192,12 @@ header("location:index.php");
     </datalist>
 				
 				</div>
+	
+		<span id="msj3" style="margin-left:1em"></span>
 		<div><button type="button"  id="btnCancelar" ng-click="ocultarFiltros()">Cancelar</button>
-		<button type="submit"  id="btnGuardar">Guardar</button></div>
+		<button type="button"  id="btnGuardar" ng-click="guardaFiltros()">Guardar</button></div>
 		</div>
+		
 		</form>
 </section>
 </body>
@@ -340,6 +344,69 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 				contColor2 = 0;
 			}
 	}
+		$scope.guardaFiltros = function(){
+
+		var msj3 = $("#msj3");
+		
+		function borrarMsj(){
+	
+		msj3.text("");
+		}
+		
+		if($("#eMin").val().length < 1){
+		borrarMsj();
+		msj3.text("edad mínima vacio");
+		return;
+		}
+		if($("#eMax").val().length < 1){
+		borrarMsj();
+		msj3.text("edad máxima vacio");
+		return;
+		}
+		if(parseInt($("#eMin").val()) > parseInt($("#eMax").val()) ){
+		borrarMsj();
+		msj3.text("edad mínima debe ser menor o igual que edad máxima");
+		return;
+		}
+		
+		if($("#aMin").val().length < 1){
+		borrarMsj();
+		msj3.text("altura mínima vacio");
+		return;
+		}
+		if($("#aMax").val().length < 1){
+		borrarMsj();
+		msj3.text("altura máxima vacio");
+		return;
+		}
+		if(parseInt($("#aMin").val()) > parseInt($("#aMax").val()) ){
+		borrarMsj();
+		msj3.text("altura mínima debe ser menor o igual que altura máxima");
+		return;
+		}
+		if($("#txtdis").val().length < 1){
+		borrarMsj();
+		msj3.text("distrito vacio");
+		return;
+		}
+		if(parseInt($("#eMin").val()) < 18 ){
+		borrarMsj();
+		msj3.text("la edad máxima es de 18 años");
+		return;
+		}
+		if(parseInt($("#aMin").val()) < 150 ){
+		borrarMsj();
+		msj3.text("altura máxima de las personas es de 150 cm");
+		return;
+		}
+		
+		$("#myF").submit();
+	}
+
+	/*$scope.cargarSugeridos = function(){
+		location.reload();
+	}*/
+});
 	/*$scope.cargarSugeridos = function(){
 		location.reload();
 	}*/
