@@ -72,5 +72,28 @@ echo $_POST['miAltura'];"<br>";
 echo $_POST['ocu'];"<br>";
 echo $_POST['rela'];"<br>";
 echo 'images/'.$usuario.'/'.$nombre_img;
-header("location:../index.php");
+//header("location:../index.php");
+//-------------------------------------------------
+try{
+require_once("../modelo/usuario.php");
+$usu = $_POST['correo'];
+$pass = $_POST['clave'];
+$per=new usuario();
+$resultado = $per->login($usu, $pass);
+
+		foreach ($resultado as $dato) {
+			echo $dato['id'];
+			if($dato['id']== '1'){
+				session_start();
+				$_SESSION['ax']=1;
+				$_SESSION['usu']=$usu;
+				header("Location:../mmm.php");
+			}else{
+			//	header("Location:../index.php?msj=".utf8_encode("Error_usuario_o_clave"));
+			}
+		}
+}catch(Exception $e){
+	//header("Location:../index.php?msj=Error");
+}
+
 ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2018 a las 20:20:47
+-- Tiempo de generación: 29-11-2018 a las 06:34:46
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -369,7 +369,21 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (14, 1, 11, 5, 180, 170, 4, 1),
 (15, 1, 31, 20, 180, 150, 1, 1),
 (16, 1, 26, 20, 178, 150, 1, 1),
-(17, 1, 25, 18, 170, 150, 4, 1);
+(17, 1, 25, 18, 170, 150, 4, 1),
+(18, 1, 26, 20, 177, 167, 4, 3),
+(19, 1, 26, 20, 179, 169, 10, 4),
+(20, 1, 26, 20, 175, 165, 44, 4),
+(21, 1, 25, 19, 180, 170, 4, 4),
+(22, 1, 28, 22, 179, 169, 4, 2),
+(23, 1, 22, 19, 180, 170, 4, 2),
+(24, 1, 28, 22, 170, 160, 4, 2),
+(25, 1, 22, 19, 178, 168, 44, 1),
+(26, 1, 28, 22, 180, 170, 4, 1),
+(27, 2, 30, 24, 173, 163, 4, 3),
+(28, 2, 24, 18, 169, 150, 4, 3),
+(29, 2, 31, 25, 185, 175, 4, 4),
+(30, 2, 26, 20, 176, 166, 4, 2),
+(31, 2, 28, 22, 173, 163, 44, 2);
 
 -- --------------------------------------------------------
 
@@ -608,7 +622,91 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (17, 3, 'El exorsista, el conjuro, anabell'),
 (17, 4, 'fiestar, IU, Stratovarius'),
 (17, 5, 'Nadar, Salir con amigos, jugar'),
-(17, 6, 'El exorsista');
+(17, 6, 'El exorsista'),
+(18, 1, ''),
+(18, 2, ''),
+(18, 3, ''),
+(18, 4, ''),
+(18, 5, ''),
+(18, 6, ''),
+(19, 1, ''),
+(19, 2, ''),
+(19, 3, ''),
+(19, 4, ''),
+(19, 5, ''),
+(19, 6, ''),
+(20, 1, ''),
+(20, 2, ''),
+(20, 3, ''),
+(20, 4, ''),
+(20, 5, ''),
+(20, 6, ''),
+(21, 1, ''),
+(21, 2, ''),
+(21, 3, ''),
+(21, 4, ''),
+(21, 5, ''),
+(21, 6, ''),
+(22, 1, ''),
+(22, 2, ''),
+(22, 3, ''),
+(22, 4, ''),
+(22, 5, ''),
+(22, 6, ''),
+(23, 1, ''),
+(23, 2, ''),
+(23, 3, ''),
+(23, 4, ''),
+(23, 5, ''),
+(23, 6, ''),
+(24, 1, ''),
+(24, 2, ''),
+(24, 3, ''),
+(24, 4, ''),
+(24, 5, ''),
+(24, 6, ''),
+(25, 1, ''),
+(25, 2, ''),
+(25, 3, ''),
+(25, 4, ''),
+(25, 5, ''),
+(25, 6, ''),
+(26, 1, ''),
+(26, 2, ''),
+(26, 3, ''),
+(26, 4, ''),
+(26, 5, ''),
+(26, 6, ''),
+(27, 1, ''),
+(27, 2, ''),
+(27, 3, ''),
+(27, 4, ''),
+(27, 5, ''),
+(27, 6, ''),
+(28, 1, ''),
+(28, 2, ''),
+(28, 3, ''),
+(28, 4, ''),
+(28, 5, ''),
+(28, 6, ''),
+(29, 1, ''),
+(29, 2, ''),
+(29, 3, ''),
+(29, 4, ''),
+(29, 5, ''),
+(29, 6, ''),
+(30, 1, ''),
+(30, 2, ''),
+(30, 3, ''),
+(30, 4, ''),
+(30, 5, ''),
+(30, 6, ''),
+(31, 1, ''),
+(31, 2, ''),
+(31, 3, ''),
+(31, 4, ''),
+(31, 5, ''),
+(31, 6, '');
 
 -- --------------------------------------------------------
 
@@ -643,7 +741,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -661,11 +759,25 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
 (10, 'ana@gmail.com', '1234', 1),
 (11, 'hyemi@gmail.com', '1234', 1),
 (12, 'candid@gmail.com', '1234', 1),
-(13, 'valeria@gmail.com', 'mivale', NULL),
+(13, 'valeria@gmail.com', 'mivale', 1),
 (14, 'akane@gmail.com', '1234', 1),
 (15, 'mina@gmail.com', 'abcd', 1),
 (16, 'patricia@gmail.com', 'ka33', 1),
-(17, 'saori@gmail.com', 'saori1234', 1);
+(17, 'saori@gmail.com', 'saori1234', 1),
+(18, 'mary@gmail.com', '1234', 1),
+(19, 'linda@gmail.com', '1234', 1),
+(20, 'barbara@gmail.com', '1234', 1),
+(21, 'elizabeth@gmail.com', '1234', 1),
+(22, 'jennifer@gmail.com', '1234', 1),
+(23, 'susan@gmail.com', '1234', 1),
+(24, 'margaret@gmail.com', '1234', 1),
+(25, 'dorothy@gmail.com', '1234', 1),
+(26, 'james@gmail.com', '1234', 1),
+(27, 'jhon@gmail.com', '1234', 1),
+(28, 'michael@gmail.com', '1234', 1),
+(29, 'william@gmail.com', '1234', 1),
+(30, 'david@gmail.com', '1234', 1),
+(31, 'richard@gmail.com', '1234', 1);
 
 -- --------------------------------------------------------
 
@@ -708,7 +820,21 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (14, 'Akane', 2, '2010-01-01', 4, 2, 1, 3, 170, 'Modelo', '', 'images/akane@gmail.com//images.jpg'),
 (15, 'Mina', 2, '1990-01-01', 1, 2, 1, 3, 170, 'Contabilidad', '', 'images/mina@gmail.com//linzyjpg.jpg'),
 (16, 'Patricia', 2, '1995-01-01', 7, 2, 1, 3, 168, 'Administradora', '', 'images/patricia@gmail.com//images.jpg'),
-(17, 'Saori', 2, '2000-01-01', 4, 2, 1, 4, 170, 'Modelo', 'Soy una chica linda que le gusta salir con amigos, les hago creer que me interesan pero a al final les rompo el corazón.', 'images/saori@gmail.com//imagses.jpg');
+(17, 'Saori', 2, '2000-01-01', 4, 2, 1, 4, 170, 'Modelo', 'Soy una chica linda que le gusta salir con amigos, les hago creer que me interesan pero a al final les rompo el corazón.', 'images/saori@gmail.com//imagses.jpg'),
+(18, 'Mary', 2, '1995-09-19', 4, 2, 1, 3, 167, 'Administradora', '', 'images/mary@gmail.com//CtsW.jpg'),
+(19, 'Linda', 2, '1995-01-01', 10, 2, 1, 3, 169, 'Contabilidad', '', 'images/linda@gmail.com//FIESTAR-Cao-Lu.jpg'),
+(20, 'Barbara', 2, '1995-09-19', 44, 2, 1, 3, 165, 'Profesora', '', 'images/barbara@gmail.com//FIESTAR-Yezi.jpg'),
+(21, 'Elizabeth', 2, '1996-01-01', 4, 2, 1, 3, 170, 'Diseñadora', '', 'images/elizabeth@gmail.com//im9ages.jpg'),
+(22, 'Jennifer', 2, '1993-01-01', 4, 1, 1, 1, 169, 'Arquitecto', '', 'images/jennifer@gmail.com//ima8ges.jpg'),
+(23, 'Susan', 2, '1999-01-01', 4, 2, 1, 3, 170, 'Actriz', '', 'images/susan@gmail.com//ima12ges.jpg'),
+(24, 'Margaret', 2, '1993-09-19', 4, 2, 1, 3, 160, 'Abogada', '', 'images/margaret@gmail.com//imag7es.jpg'),
+(25, 'Dorothy', 2, '1999-09-19', 44, 2, 1, 3, 168, 'Administradora', '', 'images/dorothy@gmail.com//imag74es.jpg'),
+(26, 'James', 2, '1993-01-01', 4, 2, 1, 3, 170, 'Arquitecto', '', 'images/james@gmail.com//Gong_Yoo31.jpg'),
+(27, 'John', 1, '1991-09-19', 4, 2, 1, 3, 173, 'Ingeniero', '', 'images/jhon@gmail.com//im2ages.jpg'),
+(28, 'Michael', 1, '1997-01-01', 4, 2, 1, 3, 169, 'Computación', '', 'images/michael@gmail.com//im6ages.jpg'),
+(29, 'William', 1, '1990-01-01', 4, 1, 1, 3, 175, 'Contabilidad', '', 'images/william@gmail.com//ima4ges.jpg'),
+(30, 'David', 1, '1995-01-01', 4, 1, 1, 3, 176, 'Administrador', '', 'images/david@gmail.com//ima3ges.jpg'),
+(31, 'Richard', 1, '1993-01-01', 44, 2, 1, 3, 173, 'Arquitecto', '', 'images/richard@gmail.com//images.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -844,7 +970,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- Restricciones para tablas volcadas
 --

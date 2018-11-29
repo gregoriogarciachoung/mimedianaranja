@@ -81,7 +81,7 @@ header("location:index.php");
 	
 		<div ng-controller="ella" ng-init="listaMisDatos()" style="text-align:center">
 		<div ng-repeat="x in datos">
-			<img src="{{x.foto}}"/>
+			<img class="fotoperfil" src="{{x.foto}}"/>
 			<p>{{x.nom}} ({{x.edad}})</p>
 		</div>
 	</div>
