@@ -40,7 +40,7 @@ header("location:index.php");
 		<nav>
 			<ul>
 				<li ng-click="mostrarFiltros()">Filtro
-				<li  ng-repeat="x in datos"><a href="chat.php?usuario={{x.nom}}">Chat</a>
+				<li  ng-repeat="x in datos"><a target="_blank" href="chat.php?usuario={{x.nom}}">Chat</a>
 				<li ng-click="cerrarSesion()">Salir
 			</ul>
 		</nav>
@@ -69,7 +69,7 @@ header("location:index.php");
 	<!-- Invitaciones -->
 	<section id="invi">
 	<h2>Invitaciones</h2>
-	<h6 style="font-size:12px; margin-bottom:1em">Selecciona una de la opciones, si no está en me gusta está en match</h6>
+	<font color="red" style="font-size:12px; margin-bottom:1em">Selecciona una de la opciones, si no está en me gusta está en match</font>
 	<div ng-controller="ella">
 		<nav>
 			<li id="meGustan" ng-click="listaMeGustan()"><img src="images/corazonmitad.png"/>

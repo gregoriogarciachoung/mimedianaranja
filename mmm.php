@@ -40,7 +40,7 @@ header("location:index.php");
 		<nav>
 			<ul>
 				<li ng-click="mostrarFiltros()">Filtro
-				<li  ng-repeat="x in datos"><a href="chat.php?usuario={{x.nom}}">Chat</a>
+				<li  ng-repeat="x in datos"><a target="_blank" href="chat.php?usuario={{x.nom}}">Chat</a>
 				<li ng-click="cerrarSesion()">Salir
 			</ul>
 		</nav>

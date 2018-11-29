@@ -40,7 +40,7 @@ header("location:index.php");
 		<nav>
 			<ul>
 				<li ng-click="mostrarFiltros()">Filtro
-				<li  ng-repeat="x in datos"><a href="chat.php?usuario={{x.nom}}">Chat</a>
+				<li  ng-repeat="x in datos"><a target="_blank" href="chat.php?usuario={{x.nom}}">Chat</a>
 				<li ng-click="cerrarSesion()">Salir
 			</ul>
 		</nav>
@@ -71,12 +71,12 @@ header("location:index.php");
 	<section class="momo" ></section>
 	</section>
 	<!-- Mensajes -->
-	<section ng-controller="ella"  id="galu" >
+	<section ng-controller="ella"  id="galu" ng-init="listaMensajes()">
 	<!-- <input type="text" ng-model="txtUsuMsj" placeholder="combo"/> -->
 	<h2>Mensajes</h2>
 	<div ng-init="listaParejas()">
+	<h3 style="color:red; cursor:pointer" ng-click="recargar()">&#10227;</h3>
 	<h3 >Seleccione usuario</h3>
-
 	<select ng-init="listaMensajes()" ng-model="txtUsuMsj" >
 	<option value="0">Todos
 	<option ng-repeat="x in datos" value="{{x.yo}}">{{x.nom}}
@@ -95,7 +95,12 @@ header("location:index.php");
 	<p >{{x.msj}}</p>
 	<p >recibido el {{x.fecha}}</p>
 	</div>
-
+	<div ng-repeat="x in msj" class="galmsj" ng-if="null == txtUsuMsj" ng-click="verUsuEnviarMsj(x.emisor)">
+	<figure ><img ng-src="{{x.foto}}"></figure>
+	<p >{{x.nom}}</p>
+	<p >{{x.msj}}</p>
+	<p >recibido el {{x.fecha}}</p>
+	</div>
 	</section>
 	<section class="momo" id="usuModal2">
 	<form>
@@ -247,6 +252,11 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		}, function (error) {
 		});
 		txtMensaje.value="";
+		document.querySelector("#usuModal2").style.display="none";
+		alert("Mensaje enviado");
+	}
+	$scope.recargar = function(){
+		location.reload();
 	}
 	
 	document.querySelector("#usuModal2").style.display="none";
@@ -309,9 +319,7 @@ ellanomehacecaso.controller('mehizoclick', function($scope, $http) {
 		
 		$("#myF").submit();
 	}
-	/*$scope.cargarSugeridos = function(){
-		location.reload();
-	}*/
+	
 });
 </script>
 <script type="text/javascript" src="js/mmmlst.js"></script>

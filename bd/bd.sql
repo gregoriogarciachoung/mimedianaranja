@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2018 a las 06:34:46
+-- Tiempo de generación: 29-11-2018 a las 07:54:27
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -356,12 +356,12 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
 (1, 2, 26, 20, 200, 150, 2, 1),
 (2, 1, 25, 19, 170, 160, 1, 1),
-(3, 2, 24, 17, 200, 150, 1, 1),
+(3, 2, 25, 18, 200, 150, 4, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
 (7, 1, 26, 20, 170, 160, 1, 1),
 (8, 1, 26, 20, 210, 160, 2, 1),
-(9, 1, 24, 15, 180, 160, 1, 1),
+(9, 1, 25, 18, 180, 160, 1, 1),
 (10, 1, 24, 15, 178, 150, 3, 1),
 (11, 1, 21, 15, 177, 167, 3, 4),
 (12, 1, 31, 25, 179, 169, 1, 1),
@@ -374,16 +374,16 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (19, 1, 26, 20, 179, 169, 10, 4),
 (20, 1, 26, 20, 175, 165, 44, 4),
 (21, 1, 25, 19, 180, 170, 4, 4),
-(22, 1, 28, 22, 179, 169, 4, 2),
+(22, 1, 28, 18, 179, 150, 1, 1),
 (23, 1, 22, 19, 180, 170, 4, 2),
 (24, 1, 28, 22, 170, 160, 4, 2),
 (25, 1, 22, 19, 178, 168, 44, 1),
-(26, 1, 28, 22, 180, 170, 4, 1),
+(26, 2, 28, 18, 180, 170, 1, 1),
 (27, 2, 30, 24, 173, 163, 4, 3),
 (28, 2, 24, 18, 169, 150, 4, 3),
 (29, 2, 31, 25, 185, 175, 4, 4),
 (30, 2, 26, 20, 176, 166, 4, 2),
-(31, 2, 28, 22, 173, 163, 44, 2);
+(31, 2, 28, 22, 173, 163, 44, 4);
 
 -- --------------------------------------------------------
 
@@ -418,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `receptor` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `msj` varchar(240) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -434,7 +434,14 @@ INSERT INTO `mensajes` (`id`, `emisor`, `receptor`, `fecha`, `msj`) VALUES
 (10, 3, 8, '2018-11-22', 'ámame'),
 (11, 3, 2, '2018-11-22', 'hola Elba'),
 (12, 2, 3, '2018-11-22', 'hola Pablito'),
-(13, 8, 3, '2018-11-22', 'que vas a hacer hoy');
+(13, 8, 3, '2018-11-22', 'que vas a hacer hoy'),
+(14, 31, 20, '2018-11-29', 'hola'),
+(15, 22, 30, '2018-11-29', 'hola'),
+(16, 30, 22, '2018-11-29', 'hola Jennifer ;)'),
+(17, 22, 30, '2018-11-29', 'podemos vernos en algún lugar'),
+(18, 30, 22, '2018-11-29', 'Dime la hora y lugar'),
+(19, 22, 30, '2018-11-29', 'A las 10:00 pm, a esa hora salgo de estudiar. si quieres re-cojeme. Estudio en cibertec'),
+(20, 3, 22, '2018-11-29', 'hola jennifer, ¿como estas?');
 
 -- --------------------------------------------------------
 
@@ -467,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `parejas` (
   `id` int(11) NOT NULL,
   `yo` int(11) DEFAULT NULL,
   `mipareja` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parejas`
@@ -485,7 +492,13 @@ INSERT INTO `parejas` (`id`, `yo`, `mipareja`) VALUES
 (12, 8, 1),
 (13, 1, 8),
 (14, 7, 1),
-(15, 1, 7);
+(15, 1, 7),
+(16, 31, 20),
+(17, 20, 31),
+(18, 22, 30),
+(19, 30, 22),
+(20, 3, 22),
+(21, 22, 3);
 
 -- --------------------------------------------------------
 
@@ -829,7 +842,7 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (23, 'Susan', 2, '1999-01-01', 4, 2, 1, 3, 170, 'Actriz', '', 'images/susan@gmail.com//ima12ges.jpg'),
 (24, 'Margaret', 2, '1993-09-19', 4, 2, 1, 3, 160, 'Abogada', '', 'images/margaret@gmail.com//imag7es.jpg'),
 (25, 'Dorothy', 2, '1999-09-19', 44, 2, 1, 3, 168, 'Administradora', '', 'images/dorothy@gmail.com//imag74es.jpg'),
-(26, 'James', 2, '1993-01-01', 4, 2, 1, 3, 170, 'Arquitecto', '', 'images/james@gmail.com//Gong_Yoo31.jpg'),
+(26, 'James', 1, '1993-01-01', 1, 2, 1, 3, 170, 'Arquitecto', '', 'images/james@gmail.com//Gong_Yoo31.jpg'),
 (27, 'John', 1, '1991-09-19', 4, 2, 1, 3, 173, 'Ingeniero', '', 'images/jhon@gmail.com//im2ages.jpg'),
 (28, 'Michael', 1, '1997-01-01', 4, 2, 1, 3, 169, 'Computación', '', 'images/michael@gmail.com//im6ages.jpg'),
 (29, 'William', 1, '1990-01-01', 4, 1, 1, 3, 175, 'Contabilidad', '', 'images/william@gmail.com//ima4ges.jpg'),
@@ -945,7 +958,7 @@ ALTER TABLE `interes`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `niveleducacion`
 --
@@ -955,7 +968,7 @@ ALTER TABLE `niveleducacion`
 -- AUTO_INCREMENT de la tabla `parejas`
 --
 ALTER TABLE `parejas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `preotrosintereses`
 --

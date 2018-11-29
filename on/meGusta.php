@@ -7,5 +7,5 @@ $datos=$per->me_gusta(
 $pass,
 $_POST['idMiPareja']
 );
-header("location:../mmm.php");
+header("location:../invitaciones.php");
  ?>

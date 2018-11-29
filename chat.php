@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Comet demo</title>
+    <title>Chat online</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/prototype.js"></script>
   </head>
@@ -14,7 +14,7 @@
   <form action="" method="get" onsubmit="comet.doRequest($('txtusu').value, $('word').value);$('word').value='';return false;">
     <input type="text" name="txtusu" id="txtusu" value="<?php echo $_GET['usuario'] ?>" readonly="readonly" style="border:0"/>
 	<input type="text" name="word" id="word" value="" />
-    <input type="submit" name="submit" value="Send" />
+    <input type="submit" name="submit" value="Enviar" />
   </form>
 </p>
 
