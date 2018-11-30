@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2018 a las 07:54:27
+-- Tiempo de generación: 30-11-2018 a las 19:28:32
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -56,7 +56,8 @@ autodes as 'des',
 foto,
 (select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
 hijos,
-altura
+altura,
+(select estado from usuario where mail = p_mail) as 'estado'
 from usuarioDatos where idUsu = idU;
 end$$
 
