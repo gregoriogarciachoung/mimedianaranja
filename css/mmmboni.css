@@ -247,11 +247,13 @@ display:inline;
 margin-right:3em;
 }
 #invi #match img{
+margin-top:1em;
 width:36px;
 height:30px;
 }
 #invi #meGustan img{
-width:18px;
+margin-top:1em;
+width:36px;
 height:30px;
 }
 #invi #titu{
