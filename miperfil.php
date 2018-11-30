@@ -144,10 +144,18 @@ header("location:index.php");
 			<div class="marcotres">
 			<form action="on/bloqueo.php" method="post">
 			<p>No aparecerás en la lista de sugeridos de otros usuarios.</p>
-			<input type="radio" name="chkblo" value="0"/> Bloquear
-			<br>
-			<input type="radio" name="chkblo" value="1"/> Desbloquear
-			<br>
+
+			<div ng-init="listaMisDatos()">
+			<ul ng-repeat="y in datos">
+			<li ng-if="1 == y.estado"><input type="radio"checked="checked" name="chkblo" value="1"/> Desbloquear
+			<li ng-if="0 != y.estado"><input type="radio" name="chkblo" value="0"/> Bloquear
+			
+			<li ng-if="1 != y.estado"><input type="radio" name="chkblo" value="1"/> Desbloquear
+			<li ng-if="0 == y.estado"><input type="radio" checked="checked" name="chkblo" value="0"/> Bloquear
+			</ul>
+
+		</div>
+			
 			<button type="submit"  id="btnCambioB">Enviar</button>
 			<span id="msj2"></span>
 			</form>

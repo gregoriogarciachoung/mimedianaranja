@@ -15,6 +15,7 @@ $cont = 0;
 	$data[$cont]['nomdis'] = utf8_encode($dato['nomdis']);
 	$data[$cont]['hijos'] = $dato['hijos'];
 	$data[$cont]['altura'] = $dato['altura'];
+	$data[$cont]['estado'] = $dato['estado'];
 					$cont++;
               //  echo $dato["nom"]."<br/>";
             }

@@ -214,7 +214,8 @@ autodes as 'des',
 foto,
 (select nom from distritos where id = (select idDistrito from usuariodatos where idUsu = idU)) as 'nomdis',
 hijos,
-altura
+altura,
+(select estado from usuario where mail = p_mail) as 'estado'
 from usuarioDatos where idUsu = idU;
 end
 |
