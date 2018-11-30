@@ -87,7 +87,7 @@ header("location:index.php");
 	</div>
 		<div class="t1" id="tampocomehacecaso">
 		<h1>Tu tienes el control</h1>
-		<h2>Edita aquí los filtros de las personas soletras que conocerás y te podrán conocer en OH!</h2>
+		<h2>Edita aquí los datos y filtros con lo que otras personas podrán conocerte en OH!</h2>
 		</div>
 		<h2 class="t2">Datos Básicos</h2>
 		<div ng-controller="ella" ng-init="listaMisDatos()">
@@ -127,7 +127,7 @@ header("location:index.php");
 		<h1>Configuración</h1>
 		<h2>Cambia contraseña o bloquea u desbloquea tu cuenta</h2>
 		</div>
-		<h2 class="t2 configcuenta">Cambio de contraseña</h2>
+		<h2 class="t2 configcuenta">Seguridad</h2>
 		<div ng-controller="ella" ng-init="listaMisDatos()">
 			<div class="marcotres">
 			<form  action="on/cc.php" method="post">

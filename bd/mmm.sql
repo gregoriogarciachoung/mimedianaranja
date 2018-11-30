@@ -110,18 +110,37 @@ insert into estadoCivil(nom)values
 insert into nivelEducacion(nom)values
 ('Secundaría'),('Técnico'),('Universidad'),('Maestría');
 -- -----------------------------------------------
-
+drop procedure sp_login;
 delimiter |
 create procedure sp_login(a varchar(45), b varchar(45))
 begin
+/*
+estado de usuario
+	controlado por usuario 0: bloqueado, 1:desbloqueado
+	controlado por administrador 2: no ingreso
+	
+resultado de login
+	1: ingreso
+	2: no ingreso
+	3: bloqueo de cuenta
+*/
 	declare id int;
+	declare est int;
+	declare adm int;
+		set adm = (select id from usuario where mail = a and pass = b);
 	if exists(select * from usuario where mail = a and pass = b)then
-	set id = 1;
-	select id;
-else
-set id = 2;
-select  id;
-end if;
+		set est = (select estado from usuario where mail = a and pass = b);
+		if(est = 1 or est = 0)then
+				set id = 1;
+				select id;
+		else
+			set id = 3;
+			select id;
+		end if;
+	else
+		set id = 2;
+		select  id;
+	end if;
 end
 |
 drop procedure sp_registraUsuario;

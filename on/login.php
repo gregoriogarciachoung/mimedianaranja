@@ -37,6 +37,8 @@ $resultado = $per->login($usu, $pass);
 				$_SESSION['ax']=1;
 				$_SESSION['usu']=$usu;
 				header("Location:../mmm.php");
+			}else if($dato['id']== '3'){
+				header("Location:../hola.html");
 			}else{
 				header("Location:../index.php?msj=".utf8_encode("Error_usuario_o_clave"));
 			}

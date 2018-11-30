@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2018 a las 19:28:32
+-- Tiempo de generación: 30-11-2018 a las 20:58:34
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -177,14 +177,33 @@ end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_login`(a varchar(45), b varchar(45))
 begin
+/*
+estado de usuario
+	controlado por usuario 0: bloqueado, 1:desbloqueado
+	controlado por administrador 2: no ingreso
+	
+resultado de login
+	1: ingreso
+	2: no ingreso
+	3: bloqueo de cuenta
+*/
 	declare id int;
+	declare est int;
+	declare adm int;
+		set adm = (select id from usuario where mail = a and pass = b);
 	if exists(select * from usuario where mail = a and pass = b)then
-	set id = 1;
-	select id;
-else
-set id = 2;
-select  id;
-end if;
+		set est = (select estado from usuario where mail = a and pass = b);
+		if(est = 1 or est = 0)then
+				set id = 1;
+				select id;
+		else
+			set id = 3;
+			select id;
+		end if;
+	else
+		set id = 2;
+		select  id;
+	end if;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_meGusta`(p_mail varchar(45),p_pareja int)
@@ -762,7 +781,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
-(1, 'jacinto@gmail.com', 'abcd', 1),
+(1, 'jacinto@gmail.com', 'abcd', 0),
 (2, 'elba@gmail.com', '1234', 1),
 (3, 'pablito@gmail.com', '1234', 1),
 (4, 'Andrea@gmail.com', '123', 1),
