@@ -4,12 +4,17 @@
     <title>Chat online</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/prototype.js"></script>
+	<link rel="stylesheet" href="css/chat.css">
   </head>
   <body>
-
+<main>
+<aside>
+<h1>Habla con todos</h1>
+<h3>Muchas personas no quieren esperar a que las agreges</h3>
+</aside>
+<section>
 <div id="content">
 </div>
-
 <p>
   <form action="" method="get" onsubmit="comet.doRequest($('txtusu').value, $('word').value);$('word').value='';return false;">
     <input type="text" name="txtusu" id="txtusu" value="<?php echo $_GET['usuario'] ?>" readonly="readonly" style="border:0"/>
@@ -17,7 +22,8 @@
     <input type="submit" name="submit" value="Enviar" />
   </form>
 </p>
-
+</section>
+</main>
 <script type="text/javascript">
 var Comet = Class.create();
 var esteusu = document.querySelector("#txtusu").value;

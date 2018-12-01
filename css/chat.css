@@ -1,0 +1,49 @@
+body{
+font:menu;
+height:600px;
+background-repeat: repeat-y;
+background-image: linear-gradient(#003ea9, #00c3ff);
+}
+#txtusu{
+background:rgba(255,255,255,0);
+}
+main{
+display:flex;
+justify-content:space-around;
+}
+section{
+padding:1em;
+background:#fff;
+width:400px;
+height:330px;
+margin-top:9%;
+overflow-y: auto;
+overflow-x: hidden;
+
+}
+aside{
+padding:1em;
+margin-top:9%;
+width:420px;
+height:390px;
+color:#fff;
+}
+  #content{
+  width:300px;
+  }
+
+section input[type=submit]{
+background:#0060e1;
+border:0;
+color:#fff;
+padding:1em;
+width:60%;
+margin-top:1em;
+}
+#txtusu{
+margin-top:1em;
+}
+#word{
+padding:0.5em;
+margin-top:1em;
+}
