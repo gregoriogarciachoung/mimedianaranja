@@ -93,7 +93,7 @@ id int primary key auto_increment,
 idAdmin int,
 idUsu int,
 fecha date,
-msj varchar(45),
+msj varchar(240),
 foreign key (idAdmin) references admin(id),
 foreign key (idUsu) references usuario(id)
 );

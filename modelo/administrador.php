@@ -41,5 +41,16 @@ class administrador{
 		$consulta = null;
 		$this->db = null; 
     }
+	public function lista_mensaje(){
+        $consulta=$this->db->prepare("select *,(select mail from usuario where id = idUsu) as 'correo' from mensajeAdmin");
+		$consulta->execute();
+		//obtener respuesta al cambio de contraseña, la validación está en la bd
+		while($filas=$consulta->fetch(PDO::FETCH_ASSOC)){
+            $this->res[]=$filas;
+        }
+		return $this->res;
+		$consulta = null;
+		$this->db = null; 
+    }
 }
 ?>
