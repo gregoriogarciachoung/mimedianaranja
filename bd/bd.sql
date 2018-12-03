@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2018 a las 20:58:34
+-- Tiempo de generación: 03-12-2018 a las 03:44:10
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -145,6 +145,18 @@ end if;
 select resultado;
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_enviarMensajeAdmin`(p_correo varchar(45), p_mail varchar(45), p_msj varchar(240))
+begin
+
+declare adm int;
+declare usu int;
+set adm = (select id from admin where correo = p_correo);
+set usu = (select id from usuario where mail = p_mail);
+
+insert into mensajeAdmin(idAdmin, idUsu, fecha, msj) values 
+(adm, usu, curdate(), p_msj);
+end$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listaMegustan`(p_mail varchar(45))
 begin
 declare cod int;
@@ -265,6 +277,25 @@ begin
 end$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL,
+  `correo` varchar(45) DEFAULT NULL,
+  `pass` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`id`, `correo`, `pass`) VALUES
+(1, 'goyo@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -425,6 +456,20 @@ INSERT INTO `interes` (`id`, `nom`) VALUES
 (3, 'Conocer nuevas personas y ver que pasa'),
 (4, 'Una relación de una noche'),
 (2, 'Una relación seria');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajeadmin`
+--
+
+CREATE TABLE IF NOT EXISTS `mensajeadmin` (
+  `id` int(11) NOT NULL,
+  `idAdmin` int(11) DEFAULT NULL,
+  `idUsu` int(11) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `msj` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -874,6 +919,12 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 --
 
 --
+-- Indices de la tabla `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `distritos`
 --
 ALTER TABLE `distritos`
@@ -899,6 +950,14 @@ ALTER TABLE `filtros`
 ALTER TABLE `interes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nom` (`nom`);
+
+--
+-- Indices de la tabla `mensajeadmin`
+--
+ALTER TABLE `mensajeadmin`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idAdmin` (`idAdmin`),
+  ADD KEY `idUsu` (`idUsu`);
 
 --
 -- Indices de la tabla `mensajes`
@@ -960,6 +1019,11 @@ ALTER TABLE `usuariodatos`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `distritos`
 --
 ALTER TABLE `distritos`
@@ -974,6 +1038,11 @@ ALTER TABLE `estadocivil`
 --
 ALTER TABLE `interes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `mensajeadmin`
+--
+ALTER TABLE `mensajeadmin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
@@ -1015,6 +1084,13 @@ ALTER TABLE `filtros`
   ADD CONSTRAINT `filtros_ibfk_1` FOREIGN KEY (`lugar`) REFERENCES `distritos` (`id`),
   ADD CONSTRAINT `filtros_ibfk_2` FOREIGN KEY (`buscoSexo`) REFERENCES `sexos` (`id`),
   ADD CONSTRAINT `filtros_ibfk_3` FOREIGN KEY (`idinteres`) REFERENCES `interes` (`id`);
+
+--
+-- Filtros para la tabla `mensajeadmin`
+--
+ALTER TABLE `mensajeadmin`
+  ADD CONSTRAINT `mensajeadmin_ibfk_1` FOREIGN KEY (`idAdmin`) REFERENCES `admin` (`id`),
+  ADD CONSTRAINT `mensajeadmin_ibfk_2` FOREIGN KEY (`idUsu`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `parejas`

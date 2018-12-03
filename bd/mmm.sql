@@ -83,6 +83,20 @@ receptor int,
 fecha date,
 msj varchar(240)
 );
+create table admin(
+id int primary key auto_increment,
+correo varchar(45),
+pass varchar(45)
+);
+create table mensajeAdmin(
+id int primary key auto_increment,
+idAdmin int,
+idUsu int,
+fecha date,
+msj varchar(45),
+foreign key (idAdmin) references admin(id),
+foreign key (idUsu) references usuario(id)
+);
 -- -----------------------------------------------
 insert into preOtrosIntereses(pre) values
 ('¿Que busco en mi próxima relación?'),
@@ -352,6 +366,24 @@ end if;
 select resultado;
 end
 |
+drop procedure sp_enviarMensajeAdmin;
+delimiter |
+create procedure sp_enviarMensajeAdmin(p_correo varchar(45), p_mail varchar(45), p_msj varchar(240))
+begin
+
+declare adm int;
+declare usu int;
+set adm = (select id from admin where correo = p_correo);
+set usu = (select id from usuario where mail = p_mail);
+
+insert into mensajeAdmin(idAdmin, idUsu, fecha, msj) values 
+(adm, usu, curdate(), p_msj);
+end
+|
+
+
+
+
 
 delimiter |
 create procedure ps_consultaMisDatos2(p_mail varchar(45))
