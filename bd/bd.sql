@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 16:21:39
+-- Tiempo de generación: 03-12-2018 a las 18:49:30
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -126,7 +126,8 @@ u.ocupacion as 'ocu',
 (select res from resOtrosIntereses where idPre = 3 and idUsu = p_id) as 'pelis',
 (select res from resOtrosIntereses where idPre = 4 and idUsu = p_id) as 'musi',
 (select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones',
-(select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs'
+(select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs',
+(select mail from usuario where id = u.idUsu) as 'cor'
 from usuarioDatos u 
 where idUsu = p_id;
 end$$
@@ -468,8 +469,15 @@ CREATE TABLE IF NOT EXISTS `mensajeadmin` (
   `idAdmin` int(11) DEFAULT NULL,
   `idUsu` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `msj` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `msj` varchar(240) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mensajeadmin`
+--
+
+INSERT INTO `mensajeadmin` (`id`, `idAdmin`, `idUsu`, `fecha`, `msj`) VALUES
+(1, 1, 8, '2018-12-03', 'bloquea a jacinto@gmail.com, es mi profe y est? casado');
 
 -- --------------------------------------------------------
 
@@ -826,7 +834,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
-(1, 'jacinto@gmail.com', 'abcd', 1),
+(1, 'jacinto@gmail.com', 'abcd', 2),
 (2, 'elba@gmail.com', '1234', 1),
 (3, 'pablito@gmail.com', '1234', 1),
 (4, 'Andrea@gmail.com', '123', 1),
@@ -1042,7 +1050,7 @@ ALTER TABLE `interes`
 -- AUTO_INCREMENT de la tabla `mensajeadmin`
 --
 ALTER TABLE `mensajeadmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
