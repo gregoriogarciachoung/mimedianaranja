@@ -32,5 +32,14 @@ class administrador{
 		$consulta = null;
 		$this->db = null; 
     }
+	public function envia_mensaje($a,$b,$c){
+        $consulta=$this->db->prepare("call sp_enviarMensajeAdmin(?,?,?)");
+		$consulta->bindParam(1,$a);
+		$consulta->bindParam(2,$b);
+		$consulta->bindParam(3,$c);
+		$consulta->execute();
+		$consulta = null;
+		$this->db = null; 
+    }
 }
 ?>

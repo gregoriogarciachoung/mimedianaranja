@@ -22,6 +22,7 @@ $cont = 0;
 	$data[$cont]['pelis'] = utf8_encode($dato['pelis']);
 	$data[$cont]['musi'] = utf8_encode($dato['musi']);
 	$data[$cont]['lbrs'] = utf8_encode($dato['lbrs']);
+	$data[$cont]['cor'] = utf8_encode($dato['cor']);
 					$cont++;
             }
 $fjson = json_encode($data);

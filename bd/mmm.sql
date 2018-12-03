@@ -283,7 +283,7 @@ begin
 	res from resOtrosIntereses where idUsu = idU;
 end
 |
--- drop procedure sp_cargaOtroUsuario
+drop procedure sp_cargaOtroUsuario;
 delimiter |
 create procedure sp_cargaOtroUsuario(p_id int)
 begin
@@ -303,7 +303,8 @@ u.ocupacion as 'ocu',
 (select res from resOtrosIntereses where idPre = 3 and idUsu = p_id) as 'pelis',
 (select res from resOtrosIntereses where idPre = 4 and idUsu = p_id) as 'musi',
 (select res from resOtrosIntereses where idPre = 5 and idUsu = p_id) as 'pasiones',
-(select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs'
+(select res from resOtrosIntereses where idPre = 6 and idUsu = p_id) as 'lbrs',
+(select mail from usuario where id = u.idUsu) as 'cor'
 from usuarioDatos u 
 where idUsu = p_id;
 end
@@ -326,7 +327,7 @@ and p.yo in(select mipareja from parejas where yo = cod);
 -- -.-1 lista parejas donde yo este como pareja de alguien
 end
 |
--- drop procedure sp_listaMegustan;
+drop procedure sp_listaMegustan;
 delimiter |
 create procedure sp_listaMegustan(p_mail varchar(45))
 begin

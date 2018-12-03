@@ -163,12 +163,13 @@ header("location:index.php");
 		</div>
 		<h2 class="t2">Reporta a otro usuario</h2>
 		<div class="marcodos">
-		<p>Escribe el correo del usuario a reportar y un mensaje del porque</p>
-		<form action="on/reportaUsu.php" action="post">
+		<p>Escribe el correo del usuario (ID usuario) a reportar y un mensaje del porque</p>
+		<form action="on/enviarMensajeAdmin.php" method="post">
+		
 			<textarea id="txtReporte" name="txtReporte" placeholder="Escribe aquí" maxlength="250"></textarea>
 			<button type="submit">Enviar</button>
-			</form>
-			</div>
+		</form>
+		</div>
 	</section>
 </main>
 <section ng-controller="ella" ng-init="listaMisFiltros()" id="id_filtroModal" class="momo">

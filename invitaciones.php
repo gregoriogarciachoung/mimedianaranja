@@ -131,6 +131,7 @@ header("location:index.php");
 			</figure>
 		</section>
 		<section>
+		
 			<figure><img ng-src="{{y.foto}}"></figure>
 			<p>{{y.nom}}, {{y.edad}}<a href="#txtMensaje" style="font:menu"> Escríbeme</i></a></p>
 			<p>{{y.des}}</p>
@@ -148,12 +149,13 @@ header("location:index.php");
 			<p>&#127910; Películas o series favoritas:<br> <font>{{y.pelis}}</font></p>
 			<p>&#127925; Bandas o artistas favoritas :<br> <font>{{y.musi}}</font></p>
 			<p>&#128218; Mis libros o autores favoritos:<br> <font>{{y.lbrs}}</font></p>
-		
+			
 			<textarea placeholder="Escríbeme" id="txtMensaje"></textarea>
 			<div>
 			<input type="hidden" name="idMiPareja" value="{{y.idUsu}}"/>
 			<button type="button" ng-click="cerrarModalUsu2()">Cerrar</button>
 			<button type="button" ng-click="enviarMensaje(y.idUsu)">Enviar mensaje</button></div>
+			<p>ID usuario: {{y.cor}}</p>
 		</section>
 		</div>
 	</form>
