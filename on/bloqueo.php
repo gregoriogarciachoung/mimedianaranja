@@ -10,7 +10,7 @@ try{
 	$estado="Cambiado";
 	
 }catch(Exception $e){
-	$estdo = "Error";
+	$estado = "Error";
 }finally{
 	header("location:../miperfil.php?estado=".$estado);	
 }

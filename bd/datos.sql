@@ -104,4 +104,7 @@ call sp_listaMegustan('nina@gmail.com');
 select yo from parejas where mipareja = ;
 select * from parejas where yo = 1 and mipareja not in(2);
 
+-- bloquear usuario por admin
+update usuario set estado = 1 where id = 1;
+
 insert into admin values (null, 'goyo@gmail.com','1234');

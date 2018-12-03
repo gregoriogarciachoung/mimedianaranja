@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 03:44:10
+-- Tiempo de generación: 03-12-2018 a las 16:21:39
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -826,7 +826,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
-(1, 'jacinto@gmail.com', 'abcd', 0),
+(1, 'jacinto@gmail.com', 'abcd', 1),
 (2, 'elba@gmail.com', '1234', 1),
 (3, 'pablito@gmail.com', '1234', 1),
 (4, 'Andrea@gmail.com', '123', 1),
