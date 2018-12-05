@@ -52,7 +52,7 @@ buscan una relación duradera</p>
 <input type="password" name="pass" placeholder="Contraseña" required>
 <input type="submit" value="INICIAR SESIÓN" id="flog"/>
 <span id="msj1"></span>
-<a class="ella" href="#">Olvidé mi clave</a>
+<!--<a class="ella" href="#">Olvidé mi clave</a>-->
 </form>
 </section>
 </body>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2018 a las 18:49:30
+-- Tiempo de generación: 05-12-2018 a las 17:55:00
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -407,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `filtros` (
 
 INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, `alturaMin`, `lugar`, `idinteres`) VALUES
 (1, 2, 26, 20, 200, 150, 2, 1),
-(2, 1, 25, 19, 170, 160, 1, 1),
+(2, 1, 25, 19, 170, 160, 4, 3),
 (3, 2, 25, 18, 200, 150, 4, 1),
 (4, 1, 24, 18, 170, 160, 3, 1),
 (5, 2, 26, 20, 160, 150, 1, 1),
@@ -430,12 +430,21 @@ INSERT INTO `filtros` (`idUsu`, `buscoSexo`, `edadMax`, `edadMin`, `alturaMax`, 
 (23, 1, 22, 19, 180, 170, 4, 2),
 (24, 1, 28, 22, 170, 160, 4, 2),
 (25, 1, 22, 19, 178, 168, 44, 1),
-(26, 2, 28, 18, 180, 170, 1, 1),
-(27, 2, 30, 24, 173, 163, 4, 3),
+(26, 2, 28, 18, 180, 160, 4, 2),
+(27, 2, 30, 18, 173, 160, 4, 2),
 (28, 2, 24, 18, 169, 150, 4, 3),
 (29, 2, 31, 25, 185, 175, 4, 4),
 (30, 2, 26, 20, 176, 166, 4, 2),
-(31, 2, 28, 22, 173, 163, 44, 4);
+(31, 2, 28, 22, 173, 163, 44, 4),
+(32, 1, 21, 18, 170, 160, 4, 2),
+(33, 1, 21, 18, 170, 160, 4, 2),
+(34, 1, 21, 18, 170, 160, 4, 2),
+(35, 1, 21, 18, 170, 160, 4, 2),
+(36, 1, 27, 18, 175, 170, 4, 2),
+(38, 1, 21, 18, 170, 160, 4, 2),
+(39, 1, 21, 18, 170, 160, 4, 2),
+(41, 1, 21, 18, 170, 160, 4, 2),
+(42, 1, 31, 18, 175, 165, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -792,7 +801,61 @@ INSERT INTO `resotrosintereses` (`idUsu`, `idPre`, `res`) VALUES
 (31, 3, ''),
 (31, 4, ''),
 (31, 5, ''),
-(31, 6, '');
+(31, 6, ''),
+(32, 1, ''),
+(32, 2, ''),
+(32, 3, ''),
+(32, 4, ''),
+(32, 5, ''),
+(32, 6, ''),
+(33, 1, ''),
+(33, 2, ''),
+(33, 3, ''),
+(33, 4, ''),
+(33, 5, ''),
+(33, 6, ''),
+(34, 1, ''),
+(34, 2, ''),
+(34, 3, ''),
+(34, 4, ''),
+(34, 5, ''),
+(34, 6, ''),
+(35, 1, ''),
+(35, 2, ''),
+(35, 3, ''),
+(35, 4, ''),
+(35, 5, ''),
+(35, 6, ''),
+(36, 1, ''),
+(36, 2, ''),
+(36, 3, ''),
+(36, 4, ''),
+(36, 5, ''),
+(36, 6, ''),
+(38, 1, ''),
+(38, 2, ''),
+(38, 3, ''),
+(38, 4, ''),
+(38, 5, ''),
+(38, 6, ''),
+(39, 1, ''),
+(39, 2, ''),
+(39, 3, ''),
+(39, 4, ''),
+(39, 5, ''),
+(39, 6, ''),
+(41, 1, ''),
+(41, 2, ''),
+(41, 3, ''),
+(41, 4, ''),
+(41, 5, ''),
+(41, 6, ''),
+(42, 1, ''),
+(42, 2, ''),
+(42, 3, ''),
+(42, 4, ''),
+(42, 5, ''),
+(42, 6, '');
 
 -- --------------------------------------------------------
 
@@ -827,14 +890,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `mail` varchar(45) DEFAULT NULL,
   `pass` varchar(45) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
-(1, 'jacinto@gmail.com', 'abcd', 2),
+(1, 'jacinto@gmail.com', 'abcd', 1),
 (2, 'elba@gmail.com', '1234', 1),
 (3, 'pablito@gmail.com', '1234', 1),
 (4, 'Andrea@gmail.com', '123', 1),
@@ -863,7 +926,16 @@ INSERT INTO `usuario` (`id`, `mail`, `pass`, `estado`) VALUES
 (28, 'michael@gmail.com', '1234', 1),
 (29, 'william@gmail.com', '1234', 1),
 (30, 'david@gmail.com', '1234', 1),
-(31, 'richard@gmail.com', '1234', 1);
+(31, 'richard@gmail.com', '1234', 1),
+(32, 'alaba@gmail.com', '1234', 1),
+(33, 'julia@gmail.com', '1234', 1),
+(34, 'sofia@gmail.com', '1234', 1),
+(35, 'martina@gmail.com', '1234', 1),
+(36, 'carla@gmail.com', '1234', 1),
+(38, 'daniela@gmail.com', '1234', 1),
+(39, 'paula@gmail.com', '1234', 1),
+(41, 'lucia@gmail.com', '1234', 1),
+(42, 'fernanda@gmail.com', '1234', 1);
 
 -- --------------------------------------------------------
 
@@ -920,7 +992,16 @@ INSERT INTO `usuariodatos` (`idUsu`, `nom`, `sexo`, `fecNac`, `idDistrito`, `hij
 (28, 'Michael', 1, '1997-01-01', 4, 2, 1, 3, 169, 'Computación', '', 'images/michael@gmail.com//im6ages.jpg'),
 (29, 'William', 1, '1990-01-01', 4, 1, 1, 3, 175, 'Contabilidad', '', 'images/william@gmail.com//ima4ges.jpg'),
 (30, 'David', 1, '1995-01-01', 4, 1, 1, 3, 176, 'Administrador', '', 'images/david@gmail.com//ima3ges.jpg'),
-(31, 'Richard', 1, '1993-01-01', 44, 2, 1, 3, 173, 'Arquitecto', '', 'images/richard@gmail.com//images.jpg');
+(31, 'Richard', 1, '1993-01-01', 44, 2, 1, 3, 173, 'Arquitecto', '', 'images/richard@gmail.com//images.jpg'),
+(32, 'Alba', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/alba@gmail.com//alba.jpg'),
+(33, 'Julia', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/julia@gmail.com//julia.jpg'),
+(34, 'Sofia', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/sofia@gmail.com//sofia.jpg'),
+(35, 'Martina', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/martina@gmail.com//martina.jpg'),
+(36, 'Carla', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/carla@gmail.com//carla.jpg'),
+(38, 'Daniela', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/daniela@gmail.com//daniela.jpg'),
+(39, 'Paula', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/paula@gmail.com//paula.jpg'),
+(41, 'Lucia', 2, '2000-01-01', 4, 1, 1, 1, 160, 'Computacion', '', 'images/lucia@gmail.com//lucia.jpg'),
+(42, 'Fernanda', 2, '1990-01-01', 3, 2, 1, 3, 165, 'Modelo', '', 'images/fernanda@gmail.com//images.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -1080,7 +1161,7 @@ ALTER TABLE `sexos`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- Restricciones para tablas volcadas
 --
