@@ -139,10 +139,10 @@ header("location:index.php");
 	 <h5>Mi correo</h5>
 	<input type="email" placeholder="Correo" name="correo" value= "<?php $cor = $_SESSION['axu']; echo $cor; ?>"/>
 	<h5>Crea contraseña</h5>
-	<input type="password" placeholder="contraseña" name="clave" id="txtPass" required/>
+	<input type="password" placeholder="contraseña" name="clave" id="txtPass" min="3" max="45" required/>
 	<span id="mtxtPass"></span>
 	<h5>Repite contraseña</h5>
-	<input type="password" placeholder="confirma contraseña" name="confirmaClave" id="txtPass2" required/>
+	<input type="password" placeholder="confirma contraseña" name="confirmaClave" id="txtPass2" min="3" max="45" required/>
 	<span id="mtxtPass2"></span>
 	
 	</div>
