@@ -69,15 +69,12 @@ header("location:index.php");
 	<!-- Invitaciones -->
 	<section id="invi">
 	<h2>Invitaciones</h2>
-	<font color="red" style="font-size:12px; margin-bottom:1em">Selecciona una de la opciones, si no está en me gusta está en match</font>
+	
 	<div ng-controller="ella">
-		<nav>
-			<li id="meGustan" ng-click="listaMeGustan()"><img src="images/corazonmitad.png"/>
-			<li id="match" ng-click="listaParejas()"><img src="images/corazonn.png"/>
-		</nav>
-		<h3 id="titu">Me gustan</h3>
+		
+		
 		<!-- me gustan -->
-		<div ng-init="listaMeGustan()" id="listaMeGustan">
+		<div ng-init="listaMeGustan()" id="listaMeGustan" >
 				<ul ng-repeat="y in datos2">
 					<li ng-click="verUsu3(y.mipareja)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
 					
@@ -86,7 +83,7 @@ header("location:index.php");
 		<!-- match -->
 		<div ng-init="listaParejas()" id="listaMatch">
 				<ul ng-repeat="y in datos">
-					<li ng-click="verUsu2(y.yo)"><img ng-src="{{y.foto}}"><h3>{{y.nom}} ({{y.edad}})</h3>
+					<li ng-click="verUsu2(y.yo)"><img ng-src="{{y.foto}}"><h3 style="color:red">{{y.nom}} ({{y.edad}})</h3>
 					
 				</ul>
 			
@@ -220,7 +217,7 @@ var ellanomehacecaso = angular.module('goyo', []);
 <script>
 
 $(document).ready(function(){
-	
+	/*
 	$("#listaMatch").css("display","none");
 	$("#match").click(function(){
 		$("#listaMatch").css("display","block");
@@ -236,7 +233,7 @@ $(document).ready(function(){
 		$("#meGustan>img").attr("src","images/corazonmitad.png");
 		$("#invi #titu").text("Me gustan");
 	});
-	
+	*/
 	$("#btnCancelar").click(function(){
 		$("#id_filtroModal").css("display","none");
 	});
