@@ -72,7 +72,6 @@ header("location:index.php");
 	
 	<div ng-controller="ella">
 		
-		
 		<!-- me gustan -->
 		<div ng-init="listaMeGustan()" id="listaMeGustan" >
 				<ul ng-repeat="y in datos2">
@@ -84,7 +83,7 @@ header("location:index.php");
 		<div ng-init="listaParejas()" id="listaMatch">
 				<ul ng-repeat="y in datos">
 					<li ng-click="verUsu2(y.yo)"><img ng-src="{{y.foto}}"><h3 style="color:red">{{y.nom}} ({{y.edad}})</h3>
-					
+					<img src="images/corazon.png" style="width:15px; height:15px " />
 				</ul>
 			
 		</div>
